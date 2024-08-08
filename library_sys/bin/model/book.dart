@@ -39,4 +39,14 @@ class Book {
       'price': price
     };
   }
+
+  // Predefined Book
+  static var book1 = Book(
+      id: '99',
+      title: 'New Book',
+      authors: ['Charles Dickens'],
+      categories: ['Novel'],
+      year: 2024,
+      quantity: 8,
+      price: 12.5);
 }
