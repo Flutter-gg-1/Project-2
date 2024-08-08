@@ -7,7 +7,7 @@ extension Admin on LibraryManager {
 
   void removeBook(Book book) => books.remove(book);
 
-  void showAllReciept() {
+  void viewAllReciepts() {
     print('All Reciepts');
     for (var r in reciepts) {
       r.showReceipt();

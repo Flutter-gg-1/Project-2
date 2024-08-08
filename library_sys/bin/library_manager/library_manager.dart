@@ -8,8 +8,6 @@ class LibraryManager {
   late List<Book> books;
   List<Receipt> reciepts = [];
 
-  static var shared = LibraryManager();
-
   LibraryManager() {
     books = library.books as List<Book>;
   }
