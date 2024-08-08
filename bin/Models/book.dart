@@ -5,6 +5,7 @@ class Book {
   List<String> categories;
   int year;
   int quantity;
+  double price;
 
   Book(
       {required this.id,
@@ -12,8 +13,9 @@ class Book {
       required this.authors,
       required this.categories,
       required this.year,
-      required this.quantity});
-
+      required this.quantity,
+      required this.price});
+  
   factory Book.fromJson(Map<String, dynamic> json) {
     return Book(
         id: json['id'],
@@ -21,7 +23,8 @@ class Book {
         authors: json['authors'].cast<String>(),
         categories: json['categories'].cast<String>(),
         year: json['year'],
-        quantity: json['quantity']);
+        quantity: json['quantity'],
+        price: json['price']);
   }
 
   Map<String, dynamic> toJson() {
@@ -32,6 +35,7 @@ class Book {
     data['categories'] = categories;
     data['year'] = year;
     data['quantity'] = quantity;
+    data['price'] = price;
     return data;
   }
 }
