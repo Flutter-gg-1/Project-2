@@ -1,4 +1,5 @@
 class Receipt {
+  int customerId;
   String customerName;
   String bookName;
   int quantity;
@@ -6,7 +7,8 @@ class Receipt {
   late double total;
 
   Receipt(
-      {required this.customerName,
+      {required this.customerId,
+      required this.customerName,
       required this.bookName,
       required this.quantity,
       required this.price}) {
@@ -16,11 +18,11 @@ class Receipt {
   showReceipt() {
     print('''
 ---------------------------------------------------
-Book title:                               $bookName
-price:                                    $price
-quantity:                                 $quantity
-                            -----------------------
-total:                                    $total
+Book title:                     $bookName
+price:                          $price SAR
+quantity:                       $quantity
+                            
+total:                          $total SAR
 
 Thank you for your purchase $customerName!
 Happy Reading!

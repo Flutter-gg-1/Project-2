@@ -14,7 +14,7 @@ class LibraryManager {
     books = library.books as List<Book>;
   }
 
-  void showContent() {
+  void showAllBooks() {
     for (var b in books) {
       print(b.toJson());
     }

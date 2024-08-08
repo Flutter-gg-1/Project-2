@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'book.dart';
 
-abstract class User {
+class User {
   int id = Random().nextInt(200);
   String name;
   int age;
