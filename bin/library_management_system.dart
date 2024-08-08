@@ -1,5 +1,8 @@
-import 'package:library_management_system/library_management_system.dart' as library_management_system;
+import 'Models/library.dart';
+import 'data_set.dart';
 
 void main(List<String> arguments) {
-  print('Hello world: ${library_management_system.calculate()}!');
+  Library library = Library.fromJson(data);
+
+  print(library.toJson());
 }
