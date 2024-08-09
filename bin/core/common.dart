@@ -1,0 +1,20 @@
+import 'dart:io';
+import 'all_file.dart';
+
+void showPrompt(){
+  print('Do you want to continue? (y/n)');
+  String? input = stdin.readLineSync();
+  switch (input) {
+    case 'y' || 'Y':
+      print('Continue... Going to main dashboard');
+      mainDashboard();
+      break;
+    case 'n' || 'N':
+      print('Bye.');
+      exit(0);
+    default:
+      print('Invalid input. Please try again.');
+      showPrompt();
+      break;
+  }
+}
