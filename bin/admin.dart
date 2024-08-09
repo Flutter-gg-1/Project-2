@@ -4,6 +4,8 @@ import 'print_with_color.dart';
 import 'library.dart';
 import 'library_data.dart';
 import 'remove_book.dart';
+import 'view_receipt_admin.dart';
+import 'role_based.dart';
 admin(){
   bool isExit = false;
   do{
@@ -12,6 +14,7 @@ admin(){
   printWithColor(text: "(2) Add books", color: "Cyan");
   printWithColor(text: "(3) Remove books", color: "Cyan");
   printWithColor(text: "(4) View receipt", color: "Cyan");
+  printWithColor(text: "(5) return back", color: "Cyan");
   printWithColor(text: "\n~~~~~~~~~~Please select a number~~~~~~~~~~~~~~\n", color: "Magenta");
 
   int input = int.parse(stdin.readLineSync()!);
@@ -30,6 +33,10 @@ admin(){
     removeBook();
     break;
     case 4:
+    viewReceiptAdmin();
+    break;
+    case 5:
+    rolebased();
     break;
     default:
     printWithColor(text: "\nPlease press (Enter) and select a 'number'", color: "Magenta");

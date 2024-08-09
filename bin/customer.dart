@@ -3,6 +3,8 @@ import 'library.dart';
 import 'library_data.dart';
 import 'print_with_color.dart';
 import 'buy_book.dart';
+import 'role_based.dart';
+import 'view_receipt_customer.dart';
 customer(){
   bool isExit = false;
   do{
@@ -10,6 +12,7 @@ customer(){
   printWithColor(text: "(1) List all books", color: "Cyan");
   printWithColor(text: "(2) Buy books", color: "Cyan");
   printWithColor(text: "(3) View receipt", color: "Cyan");
+  printWithColor(text: "(4) Return back", color: "Cyan");
   printWithColor(text: "\n~~~~~~~~~~Please select a number~~~~~~~~~~~~~~\n", color: "Magenta");
 
   int input = int.parse(stdin.readLineSync()!);
@@ -25,7 +28,13 @@ customer(){
     case 2:
     buyBook();
     break;
-
+    case 3:
+    viewReceiptCustomer();
+    printWithColor(text: "\nTo return back to the main features press (Enter)\n", color: "Black");
+    break;
+    case 4:
+    rolebased();
+    break;
     default:
       printWithColor(text: "\nPlease select a number", color: "Magenta");
 
