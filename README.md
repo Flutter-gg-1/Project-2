@@ -9,3 +9,17 @@ this a simple CLi where it do the flowing function
 
 ## Roles
 Admin and User.
+
+# Sampels
+
+  <p float="left">
+  <img src="imag/1.png" width="300" />
+  <img src="imag/2.png" width="300" /> 
+  <img src="imag/3.png" width="300" />
+  <img src="imag/4.png" width="300" />
+  <img src="imag/5.png" width="300" />
+  <img src="imag/6.png" width="300" />
+  <img src="imag/7.png" width="300" />
+
+
+</p>
