@@ -1,5 +1,6 @@
 import 'core/all_file.dart';
+
 void main() {
-  Authors authors = Authors(authors: ["John Doe"]);
+  CategoriesKey authors = CategoriesKey(categories: ["categories"]);
   print(authors.toJson());
 }
