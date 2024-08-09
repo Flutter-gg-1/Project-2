@@ -47,3 +47,12 @@ void buy() {
     print("cart is empty");
   }
 }
+
+void showReciptHistory() {
+  for (var element in receiptHistory) {
+    print(element["total"]);
+    for (Book book in element["books"]) {
+      book.toPrint();
+    }
+  }
+}

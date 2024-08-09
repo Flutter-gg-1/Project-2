@@ -8,5 +8,5 @@ void main(List<String> arguments) {
   addToCart("1");
   buy();
 
-  receiptHistory.forEach(print);
+  showReciptHistory();
 }

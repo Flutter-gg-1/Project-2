@@ -4,4 +4,4 @@ List<Book> library = [];
 
 List<Book> cart = [];
 
-List<Map<String, dynamic>> receiptHistory = [];
+List<Map<String,dynamic>> receiptHistory = [];
