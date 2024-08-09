@@ -6,7 +6,8 @@ final libraryData = {
       "authors": ["F. Scott Fitzgerald"],
       "categories": ["Fiction"],
       "year": 1925,
-      "quantity": 5
+      "quantity": 5,
+      "price": 10.99
     },
     {
       "id": "2",
@@ -14,7 +15,8 @@ final libraryData = {
       "authors": ["Harper Lee"],
       "categories": ["Fiction", "Classic"],
       "year": 1960,
-      "quantity": 0
+      "quantity": 0,
+      "price": 12.99
     },
     {
       "id": "3",
@@ -22,7 +24,8 @@ final libraryData = {
       "authors": ["George Orwell"],
       "categories": ["Dystopian", "Science Fiction"],
       "year": 1949,
-      "quantity": 3
+      "quantity": 3,
+      "price": 15.49
     },
     {
       "id": "4",
@@ -30,7 +33,8 @@ final libraryData = {
       "authors": ["Jane Austen"],
       "categories": ["Romance", "Classic"],
       "year": 1813,
-      "quantity": 4
+      "quantity": 4,
+      "price": 8.99
     },
     {
       "id": "5",
@@ -38,7 +42,9 @@ final libraryData = {
       "authors": ["J.D. Salinger"],
       "categories": ["Fiction"],
       "year": 1951,
-      "quantity": 2
+      "quantity": 2,
+      "price": 13.49
     }
   ]
-};
+}
+;
