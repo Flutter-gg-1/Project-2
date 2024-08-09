@@ -24,12 +24,12 @@ startApp() {
   var x1 = Customers.fromJson(userData);
   for (var element in x1.customer) {
     customer.add(element);
-    print(element.username);
+    // print(element.username);
   }
-  print(customer);
+  //print(customer);
 
   var x2 = Library.fromJson(jsonData);
-  print(x2.book.first.id);
+  // print(x2.book.first.id);
   for (var element in x2.book) {
     myBook.add(element);
   }

@@ -3,16 +3,19 @@ import '../global_variabels.dart';
 import 'admin_dashboard.dart';
 import 'customer_dashboard.dart';
 import '../model/customer.dart';
-import '../startapp.dart';
 
 userDashboard() {
   print('''
 
+
+
+WELCOME TO OUR LIBRARY SYSTEM !
+---------------------------------------
+Please select a number :
+
   1 | Login
   2 | Register new account
   C | Exit
-
-
 
 ''');
 
@@ -53,10 +56,12 @@ userDashboardLogin(String username, String password) {
       if (element.role == 1) {
         role = 1;
         isLogin = true;
+        user = element;
         break;
       } else {
         role = 2;
         isLogin = true;
+        user = element;
       }
     } else {
       value = "Sorry! your username or password isn't correct!";
@@ -68,6 +73,7 @@ userDashboardLogin(String username, String password) {
     isExitAdmin = false;
   } else if (isLogin == true && role == 2) {
     customerDashboard();
+    isExitCustomer = false;
   } else {
     print(value);
   }

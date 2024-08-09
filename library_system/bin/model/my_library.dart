@@ -2,17 +2,15 @@ import './library.dart';
 import './customer.dart';
 import '../global_variabels.dart';
 import './purchase.dart';
-import '../data/jsonData.dart';
 
 class MyLibrary {
   static void displayBooks() {
-    var books = Library.fromJson(jsonData);
     print("============================");
-    print("   ID     |   Title");
-    for (var element in books.book) {
+    print("   ID     |   Title ");
+    for (var element in myBook) {
       print('''
 
-    ${element.id}     |    ${element.title}
+    ${element.id}     |    ${element.title}(QNT:${element.quantity})       
 ''');
     }
   }
@@ -63,11 +61,45 @@ class MyLibrary {
           break;
         } else {
           value = "Sorry! we don't have this quantity";
+          break;
         }
       } else {
         value = "ID not founded!";
       }
     }
     print(value);
+  }
+
+  static void displayOneCustomerPurchase() {
+    for (var element in myPurchase) {
+      if (element.customer.id == user.id) {
+        print("-------------------------------------------");
+        print("-----------------${element.pid}------------------");
+        print("--------------------------------------------");
+        print("Date    : ${element.createAt}");
+        print("Title   : ${element.title}");
+        print("Quntity : ${element.quantity}");
+        print("Price   : ${element.price} SAR");
+        print("--------------------------------------------");
+        print("Amout   : ${element.amount} SAR");
+        print("-----------------END----------------------");
+        break;
+      }
+    }
+  }
+
+  static void displayCustomerPurchase() {
+    for (var element in myPurchase) {
+      print("-------------------------------------------");
+      print("-----------------${element.pid}------------------");
+      print("--------------------------------------------");
+      print("Date    : ${element.createAt}");
+      print("Title   : ${element.title}");
+      print("Quntity : ${element.quantity}");
+      print("Price   : ${element.price} SAR");
+      print("--------------------------------------------");
+      print("Amout   : ${element.amount} SAR");
+      print("-----------------END----------------------");
+    }
   }
 }
