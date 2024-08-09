@@ -1,5 +1,7 @@
+import '../utils/updateuser.dart';
 import 'book.dart';
 import '../utils/updatedata.dart';
+import '../model/user.dart';
 
 class Library {
   List<Book>? books;
@@ -47,7 +49,7 @@ class Library {
     print('Book of ID $id does not exist');
   }
 
-  void buyBook(String id) {
+  void buyBook({required User user,required String id}) {
     // check if book exist to decrement quantity
     for (var book in books!) {
       if (book.id == id) {
@@ -56,6 +58,7 @@ class Library {
           print('Thank you for your purchase of (${book.title})');
           updateData(this, book, 2, true);
           displayReceipt(book);
+          updateUser(user, book: book);
           return;
         }
       }

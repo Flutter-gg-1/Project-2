@@ -1,12 +1,33 @@
 {
-    "admin": {},
+    "admin": [
+        {
+            "id": "1",
+            "firstName": "Admin",
+            "lastName": "Admin",
+            "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
+        }
+    ],
     "customer": [
         {
             "id": "2",
-            "firstname": "Abdulaziz",
-            "lastname": "Alamri",
-            "password": "",
-            "books_bought":[]
+            "firstName": "Abdulaziz",
+            "lastName": "Alamri",
+            "password": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+            "books_bought": []
+        },
+        {
+            "id": "3",
+            "firstName": "Basel",
+            "lastName": "Alolwi",
+            "password": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+            "books_bought": []
+        },
+        {
+            "id": "4",
+            "firstName": "Ahmed",
+            "lastName": "Alharbi",
+            "password": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+            "books_bought": []
         }
     ]
 }
