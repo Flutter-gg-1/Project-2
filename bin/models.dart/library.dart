@@ -1,4 +1,4 @@
-// This is librar class which is organize library
+// This is librar class which is contain bookes data
 class Library {
   //Attributes
   final String id;
