@@ -1,10 +1,10 @@
-class CategoriesKey{
+class Categories{
   final List<String> categories;
-  CategoriesKey({required this.categories});
+  Categories({required this.categories});
   // Factory Constructor for creating an instance of CategoriesKey from a JSON map
-  factory CategoriesKey.fromJson(Map<String, dynamic> json) {
-    return CategoriesKey(
-      categories: List<String>.from(json['categories']),
+  factory Categories.fromJson(Map<String, dynamic> json) {
+    return Categories(
+      categories: json['categories'] as List<String>,
     );
   }
   // Convert an instance of CategoriesKey to a JSON map
