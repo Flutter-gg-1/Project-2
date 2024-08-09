@@ -149,7 +149,38 @@ Enter cancel at anytime to exit this screen
   void viewAllReciepts() => library.viewAllReciepts();
 
   // Customer
-  void buyBook() =>
-      library.buyBook(customer: currentUser!, bookId: '', quantity: 1);
+  void buyBook() {
+    ColorfulPrint.blue('Buy a Book');
+    library.showAllBooks();
+
+    ColorfulStdout.magenta('Enter a book ID to buy it');
+    var idInput = stdin.readLineSync();
+    var book = library.books.where((book) => book.id! == idInput).firstOrNull;
+    if (book == null) {
+      ColorfulPrint.red('❌ No Book found with given ID $idInput');
+    } else {
+      ColorfulPrint.yellow(
+          'How many number of copies do you want to purchase?');
+      ColorfulStdout.magenta('Enter Quantity');
+      var quantityInput = stdin.readLineSync();
+      if (verifyQuantity(quantityInput ?? '')) {
+        if (book.quantity! >= int.parse(quantityInput!)) {
+          if (int.parse(quantityInput) != 0) {
+            // Buy Book
+            library.buyBook(
+                customer: currentUser!,
+                bookId: idInput!,
+                quantity: int.parse(quantityInput));
+            ColorfulPrint.green('✅ Purchase Successful!');
+          } else {
+            ColorfulPrint.red('❌ Quantity must be a number larger than 0');
+          }
+        } else {
+          ColorfulPrint.red('❌ Not Enough Books for desired Quantity!');
+        }
+      }
+    }
+  }
+
   void viewReciepts() => library.viewReciepts(customer: currentUser!);
 }
