@@ -7,3 +7,5 @@ export '../features/show_a_receipt.dart';
 export '../features/remove_books.dart';
 export '../features/purchase_a_book.dart';
 export 'common.dart';
+export '../admin_customer/admin_class.dart';
+export '../admin_customer/customer_class.dart';

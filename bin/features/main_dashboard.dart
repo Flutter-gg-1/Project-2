@@ -12,8 +12,10 @@ void mainDashboard() {
     int signInAs = int.parse(stdin.readLineSync()!);
     switch (signInAs) {
       case 1:
+        adminDashboard();
         break;
       case 2:
+        customerDashboard();
         break;
       default:
         print('Invalid input. Please try again.');
