@@ -28,7 +28,7 @@ void admin() {
   late String userInput;
   do {
     print(
-        "1- add book 2- remove book 3- show all recipt 4- show all book 0-exit");
+        "1- add book 2- remove book 3- show all recipt\n4- show all book 0-exit");
     userInput = stdin.readLineSync()!;
     switch (userInput) {
       case == "1":
@@ -38,10 +38,11 @@ void admin() {
         delete();
         break;
       case == "3":
-        showBooks();
+        showReciptHistory();
+
         break;
       case == "4":
-        showReciptHistory();
+        showBooks();
       default:
         if (userInput != "0") {
           print("the input must be one of the option");
@@ -73,9 +74,8 @@ void add() {
   do {
     print("auther*  (0 to stop )");
     author = stdin.readLineSync()!;
-    author == "" ? author = "0" : author = author;
 
-    if (author.trim() != "0") {
+    if (author.trim() != "0" && author.trim().isNotEmpty) {
       authors.add(author.trim());
     }
     if (authors.isEmpty) {
@@ -88,12 +88,11 @@ void add() {
   do {
     print("category* (0 to stop)");
     categorie = stdin.readLineSync()!;
-    categorie == "" ? categorie = "0" : categorie = categorie;
 
-    if (categorie != "0") {
+    if (categorie != "0" && categorie.trim().isNotEmpty) {
       categories.add(categorie.trim());
     }
-  } while (categorie.trim() != "0");
+  } while (categorie.trim() != "0" || categories.isEmpty);
 
   print("year 'integer number only'");
   late int year = 1998;
