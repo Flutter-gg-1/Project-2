@@ -3,10 +3,12 @@ import '../utils/filemngmt.dart';
 
 void main(List<String> arguments) async {
 
-  Library lib = Library(books: []);
+  Library lib = Library([]);
   readFile(lib.books);
 
-  lib.removeBook('1');
+   lib.buyBook('5');
+    print('====================');
+   print(lib.toJson());
 
   // print(lib.toJson());
   // lib.buyBook('1');

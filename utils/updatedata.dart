@@ -2,7 +2,6 @@ import 'dart:io';
 import 'dart:convert';
 import '../model/library.dart';
 import '../model/book.dart';
-import './filemngmt.dart';
 
 updateData(Library lib, Book book, int choice, bool isExistent) async {
   File file = File('data/data.json');
@@ -28,12 +27,12 @@ updateData(Library lib, Book book, int choice, bool isExistent) async {
           }
         }
       } else {
-        (books['library'] as List).remove(book.toJson());
+        (books['library'] as List)
+            .removeWhere((element) => element['id'] == book.id);
       }
     default:
   }
 
   String update = jsonEncode(books);
   file.writeAsStringSync(update, mode: FileMode.write);
-  readFile(lib.books);
 }

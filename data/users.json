@@ -1,0 +1,12 @@
+{
+    "admin": {},
+    "customer": [
+        {
+            "id": "2",
+            "firstname": "Abdulaziz",
+            "lastname": "Alamri",
+            "password": "",
+            "books_bought":[]
+        }
+    ]
+}
