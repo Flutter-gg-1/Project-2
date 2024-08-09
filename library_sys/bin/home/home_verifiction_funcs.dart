@@ -47,15 +47,14 @@ extension HomeVerifictionFuncs on Home {
   }
 
   bool verifyCategories(String str) {
-    var catNumbers = BookCategories.values.map((e) => e.number).toList();
+    var catNumbers = BookCategory.values.map((e) => e.number).toList();
 
-    List<String> arr = str.split(',');
+    List<String> arr = str.replaceAll(' ', '').split(',');
     if (arr.isEmpty) {
       print('❌ You must enter at least one catogory');
       return false;
     } else {
       for (var cat in arr) {
-        cat.replaceAll(' ', '');
         if (!catNumbers.contains(cat)) {
           print('❌ Category $cat does not exist!');
           return false;
@@ -69,7 +68,7 @@ extension HomeVerifictionFuncs on Home {
   bool verifyYear(String str) {
     try {
       var year = int.parse(str);
-      if (year > 2030 && year < 1800) {
+      if (year < 1800 || year > 2030) {
         print('❌ Year must be between 1800 & 2030');
         return false;
       } else {
@@ -85,7 +84,7 @@ extension HomeVerifictionFuncs on Home {
   bool verifyQuantity(String str) {
     try {
       var quantity = int.parse(str);
-      if (quantity >= 0 && quantity <= 10000) {
+      if (quantity < 0 || quantity > 10000) {
         print('❌ Quantity must be between 0 & 10000');
         return false;
       } else {
@@ -101,7 +100,7 @@ extension HomeVerifictionFuncs on Home {
   bool verifyPrice(String str) {
     try {
       var price = double.parse(str);
-      if (price >= 0 && price <= 2000) {
+      if (price < 0 || price > 2000) {
         print('❌ Price must be between 0 & 2000');
         return false;
       } else {

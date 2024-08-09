@@ -1,4 +1,4 @@
-enum BookCategories {
+enum BookCategory {
   fiction('Fiction'),
   dystopian('Dystopian'),
   sciFi('Science Fiction'),
@@ -7,7 +7,7 @@ enum BookCategories {
 
   final String _text;
 
-  const BookCategories(this._text);
+  const BookCategory(this._text);
 
   @override
   String toString() => _text;
@@ -21,19 +21,36 @@ enum BookCategories {
   }
 }
 
-extension BookCatExtension on BookCategories {
+extension BookCatExtension on BookCategory {
   String get number {
     switch (this) {
-      case BookCategories.fiction:
+      case BookCategory.fiction:
         return '1';
-      case BookCategories.dystopian:
+      case BookCategory.dystopian:
         return '2';
-      case BookCategories.sciFi:
+      case BookCategory.sciFi:
         return '3';
-      case BookCategories.romance:
+      case BookCategory.romance:
         return '4';
-      case BookCategories.classical:
+      case BookCategory.classical:
         return '5';
+    }
+  }
+
+  BookCategory getName(String catNum) {
+    switch (catNum) {
+      case '1':
+        return BookCategory.fiction;
+      case '2':
+        return BookCategory.dystopian;
+      case '3':
+        return BookCategory.sciFi;
+      case '4':
+        return BookCategory.romance;
+      case '5':
+        return BookCategory.classical;
+      default:
+        return BookCategory.classical;
     }
   }
 }

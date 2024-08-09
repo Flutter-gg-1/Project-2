@@ -25,12 +25,12 @@ Admin
 --------
 add  |  Add Book
 rm   |  Remove Book
-vra   |  View Customer Reciepts
+vcr  |  View Customer Reciepts
 ------------------------------
 Customer
 --------
 buy  |  Buy Book
-vr    |  View My Reciepts
+vmr  |  View My Reciepts
 -----------------------------
 ''');
 
@@ -40,4 +40,6 @@ vr    |  View My Reciepts
 
   void accessDenied() => print(
       'Oops! You cannot run this function with the current user. \n Try Signing in with a different user role');
+
+  void signOutMsg() => print('User Signed OUt');
 }

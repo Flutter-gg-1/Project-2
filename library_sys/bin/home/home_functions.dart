@@ -2,6 +2,7 @@ import 'dart:io';
 
 import '../library_manager/admin.dart';
 import '../library_manager/customer.dart';
+import '../model/book.dart';
 import '../model/book_categories.dart';
 import '../model/user.dart';
 import '../utils/colorful_print.dart';
@@ -24,6 +25,8 @@ extension HomeFunctions on Home {
     } while (currentUser == null);
   }
 
+  void signOUt() => currentUser = null;
+
   // Admin
   void addBook() {
     String? idInput,
@@ -34,54 +37,113 @@ extension HomeFunctions on Home {
         quantityInput,
         priceInput;
 
-    print('Adding a new Book');
-    print('Enter \x1B[33cancel\x1B[0m to exit this screen');
-    do {
-      print('example Input for ID: 1');
-      ColorfulStdout.magenta('Enter an ID number:');
-      idInput = stdin.readLineSync();
-    } while (!verifyID(idInput ?? ''));
+    ColorfulPrint.blue('''
+Adding a new Book
+Enter cancel at anytime to exit this screen
+''');
 
-    do {
-      print('example Input for Title: Hello World!');
-      ColorfulStdout.magenta('Enter a Title:');
-      idInput = stdin.readLineSync();
-    } while (!verifyTitle(titleInput ?? ''));
+    // Outer Loop To Cancel Adding
+    /// Inner Loops to Enter Fields
+    outerloop:
+    while (true) {
+      do {
+        print('example Input for ID: 1');
+        ColorfulStdout.magenta('Enter an ID number:');
+        idInput = stdin.readLineSync();
+        if (idInput == 'cancel') {
+          break outerloop;
+        }
+      } while (!verifyID(idInput ?? ''));
 
-    do {
-      print('example Input for Authors: Superman, Spiderman, Batman');
-      ColorfulStdout.magenta('Enter comma separated Author names:');
-      idInput = stdin.readLineSync();
-    } while (!verifyAuthors(authorsInput ?? ''));
+      do {
+        print('example Input for Title: Hello World!');
+        ColorfulStdout.magenta('Enter a Title:');
+        titleInput = stdin.readLineSync();
+        if (titleInput == 'cancel') {
+          break outerloop;
+        }
+      } while (!verifyTitle(titleInput ?? ''));
 
-    do {
-      BookCategories.showAll();
-      print('example Input for Categories: 1, 3, 5');
-      ColorfulStdout.magenta('Enter comma separated Category number:');
-      idInput = stdin.readLineSync();
-    } while (!verifyCategories(categoriesInput ?? ''));
+      do {
+        print('example Input for Authors: Superman, Spiderman, Batman');
+        ColorfulStdout.magenta('Enter comma separated Author names:');
+        authorsInput = stdin.readLineSync();
+        if (authorsInput == 'cancel') {
+          break outerloop;
+        }
+      } while (!verifyAuthors(authorsInput ?? ''));
 
-    do {
-      print('example Input for Year: 2020');
-      ColorfulStdout.magenta('Enter Year:');
-      idInput = stdin.readLineSync();
-    } while (!verifyYear(yearInput ?? ''));
+      do {
+        BookCategory.showAll();
+        print('example Input for Categories: 1, 3, 5');
+        ColorfulStdout.magenta('Enter comma separated Category number:');
+        categoriesInput = stdin.readLineSync();
+        if (categoriesInput == 'cancel') {
+          break outerloop;
+        }
+      } while (!verifyCategories(categoriesInput ?? ''));
 
-    do {
-      print('example Input for Quantity: 15');
-      ColorfulStdout.magenta('Enter Quantity:');
-      idInput = stdin.readLineSync();
-    } while (!verifyQuantity(quantityInput ?? ''));
+      do {
+        print('example Input for Year: 2020');
+        ColorfulStdout.magenta('Enter Year:');
+        yearInput = stdin.readLineSync();
+        if (yearInput == 'cancel') {
+          break outerloop;
+        }
+      } while (!verifyYear(yearInput ?? ''));
 
-    do {
-      print('example Input for Price: 10.99');
-      ColorfulStdout.magenta('Enter Price:');
-      idInput = stdin.readLineSync();
-    } while (!verifyPrice(priceInput ?? ''));
+      do {
+        print('example Input for Quantity: 15');
+        ColorfulStdout.magenta('Enter Quantity:');
+        quantityInput = stdin.readLineSync();
+        if (quantityInput == 'cancel') {
+          break outerloop;
+        }
+      } while (!verifyQuantity(quantityInput ?? ''));
+
+      do {
+        print('example Input for Price: 10.99');
+        ColorfulStdout.magenta('Enter Price:');
+        priceInput = stdin.readLineSync();
+        if (priceInput == 'cancel') {
+          break outerloop;
+        }
+      } while (!verifyPrice(priceInput ?? ''));
+
+      Book newBook = Book(
+          id: idInput,
+          title: titleInput,
+          authors: authorsInput?.split(','),
+          categories: categoriesInput!.replaceAll(' ', '').split(','),
+          year: int.tryParse(yearInput!),
+          quantity: int.tryParse(quantityInput!),
+          price: double.tryParse(priceInput!));
+
+      library.books.add(newBook);
+
+      ColorfulPrint.green('Book Added Successfully!');
+      ColorfulPrint.yellow('Add another Book?');
+      ColorfulStdout.yellow('Y for Yes, or any key to Exit');
+      var response = stdin.readLineSync();
+      if (response?.toLowerCase() != 'y') {
+        break outerloop;
+      }
+    }
   }
 
   void removeBook() {
-    // library.removeBook(Book.book1);
+    ColorfulPrint.blue('Removing a Book');
+    library.showAllBooks();
+
+    ColorfulStdout.magenta('Enter a book ID to remove it from the Library');
+    var userInput = stdin.readLineSync();
+    var book = library.books.where((book) => book.id! == userInput).firstOrNull;
+    if (book == null) {
+      ColorfulPrint.red('❌ No Book found with given ID $userInput');
+    } else {
+      library.removeBook(book);
+      ColorfulPrint.green('✅ Book with title: ${book.title} Removed!');
+    }
   }
 
   void viewAllReciepts() => library.viewAllReciepts();

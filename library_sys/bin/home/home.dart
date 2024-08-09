@@ -30,13 +30,15 @@ class Home {
       case 'q':
         terminateMsg();
         terminateApp = true;
+      case 'so':
+        signOUt();
       case 'add':
         (currentUser?.userRole == UserRole.admin) ? addBook() : accessDenied();
       case 'rm':
         (currentUser?.userRole == UserRole.admin)
             ? removeBook()
             : accessDenied();
-      case 'vra':
+      case 'vcr':
         (currentUser?.userRole == UserRole.admin)
             ? viewAllReciepts()
             : accessDenied();
@@ -44,7 +46,7 @@ class Home {
         (currentUser?.userRole == UserRole.customer)
             ? buyBook()
             : accessDenied();
-      case 'vr':
+      case 'vmr':
         (currentUser?.userRole == UserRole.customer)
             ? viewReciepts()
             : accessDenied();
