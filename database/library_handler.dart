@@ -51,6 +51,10 @@ void buy() {
       total += book.price;
     }
     receiptHistory.add({"total": total, "books": List.from(cart)});
+    print("total: $total \nbooks:");
+    for (var e in cart) {
+      e.toPrint();
+    }
     cart.clear();
   } else {
     print("cart is empty");
