@@ -16,7 +16,7 @@ class User {
 
   // Predefined users
   static var userList = [
-    User(id: 0, name: 'Dvorak', age: 30, userRole: UserRole.admin),
+    User(id: 0, name: 'Mozart', age: 30, userRole: UserRole.admin),
     User(id: 1, name: 'Chopin', age: 20),
     User(id: 2, name: 'Beethoven', age: 15),
     User(id: 3, name: 'Liszt', age: 35)

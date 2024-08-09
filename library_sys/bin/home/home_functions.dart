@@ -6,6 +6,7 @@ import '../model/book.dart';
 import '../model/user.dart';
 import 'home.dart';
 import 'home_print_msg.dart';
+import 'home_verifiction_funcs.dart';
 
 extension HomeFunctions on Home {
   // Auth
@@ -25,7 +26,31 @@ extension HomeFunctions on Home {
   // TODO: - implement User input for below functions!
 
   // Admin
-  void addBook() => library.addBook(Book.book1);
+  void addBook() {
+    String? idInput;
+    String? titleInput;
+    String? authorsInput;
+    String? categories;
+    String? year;
+    String? quantity;
+    String? price;
+
+    print('Adding a new Book');
+    print('Enter cancel to go back');
+    do {
+      stdout.write('Enter a new Book ID (int):');
+      idInput = stdin.readLineSync();
+    } while (!verifyID(idInput ?? ''));
+
+    do {} while (!verifyTitle(titleInput ?? ''));
+
+    do {} while (!verifyAuthors(authorsInput ?? ''));
+
+    // var inputTitle = stdin.readLineSync();
+
+    // library.addBook(Book.book1);
+  }
+
   void removeBook() => library.removeBook(Book.book1);
   void viewAllReciepts() => library.viewAllReciepts();
 
