@@ -2,8 +2,9 @@ import 'dart:io';
 
 import '../library_manager/admin.dart';
 import '../library_manager/customer.dart';
-import '../model/book.dart';
+import '../model/book_categories.dart';
 import '../model/user.dart';
+import '../utils/colorful_print.dart';
 import 'home.dart';
 import 'home_print_msg.dart';
 import 'home_verifiction_funcs.dart';
@@ -23,35 +24,66 @@ extension HomeFunctions on Home {
     } while (currentUser == null);
   }
 
-  // TODO: - implement User input for below functions!
-
   // Admin
   void addBook() {
-    String? idInput;
-    String? titleInput;
-    String? authorsInput;
-    String? categories;
-    String? year;
-    String? quantity;
-    String? price;
+    String? idInput,
+        titleInput,
+        authorsInput,
+        categoriesInput,
+        yearInput,
+        quantityInput,
+        priceInput;
 
     print('Adding a new Book');
-    print('Enter cancel to go back');
+    print('Enter \x1B[33cancel\x1B[0m to exit this screen');
     do {
-      stdout.write('Enter a new Book ID (int):');
+      print('example Input for ID: 1');
+      ColorfulStdout.magenta('Enter an ID number:');
       idInput = stdin.readLineSync();
     } while (!verifyID(idInput ?? ''));
 
-    do {} while (!verifyTitle(titleInput ?? ''));
+    do {
+      print('example Input for Title: Hello World!');
+      ColorfulStdout.magenta('Enter a Title:');
+      idInput = stdin.readLineSync();
+    } while (!verifyTitle(titleInput ?? ''));
 
-    do {} while (!verifyAuthors(authorsInput ?? ''));
+    do {
+      print('example Input for Authors: Superman, Spiderman, Batman');
+      ColorfulStdout.magenta('Enter comma separated Author names:');
+      idInput = stdin.readLineSync();
+    } while (!verifyAuthors(authorsInput ?? ''));
 
-    // var inputTitle = stdin.readLineSync();
+    do {
+      BookCategories.showAll();
+      print('example Input for Categories: 1, 3, 5');
+      ColorfulStdout.magenta('Enter comma separated Category number:');
+      idInput = stdin.readLineSync();
+    } while (!verifyCategories(categoriesInput ?? ''));
 
-    // library.addBook(Book.book1);
+    do {
+      print('example Input for Year: 2020');
+      ColorfulStdout.magenta('Enter Year:');
+      idInput = stdin.readLineSync();
+    } while (!verifyYear(yearInput ?? ''));
+
+    do {
+      print('example Input for Quantity: 15');
+      ColorfulStdout.magenta('Enter Quantity:');
+      idInput = stdin.readLineSync();
+    } while (!verifyQuantity(quantityInput ?? ''));
+
+    do {
+      print('example Input for Price: 10.99');
+      ColorfulStdout.magenta('Enter Price:');
+      idInput = stdin.readLineSync();
+    } while (!verifyPrice(priceInput ?? ''));
   }
 
-  void removeBook() => library.removeBook(Book.book1);
+  void removeBook() {
+    // library.removeBook(Book.book1);
+  }
+
   void viewAllReciepts() => library.viewAllReciepts();
 
   // Customer

@@ -55,6 +55,7 @@ extension HomeVerifictionFuncs on Home {
       return false;
     } else {
       for (var cat in arr) {
+        cat.replaceAll(' ', '');
         if (!catNumbers.contains(cat)) {
           print('❌ Category $cat does not exist!');
           return false;
@@ -66,16 +67,50 @@ extension HomeVerifictionFuncs on Home {
   }
 
   bool verifyYear(String str) {
-    return true;
+    try {
+      var year = int.parse(str);
+      if (year > 2030 && year < 1800) {
+        print('❌ Year must be between 1800 & 2030');
+        return false;
+      } else {
+        print('✅ Good Entry for Year');
+        return true;
+      }
+    } catch (_) {
+      print('❌ ERROR: Incorrect number entry for a Year!');
+      return false;
+    }
   }
 
-  bool verifyQuant(String str) {
-    return true;
+  bool verifyQuantity(String str) {
+    try {
+      var quantity = int.parse(str);
+      if (quantity >= 0 && quantity <= 10000) {
+        print('❌ Quantity must be between 0 & 10000');
+        return false;
+      } else {
+        print('✅ Good Entry for Quantity');
+        return true;
+      }
+    } catch (_) {
+      print('❌ ERROR: Incorrect number entry for Quantity!');
+      return false;
+    }
   }
 
   bool verifyPrice(String str) {
-    return true;
+    try {
+      var price = double.parse(str);
+      if (price >= 0 && price <= 2000) {
+        print('❌ Price must be between 0 & 2000');
+        return false;
+      } else {
+        print('✅ Good Entry for Price');
+        return true;
+      }
+    } catch (_) {
+      print('❌ ERROR: Incorrect number entry for Price!');
+      return false;
+    }
   }
-
-  bool isNumeric(String str) => double.tryParse(str) != null;
 }

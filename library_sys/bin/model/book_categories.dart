@@ -11,6 +11,14 @@ enum BookCategories {
 
   @override
   String toString() => _text;
+
+  static void showAll() {
+    print('📚 Book Categories');
+
+    for (var cat in values) {
+      print('${cat.number} - ${cat.toString()}');
+    }
+  }
 }
 
 extension BookCatExtension on BookCategories {
