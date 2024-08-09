@@ -8,15 +8,24 @@ void intitLibrary() {
   }
 }
 
+void showBooks() {
+  for (Book book in library) {
+    book.toPrint();
+  }
+}
+
 void addBook(Book book) {
   book.id = (int.parse(library.last.id) + 1).toString();
   library.add(book);
 }
 
 void removeBook(String id) {
+  outerLoop:
   for (var book in library) {
     if (id == book.id) {
       library.remove(book);
+      print("delete was success");
+      break outerLoop;
     }
   }
 }
