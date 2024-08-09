@@ -20,3 +20,30 @@ void removeBook(String id) {
     }
   }
 }
+
+void addToCart(String id) {
+  for (Book book in library) {
+    if (id == book.id) {
+      if (book.quantity > 0) {
+        cart.add(book);
+        book.quantity--;
+      } else {
+        print("OUT OF STOCK");
+      }
+    }
+  }
+}
+
+void buy() {
+  print(cart.length);
+  if (cart.isNotEmpty) {
+    double total = 0;
+    for (Book book in cart) {
+      total += book.price;
+    }
+    receiptHistory.add({"total": total, "books": List.from(cart)});
+    cart.clear();
+  } else {
+    print("cart is empty");
+  }
+}
