@@ -37,20 +37,20 @@ extension BookCatExtension on BookCategory {
     }
   }
 
-  BookCategory getName(String catNum) {
+  static String getName(String catNum) {
     switch (catNum) {
       case '1':
-        return BookCategory.fiction;
+        return BookCategory.fiction.toString();
       case '2':
-        return BookCategory.dystopian;
+        return BookCategory.dystopian.toString();
       case '3':
-        return BookCategory.sciFi;
+        return BookCategory.sciFi.toString();
       case '4':
-        return BookCategory.romance;
+        return BookCategory.romance.toString();
       case '5':
-        return BookCategory.classical;
+        return BookCategory.classical.toString();
       default:
-        return BookCategory.classical;
+        return BookCategory.classical.toString();
     }
   }
 }

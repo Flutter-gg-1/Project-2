@@ -2,6 +2,7 @@ import '../json/library_data.dart';
 import '../model/book.dart';
 import '../model/library.dart';
 import '../model/receipt.dart';
+import '../utils/colorful_print.dart';
 
 class LibraryManager {
   var library = Library.fromJson(libraryData);
@@ -17,7 +18,7 @@ class LibraryManager {
 
   void showAllBooks() {
     for (var b in books) {
-      print(b.toJson());
+      ColorfulPrint.cyan(b.toJson().toString());
     }
   }
 }

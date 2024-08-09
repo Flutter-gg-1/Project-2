@@ -37,7 +37,7 @@ extension HomeFunctions on Home {
         quantityInput,
         priceInput;
 
-    ColorfulPrint.blue('''
+    ColorfulPrint.yellow('''
 Adding a new Book
 Enter cancel at anytime to exit this screen
 ''');
@@ -114,7 +114,11 @@ Enter cancel at anytime to exit this screen
           id: idInput,
           title: titleInput,
           authors: authorsInput?.split(','),
-          categories: categoriesInput!.replaceAll(' ', '').split(','),
+          categories: categoriesInput!
+              .replaceAll(' ', '')
+              .split(',')
+              .map((e) => BookCatExtension.getName(e))
+              .toList(),
           year: int.tryParse(yearInput!),
           quantity: int.tryParse(quantityInput!),
           price: double.tryParse(priceInput!));
@@ -132,17 +136,38 @@ Enter cancel at anytime to exit this screen
   }
 
   void removeBook() {
-    ColorfulPrint.blue('Removing a Book');
+    String? userInput;
+
+    ColorfulPrint.yellow('''
+Removing a Book
+Enter cancel at anytime to exit this screen
+''');
+
     library.showAllBooks();
 
-    ColorfulStdout.magenta('Enter a book ID to remove it from the Library');
-    var userInput = stdin.readLineSync();
-    var book = library.books.where((book) => book.id! == userInput).firstOrNull;
-    if (book == null) {
-      ColorfulPrint.red('❌ No Book found with given ID $userInput');
-    } else {
-      library.removeBook(book);
-      ColorfulPrint.green('✅ Book with title: ${book.title} Removed!');
+    outerloop:
+    while (true) {
+      ColorfulStdout.magenta('Enter a book ID to remove it from the Library');
+      userInput = stdin.readLineSync();
+
+      if (userInput == 'cancel') {
+        break outerloop;
+      } else {
+        var book =
+            library.books.where((book) => book.id! == userInput).firstOrNull;
+        if (book == null) {
+          ColorfulPrint.red('❌ No Book found with given ID $userInput');
+        } else {
+          library.removeBook(book);
+          ColorfulPrint.green('✅ Book with title: ${book.title} Removed!');
+          ColorfulPrint.yellow('Remove another Book?');
+          ColorfulStdout.yellow('Y for Yes, or any key to Exit');
+          var response = stdin.readLineSync();
+          if (response?.toLowerCase() != 'y') {
+            break outerloop;
+          }
+        }
+      }
     }
   }
 
@@ -150,33 +175,57 @@ Enter cancel at anytime to exit this screen
 
   // Customer
   void buyBook() {
-    ColorfulPrint.blue('Buy a Book');
+    String? idInput;
+    String? quantityInput;
+    ColorfulPrint.yellow('Buy a Book');
     library.showAllBooks();
 
-    ColorfulStdout.magenta('Enter a book ID to buy it');
-    var idInput = stdin.readLineSync();
-    var book = library.books.where((book) => book.id! == idInput).firstOrNull;
-    if (book == null) {
-      ColorfulPrint.red('❌ No Book found with given ID $idInput');
-    } else {
-      ColorfulPrint.yellow(
-          'How many number of copies do you want to purchase?');
-      ColorfulStdout.magenta('Enter Quantity');
-      var quantityInput = stdin.readLineSync();
-      if (verifyQuantity(quantityInput ?? '')) {
-        if (book.quantity! >= int.parse(quantityInput!)) {
-          if (int.parse(quantityInput) != 0) {
-            // Buy Book
-            library.buyBook(
-                customer: currentUser!,
-                bookId: idInput!,
-                quantity: int.parse(quantityInput));
-            ColorfulPrint.green('✅ Purchase Successful!');
-          } else {
-            ColorfulPrint.red('❌ Quantity must be a number larger than 0');
-          }
+    outerloop:
+    while (true) {
+      ColorfulStdout.magenta('Enter a book ID to buy it');
+      idInput = stdin.readLineSync();
+      if (idInput == 'cancel') {
+        break outerloop;
+      } else {
+        var book =
+            library.books.where((book) => book.id! == idInput).firstOrNull;
+        if (book == null) {
+          ColorfulPrint.red('❌ No Book found with given ID $idInput');
         } else {
-          ColorfulPrint.red('❌ Not Enough Books for desired Quantity!');
+          ColorfulPrint.yellow(
+              'How many number of copies do you want to purchase?');
+          ColorfulStdout.magenta('Enter Quantity');
+          quantityInput = stdin.readLineSync();
+          if (quantityInput == 'cancel') {
+            break outerloop;
+          } else {
+            if (verifyQuantity(quantityInput ?? '')) {
+              var selectedQuantity = int.parse(quantityInput!);
+              if (book.quantity! >= selectedQuantity) {
+                if (selectedQuantity != 0) {
+                  // Buy Book
+                  library.buyBook(
+                      customer: currentUser!,
+                      bookId: idInput!,
+                      quantity: selectedQuantity);
+
+                  // book.quantity! -= selectedQuantity;
+                  ColorfulPrint.green('✅ Purchase Successful!');
+                } else {
+                  ColorfulPrint.red(
+                      '❌ Quantity must be a number larger than 0');
+                }
+              } else {
+                ColorfulPrint.red('❌ Not Enough Books for desired Quantity!');
+              }
+            }
+          }
+        }
+        ColorfulPrint.yellow('Buy another Book?');
+        ColorfulStdout.yellow('Y for Yes, or any key to Exit');
+        var response = stdin.readLineSync();
+        if (response?.toLowerCase() != 'y') {
+          break outerloop;
         }
       }
     }

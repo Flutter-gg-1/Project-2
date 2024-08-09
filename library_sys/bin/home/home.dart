@@ -30,7 +30,10 @@ class Home {
       case 'q':
         terminateMsg();
         terminateApp = true;
+      case 'show':
+        library.showAllBooks();
       case 'so':
+        signOutMsg();
         signOUt();
       case 'add':
         (currentUser?.userRole == UserRole.admin) ? addBook() : accessDenied();

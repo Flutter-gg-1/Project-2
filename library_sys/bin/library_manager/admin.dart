@@ -1,4 +1,5 @@
 import '../model/book.dart';
+import '../utils/colorful_print.dart';
 import 'library_manager.dart';
 
 extension Admin on LibraryManager {
@@ -8,9 +9,13 @@ extension Admin on LibraryManager {
   void removeBook(Book book) => books.remove(book);
 
   void viewAllReciepts() {
-    print('All Reciepts');
-    for (var r in reciepts) {
-      r.showReceipt();
+    ColorfulPrint.magenta('All Reciepts');
+    if (reciepts.isEmpty) {
+      ColorfulPrint.green('No Reciepts to show!');
+    } else {
+      for (var r in reciepts) {
+        r.showReceipt();
+      }
     }
   }
 }
