@@ -19,6 +19,7 @@ void adminDashboard(){
         removeBook();
         break;
       case 4:
+        print('Bye.');
         exit(0);
       default:
         print('Invalid input. Please try again.');
