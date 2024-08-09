@@ -1,12 +1,14 @@
-import 'library.dart';
-import 'data.dart';
-void main(List<String> arguments) {
+import '../model/library.dart';
+import '../utils/filemngmt.dart';
 
-Library lib = Library.fromJson(data);
+void main(List<String> arguments) async {
 
-print(lib.toJson());
+  Library lib = Library(books: []);
+  readFile(lib.books);
 
-lib.buyBook('1');
-print(lib.toJson());
-  
+  lib.removeBook('1');
+
+  // print(lib.toJson());
+  // lib.buyBook('1');
+  // print(lib.toJson());
 }

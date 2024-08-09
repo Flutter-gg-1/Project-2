@@ -1,4 +1,5 @@
 import 'book.dart';
+import '../utils/updatedata.dart';
 
 class Library {
   List<Book>? books;
@@ -15,31 +16,35 @@ class Library {
     return {'library': books!.map((book) => book.toJson()).toList()};
   }
 
-  addBook() {
+  void addBook() {
     Book newBook = Book.fromJson(Book.fillBookInformation());
     // check if book exist to increment quantity
     for (var book in books!) {
       if (book.id == newBook.id) {
         book.quantity = book.quantity! + 1;
         print('Quantity of book ${newBook.title} incremented by one');
+        updateData(this, newBook, 1, true);
         return;
       }
     }
 
     books!.add(newBook);
+    updateData(this, newBook, 1, false);
     print('Book of ID ${newBook.id} added');
   }
 
-  removeBook(String id) {
+  void removeBook(String id) {
     // check if book exist to decrement quantity
     for (var book in books!) {
       if (book.id == id) {
         if (book.quantity == 1) {
           books!.removeWhere((book) => book.id == id);
+          updateData(this, book, 2, false);
           print('Book of ID $id removed and out of stock');
           return;
         }
         book.quantity = book.quantity! - 1;
+        updateData(this, book, 2, true);
         print('Quantity of book ${book.title} decremented by one');
         return;
       }
@@ -48,17 +53,19 @@ class Library {
     print('Book of ID $id does not exist');
   }
 
-  buyBook(String id) {
+  void buyBook(String id) {
     // check if book exist
     for (var book in books!) {
       if (book.id == id) {
         if (book.quantity == 1) {
           books!.removeWhere((book) => book.id == id);
+          updateData(this, book, 2, false);
           displayReceipt(book);
           return;
         }
         book.quantity = book.quantity! - 1;
         print('Thank you for your purchase of (${book.title})');
+        updateData(this, book, 2, true);
         displayReceipt(book);
         return;
       }

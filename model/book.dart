@@ -3,8 +3,8 @@ import 'dart:io';
 class Book {
   String? id;
   String? title;
-  List<String>? authors;
-  List<String>? categories;
+  List<dynamic>? authors;
+  List<dynamic>? categories;
   int? year;
   int? quantity;
   double? price;
@@ -43,33 +43,33 @@ class Book {
 
   static Map<String, dynamic> fillBookInformation() {
     Map<String, dynamic> bookInfo = {};
-    
+
     print('Fill the following book info:');
 
     stdout.write('ID: ');
-    bookInfo['id'] =  stdin.readLineSync();
+    bookInfo['id'] = stdin.readLineSync();
 
     stdout.write('Title: ');
-    bookInfo['title'] =  stdin.readLineSync();
+    bookInfo['title'] = stdin.readLineSync();
 
     stdout.write('Authors (separated by comma): ');
     String? authorsInput = stdin.readLineSync();
-    bookInfo['authors'] = 
+    bookInfo['authors'] =
         authorsInput?.split(',').map((author) => author.trim()).toList();
 
     stdout.write('Categories (separated by comma): ');
     String? categoriesInput = stdin.readLineSync();
-    bookInfo['categories'] = 
+    bookInfo['categories'] =
         categoriesInput?.split(',').map((category) => category.trim()).toList();
 
     stdout.write('Year: ');
-    bookInfo['year'] =  int.tryParse(stdin.readLineSync() ?? '');
+    bookInfo['year'] = int.tryParse(stdin.readLineSync() ?? '');
 
     stdout.write('Quantity: ');
-    bookInfo['quantity'] =  int.tryParse(stdin.readLineSync() ?? '');
+    bookInfo['quantity'] = int.tryParse(stdin.readLineSync() ?? '');
 
     stdout.write('Price: ');
-    bookInfo['price'] =  double.tryParse(stdin.readLineSync() ?? '');
+    bookInfo['price'] = double.tryParse(stdin.readLineSync() ?? '');
 
     return bookInfo;
   }
