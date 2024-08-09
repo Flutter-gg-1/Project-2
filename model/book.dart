@@ -16,6 +16,18 @@ class Book {
       required this.quantity,
       required this.price});
 
+  void toPrint() {
+    print("* " * 12);
+    print("ID:$id");
+    print("Title:$title");
+    print("Auther:$authors");
+    print("Categories:$categories");
+    print("Year:$year");
+    print("quantity:$quantity");
+    print("Price:$price");
+
+  }
+
   Book.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     title = json['title'];
@@ -33,7 +45,7 @@ class Book {
     data['authors'] = authors;
     data['categories'] = categories;
     data['year'] = year;
-    data['quantity'] =quantity;
+    data['quantity'] = quantity;
     data['price'] = price;
     return data;
   }
