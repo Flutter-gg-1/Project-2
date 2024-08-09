@@ -23,6 +23,10 @@ void admin() {
       case == "3":
         showBooks();
         break;
+      default:
+        if (userInput != "0") {
+          print("the input must be one of the option");
+        }
     }
   } while (userInput != "0");
 }
@@ -109,3 +113,5 @@ void add() {
       quantity: quantity,
       price: price));
 }
+
+void cutomer() {}
