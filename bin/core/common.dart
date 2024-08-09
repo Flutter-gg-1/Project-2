@@ -2,6 +2,7 @@ import 'dart:io';
 import 'all_file.dart';
 
 void showPrompt(){
+  // Show Prompt for both Admin or Customer
   print('Do you want to continue? (y/n)');
   String? input = stdin.readLineSync();
   switch (input) {
@@ -18,3 +19,15 @@ void showPrompt(){
       break;
   }
 }
+//_________________________________________________________
+  // Show Prompt for Admin user
+  void adminPrompt(){
+    print('Admin Prompt');
+
+  }
+
+  //_________________________________________________________
+  // Show Prompt for Customer user
+  void customerPrompt(){
+    print('Customer Prompt');
+  }
