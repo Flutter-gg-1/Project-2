@@ -1,6 +1,8 @@
 import 'dart:io';
-
+import 'add_book.dart';
 import 'print_with_color.dart';
+import 'library.dart';
+import 'library_data.dart';
 admin(){
   printWithColor(text: "\n          What would you like to do?\n", color: "Magenta");
   printWithColor(text: "(1) Add books", color: "Cyan");
@@ -12,7 +14,9 @@ admin(){
 
   switch(input){
     case 1:
-
+    addBook(libraryData);
+    Library b1 = Library.fromJson(libraryData);
+    print(b1.toJson());
     break;
 
     case 2:
