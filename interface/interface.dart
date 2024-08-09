@@ -4,7 +4,24 @@ import '../database/library_handler.dart';
 import '../model/book.dart';
 
 void sartUp() {
-  print("1-admin 2- cutomer");
+  late String userInput;
+  do {
+    print("1- admin 2- customer  0-turn off the system");
+    userInput = stdin.readLineSync()!;
+    switch (userInput) {
+      case == "1":
+        admin();
+        break;
+      case == "2":
+        cutomer();
+        break;
+
+      default:
+        if (userInput != "0") {
+          print("the input must be one of the option");
+        }
+    }
+  } while (userInput != "0");
 }
 
 void admin() {
@@ -23,6 +40,8 @@ void admin() {
       case == "3":
         showBooks();
         break;
+      case == "4":
+        showReciptHistory();
       default:
         if (userInput != "0") {
           print("the input must be one of the option");
@@ -40,15 +59,15 @@ void delete() {
 
 void add() {
   print("NOTE if the input is empty it give defult value");
-  print("* is required");
+  print("is required");
   late String title;
   do {
     print("title*");
     title = stdin.readLineSync()!;
-    if (title.trim() != "" || title.trim() != " ") {
+    if (title.trim() == "" || title.trim() == " ") {
       print("please give the book a title");
     }
-  } while (title.trim() != "" || title.trim() != " ");
+  } while (title.trim().isEmpty);
   String? author;
   List<String> authors = [];
   do {
@@ -114,4 +133,27 @@ void add() {
       price: price));
 }
 
-void cutomer() {}
+void cutomer() {
+  late String userInput;
+  do {
+    print("1- add book to cart  2- buy 0-exit");
+    userInput = stdin.readLineSync()!;
+    switch (userInput) {
+      case == "1":
+        showBooks();
+
+        print("input id of the book");
+        String id = stdin.readLineSync()!;
+        addToCart(id);
+        break;
+      case == "2":
+        buy();
+        break;
+      default:
+        if (userInput != "0") {
+          print("the input must be one of the option");
+        }
+    }
+  } while (userInput != "0");
+  emptyCart();
+}

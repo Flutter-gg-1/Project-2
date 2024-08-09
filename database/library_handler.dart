@@ -57,9 +57,14 @@ void buy() {
   }
 }
 
+void emptyCart() {
+  cart.clear();
+}
+
 void showReciptHistory() {
   for (var element in receiptHistory) {
-    print(element["total"]);
+    print("Total:${element["total"]}");
+    print("Details");
     for (Book book in element["books"]) {
       book.toPrint();
     }
