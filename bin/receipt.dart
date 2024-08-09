@@ -1,17 +1,15 @@
-import 'admin.dart';
 import 'book_order.dart';
 
 class Receipt {
-  static int id = 0;
+  int id = 0;
   List<BookOrder> cart;
   double total = 0;
+  static int _idCounter = 0; // Counter for generating unique IDs
 
-  Receipt({required this.cart}) {
-    id = id + 1;
+  Receipt({required this.cart}) : id = ++_idCounter { // Assign a unique ID to each receipt
     for (var item in cart) {
-      total += item.book.price;
+      total += (item.book.price*item.quantity);
     }
-    receipts.add(this);
   }
 
   printReceipt() {
@@ -20,13 +18,13 @@ class Receipt {
       print("--------------------");
       print("---book id: ${item.book.id}");
       print("---book title: ${item.book.title}");
-      print("---book quantity: ${item.book.quantity}");
+      print("---book quantity: ${item.quantity}");
       print("---book price: ${item.book.price}");
     }
     print("--------------------");
     print("|   Total: $total  |");
     print("--------------------");
-
     print("###############################");
   }
+
 }

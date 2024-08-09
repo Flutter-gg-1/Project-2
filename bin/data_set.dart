@@ -1,3 +1,5 @@
+import 'Models/library.dart';
+
 Map<String, dynamic> data = {
   "library": [
     {
@@ -46,5 +48,6 @@ Map<String, dynamic> data = {
       "price": 13.49
     }
   ]
-}
-;
+};
+
+Library library = Library.fromJson(data);

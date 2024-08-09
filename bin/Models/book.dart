@@ -1,5 +1,8 @@
+import 'dart:math';
+import '../data_set.dart';
+
 class Book {
-  String id;
+  String? id;
   String title;
   List<String> authors;
   List<String> categories;
@@ -15,7 +18,32 @@ class Book {
       required this.year,
       required this.quantity,
       required this.price});
-  
+
+  Book.withoutId(
+      {required this.title,
+      required this.authors,
+      required this.categories,
+      required this.year,
+      required this.quantity,
+      required this.price}) {
+    Random random = Random();
+    int genId = random.nextInt(1000);
+    id = genId.toString();
+    bool isValid = false;
+    //checking if the id is duplicated
+    while (!isValid) {
+      int genId = random.nextInt(1000);
+      id = genId.toString();
+      isValid = true;
+      for (var book in library.books) {
+        if (id == book.id) {
+          isValid = false;
+          break;
+        }
+      }
+    }
+  }
+
   factory Book.fromJson(Map<String, dynamic> json) {
     return Book(
         id: json['id'],

@@ -1,17 +1,29 @@
-import 'Models/library.dart';
-import 'Models/book.dart';
-import 'data_set.dart';
+import 'dart:io';
+import 'admin.dart';
+import 'customer.dart';
 
 void main(List<String> arguments) {
-  Library library = Library.fromJson(data);
-  Book book = Book(
-      id: "6",
-      title: "title",
-      authors: ["george martin"],
-      categories: ["categories"],
-      year: 1990,
-      quantity: 5,
-      price: 19.99);
-  library.addBook(book);
-  library.printAllBooks();
+  bool exit = false;
+  print("<<<<<<<<<< Welcome to our library system >>>>>>>>>>");
+  do {
+    print("Who are you?\n1-Admin\n2-Customer\n0-exit");
+    int? input;
+    try {
+      input = int.parse(stdin.readLineSync()!);
+    } catch (ex) {
+      print("you should choose by number");
+    }
+
+    switch (input) {
+      case 1:
+        printAdminUi();
+        break;
+      case 2:
+        printCustomerUi();
+        break;
+      case 0:
+        exit = true;
+        break;
+    }
+  } while (!exit);
 }
