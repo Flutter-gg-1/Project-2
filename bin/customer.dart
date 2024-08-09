@@ -2,6 +2,7 @@ import 'dart:io';
 import 'library.dart';
 import 'library_data.dart';
 import 'print_with_color.dart';
+import 'buy_book.dart';
 customer(){
   bool isExit = false;
   do{
@@ -22,6 +23,7 @@ customer(){
     break;
 
     case 2:
+    buyBook();
     break;
 
     default:
