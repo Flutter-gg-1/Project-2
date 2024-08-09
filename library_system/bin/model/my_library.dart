@@ -1,17 +1,21 @@
+import 'dart:io';
+
 import './library.dart';
 import './customer.dart';
 import '../global_variabels.dart';
 import './purchase.dart';
 
 class MyLibrary {
-  static void displayBooks() {
-    print("============================");
-    print("   ID     |   Title ");
-    for (var element in myBook) {
-      print('''
+  static void displayBooks(String user) {
+    print('''
 
-    ${element.id}     |    ${element.title}(QNT:${element.quantity})       
+HOME -> $user -> CUSTOMER PURCHASE
+---------------------------------------
 ''');
+    print(" ID   Price        Title ");
+    for (var element in myBook) {
+      print('''_________________________________________________________________
+  ${element.id}  ${element.price} SAR     ${element.title}${element.authors} Year:${element.year} (QNT:${element.quantity})''');
     }
   }
 
@@ -71,8 +75,41 @@ class MyLibrary {
   }
 
   static void displayOneCustomerPurchase() {
-    for (var element in myPurchase) {
-      if (element.customer.id == user.id) {
+    print('''
+
+HOME -> CUSTOMER -> CUSTOMER PURCHASE
+---------------------------------------
+''');
+    if (myPurchase.isEmpty) {
+      print("None of the books have been purchased.");
+    } else {
+      for (var element in myPurchase) {
+        if (element.customer.id == user.id) {
+          print("-----------------${element.pid}------------------");
+          print("-------------------------------------------");
+          print("Date    : ${element.createAt}");
+          print("Title   : ${element.title}");
+          print("Quntity : ${element.quantity}");
+          print("Price   : ${element.price} SAR");
+          print("------------------------------------------");
+          print("Amout   : ${element.amount} SAR");
+          print("-----------------END----------------------");
+          break;
+        }
+      }
+    }
+  }
+
+  static void displayCustomerPurchase() {
+    print('''
+
+HOME -> ADMIN -> CUSTOMERS PURCHASES
+---------------------------------------
+''');
+    if (myPurchase.isEmpty) {
+      print("None of the books have been purchased.");
+    } else {
+      for (var element in myPurchase) {
         print("-------------------------------------------");
         print("-----------------${element.pid}------------------");
         print("--------------------------------------------");
@@ -83,23 +120,15 @@ class MyLibrary {
         print("--------------------------------------------");
         print("Amout   : ${element.amount} SAR");
         print("-----------------END----------------------");
-        break;
       }
     }
   }
 
-  static void displayCustomerPurchase() {
-    for (var element in myPurchase) {
-      print("-------------------------------------------");
-      print("-----------------${element.pid}------------------");
-      print("--------------------------------------------");
-      print("Date    : ${element.createAt}");
-      print("Title   : ${element.title}");
-      print("Quntity : ${element.quantity}");
-      print("Price   : ${element.price} SAR");
-      print("--------------------------------------------");
-      print("Amout   : ${element.amount} SAR");
-      print("-----------------END----------------------");
-    }
+  static void getInfoBuyBook() {
+    print("Enter book ID :");
+    String userInputID = stdin.readLineSync()!;
+    print("Enter the quntity :");
+    int userInputQnt = int.parse(stdin.readLineSync()!);
+    MyLibrary.buyBook(userInputID, userInputQnt, user);
   }
 }

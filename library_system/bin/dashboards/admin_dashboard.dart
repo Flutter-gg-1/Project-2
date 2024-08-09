@@ -6,12 +6,15 @@ import '../global_variabels.dart';
 adminDashboard() {
   do {
     print('''
-  |||||||||||||| ADMIN ||||||||||||   
+
+HOME -> ADMIN
+---------------------------------------
 
   1 | Add Book
   2 | Remove Book
-  3 | Display all the purchases
-  4 | Signout
+  3 | Display Books
+  4 | Display all the purchases
+  5 | Signout
   
   ''');
 
@@ -21,20 +24,26 @@ adminDashboard() {
       switch (userInput) {
         case 1:
           showAddBook();
-          print(myBook.last.authors);
+          pressEnter();
           break;
         case 2:
-          print("Enter the ID of the Book :");
-          String id = stdin.readLineSync()!;
-          MyLibrary.removeBook(id);
-          print(myBook);
+          removeBook();
+          pressEnter();
+          break;
+        case 3:
+          MyLibrary.displayBooks("ADMIN");
+          pressEnter();
           break;
         case 4:
+          MyLibrary.displayCustomerPurchase();
+          pressEnter();
+          break;
+        case 5:
           isExitAdmin = true;
           break;
         default:
-          isExitAdmin = true;
-          isExitMainPage = true;
+          print("Please choose a number [1-5]:");
+          pressEnter();
       }
     } on FormatException {
       print("Please enter a number");
@@ -45,6 +54,11 @@ adminDashboard() {
 }
 
 showAddBook() {
+  print('''
+
+HOME -> ADMIN -> ADD BOOK
+---------------------------------------
+''');
   print("Enter title of book :");
   String inputTitle = stdin.readLineSync()!;
   print("Enter a number of authers :");
@@ -90,4 +104,16 @@ addBook(String title, List<String> authors, List<String> categories, int year,
       price: price);
 
   MyLibrary.addBook(book);
+}
+
+removeBook() {
+  print('''
+
+HOME -> ADMIN -> REMOVE BOOK
+---------------------------------------
+''');
+  print("Enter the ID of the Book :");
+
+  int id = int.parse(stdin.readLineSync()!);
+  MyLibrary.removeBook(id.toString());
 }

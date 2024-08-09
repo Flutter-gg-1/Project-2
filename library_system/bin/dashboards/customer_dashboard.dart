@@ -5,13 +5,14 @@ import '../global_variabels.dart';
 customerDashboard() {
   do {
     print('''
-  |||||||||||||| CUSTOMER ||||||||||||   
+
+HOME -> CUSTOMER
+---------------------------------------
 
   1 | Display Books
   2 | Buy book
   3 | Display my purchase
   4 | Signout
-  
   
   ''');
 
@@ -20,18 +21,15 @@ customerDashboard() {
 
       switch (userInput) {
         case 1:
-          MyLibrary.displayBooks();
+          MyLibrary.displayBooks("CUSTOMER");
+          pressEnter();
           break;
         case 2:
-          print("Enter ID of book");
-          String userInputID = stdin.readLineSync()!;
-          print("Enter the quntity");
-          int userInputQnt = int.parse(stdin.readLineSync()!);
-
-          MyLibrary.buyBook(userInputID, userInputQnt, user);
+          MyLibrary.getInfoBuyBook();
+          pressEnter();
         case 3:
           MyLibrary.displayOneCustomerPurchase();
-
+          pressEnter();
         default:
           isExitCustomer = true;
           isExitMainPage = false;

@@ -9,6 +9,11 @@ userDashboard() {
 
 
 
+
+
+
+
+
 WELCOME TO OUR LIBRARY SYSTEM !
 ---------------------------------------
 Please select a number :
@@ -24,12 +29,7 @@ Please select a number :
 
     switch (userInput1) {
       case '1':
-        print("Username :");
-        String username = stdin.readLineSync()!;
-        print("Password :");
-        String password = stdin.readLineSync()!;
-
-        userDashboardLogin(username, password);
+        getInfoLoginPage();
         break;
       case '2':
         userDashboardCreateCustomer();
@@ -41,7 +41,7 @@ Please select a number :
         print("Please enter a number as shown");
     }
   } on FormatException {
-    print("Please enter a number ");
+    print("Please enter a number");
   } catch (e) {
     print(e);
   }
@@ -65,7 +65,6 @@ userDashboardLogin(String username, String password) {
       }
     } else {
       value = "Sorry! your username or password isn't correct!";
-      //print(value);
     }
   }
   if (isLogin == true && role == 1) {
@@ -76,6 +75,7 @@ userDashboardLogin(String username, String password) {
     isExitCustomer = false;
   } else {
     print(value);
+    pressEnter();
   }
 }
 
@@ -111,4 +111,18 @@ userDashboardCreateCustomer() {
   } else {
     print("Sorry!Please choose another username.");
   }
+}
+
+getInfoLoginPage() {
+  print('''
+
+HOME -> LOGIN
+---------------------------------------
+''');
+  print("Username :");
+  String username = stdin.readLineSync()!;
+  print("Password :");
+  String password = stdin.readLineSync()!;
+
+  userDashboardLogin(username, password);
 }
