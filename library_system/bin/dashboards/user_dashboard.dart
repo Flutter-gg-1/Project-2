@@ -1,11 +1,13 @@
 import 'dart:io';
-import '../global_variabels.dart';
+import '../global/global_variabels.dart';
 import 'admin_dashboard.dart';
 import 'customer_dashboard.dart';
 import '../model/customer.dart';
+import '../global/print_with_color.dart';
+import '../global/press_enter.dart';
 
 userDashboard() {
-  print('''
+  PrintWithColors.yellow('''
 
 
 
@@ -33,6 +35,7 @@ Please select a number :
         break;
       case '2':
         userDashboardCreateCustomer();
+        pressEnter();
         break;
       case 'C' || 'c':
         isExitMainPage = true;
@@ -74,7 +77,7 @@ userDashboardLogin(String username, String password) {
     customerDashboard();
     isExitCustomer = false;
   } else {
-    print(value);
+    PrintWithColors.red(value);
     pressEnter();
   }
 }
@@ -108,13 +111,14 @@ userDashboardCreateCustomer() {
 
     customer.add(newCustomer);
     customerID++;
+    PrintWithColors.green("Customer created :)");
   } else {
-    print("Sorry!Please choose another username.");
+    PrintWithColors.red("Sorry!Please choose another username.");
   }
 }
 
 getInfoLoginPage() {
-  print('''
+  PrintWithColors.yellow('''
 
 HOME -> LOGIN
 ---------------------------------------

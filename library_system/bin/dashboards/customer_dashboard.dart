@@ -1,10 +1,12 @@
 import 'dart:io';
 import '../model/my_library.dart';
-import '../global_variabels.dart';
+import '../global/global_variabels.dart';
+import '../global/print_with_color.dart';
+import '../global/press_enter.dart';
 
 customerDashboard() {
   do {
-    print('''
+    PrintWithColors.yellow('''
 
 HOME -> CUSTOMER
 ---------------------------------------
@@ -35,7 +37,7 @@ HOME -> CUSTOMER
           isExitMainPage = false;
       }
     } on FormatException {
-      print("Please enter a number");
+      PrintWithColors.red("Please enter a number");
     } catch (e) {
       print(e);
     }

@@ -1,4 +1,4 @@
-import './global_variabels.dart';
+import 'global/global_variabels.dart';
 import './dashboards/user_dashboard.dart';
 import 'startapp.dart';
 

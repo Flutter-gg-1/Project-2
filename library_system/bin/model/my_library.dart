@@ -2,19 +2,22 @@ import 'dart:io';
 
 import './library.dart';
 import './customer.dart';
-import '../global_variabels.dart';
+import '../global/global_variabels.dart';
 import './purchase.dart';
+import '../global/print_with_color.dart';
 
 class MyLibrary {
+  //Display All books for admin & Customer
   static void displayBooks(String user) {
-    print('''
+    PrintWithColors.yellow('''
 
-HOME -> $user -> CUSTOMER PURCHASE
+HOME -> $user -> Display BOOKS
 ---------------------------------------
 ''');
-    print(" ID   Price        Title ");
+    PrintWithColors.yellow(" ID   Price        Title ");
     for (var element in myBook) {
-      print('''_________________________________________________________________
+      PrintWithColors.yellow(
+          '''_________________________________________________________________
   ${element.id}  ${element.price} SAR     ${element.title}${element.authors} Year:${element.year} (QNT:${element.quantity})''');
     }
   }
@@ -25,26 +28,36 @@ HOME -> $user -> CUSTOMER PURCHASE
   }
 
   static void removeBook(String id) {
-    String value = "";
-
+    bool foundID = false;
+    String? title;
     for (var element in myBook) {
       if (id == element.id) {
+        foundID = true;
+        title = element.title;
         myBook.remove(element);
-        value =
-            "Book ID :${element.id} => Name : ${element.title} Delete it successfully ";
         break;
       } else {
-        value = "Sorry! we can't find book ID";
+        foundID = false;
       }
     }
-    print(value);
+
+    if (foundID) {
+      PrintWithColors.green("Book $id : $title Delete successfully");
+    } else {
+      PrintWithColors.red("Sorry! we can't find book ID");
+    }
   }
 
   static void buyBook(String id, int quantity, Customer customer) {
-    String value = "";
+    bool foundID = false;
+    bool isThereQnt = false;
     for (var element in myBook) {
       if (id == element.id) {
+        foundID = true;
+
         if (element.quantity >= quantity) {
+          isThereQnt = true;
+          // create a new purchase
           var customerPurchase = Purchase(
               pid: "P$purchaseID",
               createAt: DateTime.now(),
@@ -60,71 +73,86 @@ HOME -> $user -> CUSTOMER PURCHASE
           myPurchase.add(customerPurchase);
           element.quantity -= quantity;
           purchaseID++;
-          value = "Purchase it complete it :)";
-
           break;
         } else {
-          value = "Sorry! we don't have this quantity";
+          isThereQnt = false;
           break;
         }
       } else {
-        value = "ID not founded!";
+        foundID = false;
       }
     }
-    print(value);
+    if (foundID) {
+      if (isThereQnt) {
+        PrintWithColors.green("Purchase it complete it :)");
+      } else {
+        PrintWithColors.red("Sorry! we don't have this quantity");
+      }
+    } else {
+      PrintWithColors.red("ID not founded!");
+    }
   }
 
+//Display customer own purchase
   static void displayOneCustomerPurchase() {
-    print('''
+    PrintWithColors.yellow('''
 
 HOME -> CUSTOMER -> CUSTOMER PURCHASE
 ---------------------------------------
 ''');
     if (myPurchase.isEmpty) {
-      print("None of the books have been purchased.");
+      PrintWithColors.red("None of the books have been purchased.");
     } else {
       for (var element in myPurchase) {
         if (element.customer.id == user.id) {
-          print("-----------------${element.pid}------------------");
-          print("-------------------------------------------");
-          print("Date    : ${element.createAt}");
-          print("Title   : ${element.title}");
-          print("Quntity : ${element.quantity}");
-          print("Price   : ${element.price} SAR");
-          print("------------------------------------------");
-          print("Amout   : ${element.amount} SAR");
-          print("-----------------END----------------------");
-          break;
+          PrintWithColors.yellow(
+              "-----------------${element.pid}-------------------");
+          PrintWithColors.yellow("-------------------------------------------");
+          PrintWithColors.yellow("Date    : ${element.createAt}");
+          PrintWithColors.yellow("Title   : ${element.title}");
+          PrintWithColors.yellow("Quntity : ${element.quantity}");
+          PrintWithColors.yellow("Price   : ${element.price} SAR");
+          PrintWithColors.yellow("------------------------------------------");
+          PrintWithColors.green("Amout   : ${element.amount} SAR");
+          PrintWithColors.yellow("-----------------END----------------------");
         }
       }
     }
   }
 
+// Display all customer purchases for admin
   static void displayCustomerPurchase() {
-    print('''
+    PrintWithColors.yellow('''
 
 HOME -> ADMIN -> CUSTOMERS PURCHASES
 ---------------------------------------
 ''');
     if (myPurchase.isEmpty) {
-      print("None of the books have been purchased.");
+      PrintWithColors.red("None of the books have been purchased.");
     } else {
       for (var element in myPurchase) {
-        print("-------------------------------------------");
-        print("-----------------${element.pid}------------------");
-        print("--------------------------------------------");
-        print("Date    : ${element.createAt}");
-        print("Title   : ${element.title}");
-        print("Quntity : ${element.quantity}");
-        print("Price   : ${element.price} SAR");
-        print("--------------------------------------------");
-        print("Amout   : ${element.amount} SAR");
-        print("-----------------END----------------------");
+        PrintWithColors.yellow(
+            "-----------------${element.pid}-------------------");
+        PrintWithColors.yellow("--------------------------------------------");
+        PrintWithColors.yellow("Date          : ${element.createAt}");
+        PrintWithColors.yellow("Customer Name : ${element.customer.name}");
+        PrintWithColors.yellow("Customer ID   : ${element.customer.id}");
+        PrintWithColors.yellow("Title         : ${element.title}");
+        PrintWithColors.yellow("Quntity       : ${element.quantity}");
+        PrintWithColors.yellow("Price         : ${element.price} SAR");
+        PrintWithColors.yellow("--------------------------------------------");
+        PrintWithColors.green("Amout          : ${element.amount} SAR");
+        PrintWithColors.yellow("-----------------END----------------------");
       }
     }
   }
 
   static void getInfoBuyBook() {
+    PrintWithColors.yellow('''
+
+HOME -> CUSTOMER -> BUY BOOK
+---------------------------------------
+''');
     print("Enter book ID :");
     String userInputID = stdin.readLineSync()!;
     print("Enter the quntity :");

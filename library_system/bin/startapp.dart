@@ -1,7 +1,7 @@
 import 'model/library.dart';
 import './data/jsonData.dart';
 import './data/userData.dart';
-import './global_variabels.dart';
+import 'global/global_variabels.dart';
 import 'model/customer.dart';
 
 startApp() {

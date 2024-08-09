@@ -1,11 +1,13 @@
 import 'dart:io';
 import '../model/my_library.dart';
 import '../model/library.dart';
-import '../global_variabels.dart';
+import '../global/global_variabels.dart';
+import '../global/print_with_color.dart';
+import '../global/press_enter.dart';
 
 adminDashboard() {
   do {
-    print('''
+    PrintWithColors.yellow('''
 
 HOME -> ADMIN
 ---------------------------------------
@@ -42,11 +44,11 @@ HOME -> ADMIN
           isExitAdmin = true;
           break;
         default:
-          print("Please choose a number [1-5]:");
+          PrintWithColors.red("Please choose a number [1-5]:");
           pressEnter();
       }
     } on FormatException {
-      print("Please enter a number");
+      PrintWithColors.red("Please enter a number");
     } catch (e) {
       print(e);
     }
@@ -54,7 +56,7 @@ HOME -> ADMIN
 }
 
 showAddBook() {
-  print('''
+  PrintWithColors.yellow('''
 
 HOME -> ADMIN -> ADD BOOK
 ---------------------------------------
@@ -104,10 +106,11 @@ addBook(String title, List<String> authors, List<String> categories, int year,
       price: price);
 
   MyLibrary.addBook(book);
+  PrintWithColors.green("Book $title added to the library :)");
 }
 
 removeBook() {
-  print('''
+  PrintWithColors.yellow('''
 
 HOME -> ADMIN -> REMOVE BOOK
 ---------------------------------------

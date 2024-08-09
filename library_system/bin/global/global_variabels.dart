@@ -1,8 +1,6 @@
-import 'dart:io';
-
-import './model/library.dart';
-import './model/purchase.dart';
-import './model/customer.dart';
+import '../model/library.dart';
+import '../model/purchase.dart';
+import '../model/customer.dart';
 
 List<Book> myBook = [];
 List<Purchase> myPurchase = [];
@@ -14,8 +12,3 @@ int customerID = 1003;
 bool isExitMainPage = false;
 bool isExitAdmin = false;
 bool isExitCustomer = false;
-
-pressEnter() {
-  print("Press enter to return");
-  stdin.readLineSync();
-}
