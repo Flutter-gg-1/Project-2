@@ -1,9 +1,8 @@
 import 'dart:io';
-import 'book.dart';
-import 'library_data.dart';
 import 'print_with_color.dart';
+import 'library_data.dart';
   
-addBook(Map<String, dynamic> libraryData) {
+addBook() {
   print("Enter book's id: ");
   String bookId = stdin.readLineSync()!;
   print("Enter book's title: ");
@@ -31,5 +30,7 @@ addBook(Map<String, dynamic> libraryData) {
   List<dynamic> books = List.from(libraryData['library']);
   books.add(book);
   libraryData['library'] = books;
-  printWithColor(text: "The book added successfully!", color: "Green");
+  printWithColor(text: "\nThe book was successfully added!", color: "Green");
+  printWithColor(text: "\nTo return back to the main features press (Enter)\n", color: "Black");
+  stdin.readLineSync();
 }
