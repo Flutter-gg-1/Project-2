@@ -1,13 +1,5 @@
-/*
-Admin
-Can add or remove books.
-Can view the receipt for purchases.
+import '../core/all_file.dart';
 
-Customer
-Can buy books if they are available.
-Can view the receipt for their purchase.
-
-Role Management
-Implement role-based functionality to differentiate between Admin and Customer actions.
-
- */
+void mainDashboard() {
+  print('Main Dashboard');
+}
