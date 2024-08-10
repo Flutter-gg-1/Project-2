@@ -6,7 +6,7 @@ import '../../utlis/print_with_color.dart';
 addAccount(){
   try {
     PrintWithColor.green('Enter account number : ');
-    String accountNumber = stdin.readLineSync().toString();
+    String accountNumber = stdin.readLineSync().toString().trim();
 
     PrintWithColor.green('Enter account balance : ');
     double balance = double.parse(stdin.readLineSync().toString());

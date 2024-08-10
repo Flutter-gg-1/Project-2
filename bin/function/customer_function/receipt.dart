@@ -14,7 +14,7 @@ String receipt = '==========receipt=========='
 '\nBook price : $bookPrice'
 '\nNew account balance : $balance'
 '\nTime : $time'
-'\n========Thank you==========';
+'\n========Thank you==========\n';
 
 //update receiptLog
 Admin.receiptLog.add(receipt);

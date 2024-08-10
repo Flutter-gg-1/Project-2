@@ -13,7 +13,7 @@ remove() async {
 
     PrintWithColor.green('Enter book id');
     String id = nullcheker(
-        value: stdin.readLineSync().toString(),
+        value: stdin.readLineSync().toString().trim(),
         title: 'id',
         func: () => remove());
         

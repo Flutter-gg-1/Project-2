@@ -16,11 +16,11 @@ buy() async {
 
     PrintWithColor.green('Enter the id for the book to buy it :');
     String id = nullcheker(
-        value: stdin.readLineSync().toString(), title: 'id', func: () => buy());
+        value: stdin.readLineSync().toString().trim(), title: 'id', func: () => buy());
 
     PrintWithColor.green('Enter your account number :');
     String accountNumber = nullcheker(
-        value: stdin.readLineSync().toString(),
+        value: stdin.readLineSync().toString().trim(),
         title: 'Account number',
         func: () => buy());
 

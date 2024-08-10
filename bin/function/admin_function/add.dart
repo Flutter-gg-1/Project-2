@@ -12,7 +12,7 @@ add() async {
     
     PrintWithColor.green('enter title : ');
     String title = nullcheker(
-        value: stdin.readLineSync().toString(),
+        value: stdin.readLineSync().toString().trim(),
         title: 'title',
         func: () => add());
 

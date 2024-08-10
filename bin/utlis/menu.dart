@@ -14,7 +14,7 @@ class Menu {
     PrintWithColor.green(instructure);
     PrintWithColor.red('0|exit');
     PrintWithColor.green('\ninput : ');
-    String input = stdin.readLineSync().toString();
+    String input = stdin.readLineSync().toString().trim();
 
     switch (input) {
       case '1':

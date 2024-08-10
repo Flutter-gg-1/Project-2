@@ -9,10 +9,10 @@ import '../../utlis/print_with_color.dart';
 adminLogin(){
 Menu restart = Menu();
 PrintWithColor.green('Enter your id');
-String id = stdin.readLineSync().toString();
+String id = stdin.readLineSync().toString().trim();
 
 PrintWithColor.green('Enter your password');
-String password = stdin.readLineSync().toString();
+String password = stdin.readLineSync().toString().trim();
 
 if (Records.admins[id]==password) {
   return adminMenu();
