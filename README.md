@@ -136,8 +136,8 @@ Library-Management-System/
 │   └── library_system.dart  # Main entry point
 │
 ├── data/
-│   ├── data.json            # json file containing library data
-│   └── users.json           # json file containing users data
+│   ├── data.json            # JSON file containing library data
+│   └── users.json           # JSON file containing users data
 │
 ├── model/
 │   ├── library.dart         # Library class and related methods
@@ -151,9 +151,7 @@ Library-Management-System/
 │   └── menu.dart            # Handles the main menu UI
 │
 └── utils/
-    ├── filemngmt.dart       # File management method for reading and writing JSON files
+    ├── filemngmt.dart       # File management methods for reading and writing JSON files
     ├── login.dart           # Handles login functionality and user authentication
     ├── updatedata.dart      # Function for updating library data
     └── updateuser.dart      # Function for updating customer information
-
-
