@@ -1,3 +1,5 @@
+import 'book_model.dart';
+
 class Library {
   final List<Book> library;
 
@@ -20,49 +22,57 @@ class Library {
 
   removeBook(String id) {
     Book? value;
-    library.forEach((element) {
+    for (var element in library) {
       if (element.id == id) {
         value = element;
       }
-    });
+    }
     library.remove(value);
-  }
-}
 
-class Book {
-  final String id;
-  final String title;
-  final List authors;
-  final List categories;
-  final int year;
-  final int quantity;
-
-  Book(
-      {required this.id,
-      required this.title,
-      required this.authors,
-      required this.categories,
-      required this.year,
-      required this.quantity});
-
-  factory Book.fromJson(Map<String, dynamic> json) {
-    return Book(
-        id: json["id"],
-        title: json["title"],
-        authors: json["authors"],
-        categories: json["categories"],
-        year: json["year"],
-        quantity: json["quantity"]);
+    print("-----Book with $id id is successfully-----");
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      "id": id,
-      "title": title,
-      "authors": authors,
-      "categories": categories,
-      "year": year,
-      "quantity": quantity
+  buyBook(String title) {
+    for (Book element in library) {
+      if (element.title == title) {
+        if (element.quantity > 0) {
+          element.quantity = element.quantity - 1;
+          print("\n Book purchases done ^_^");
+          receiptadd(element);
+        } else {
+          print("Book is not available!");
+        }
+      }
+    }
+  }
+
+  listAllLibrary() {
+    for (var element in library) {
+      print("----------------------------------------");
+      print(element.toJson());
+    }
+  }
+
+  List<Map> receipt = [];
+  receiptadd(Book book) {
+    DateTime date = DateTime.now();
+    Map bookReceipt = {
+      "date": date,
+      "bookTitle": book.title,
+      "bookId": book.id
     };
+
+    receipt.add(bookReceipt);
+  }
+
+  displayReceipts() {
+    for (Map element in receipt) {
+      print("-------------------------------");
+      print("--receipt for the purchased book--");
+      print("Date of purchase: ${element["date"]}");
+      print("Book title: ${element["bookTitle"]}");
+      print("Book ID ${element["bookId"]}");
+      print("-------------------------------");
+    }
   }
 }

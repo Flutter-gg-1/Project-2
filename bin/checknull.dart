@@ -1,0 +1,1 @@
+checknull(var value) {}
