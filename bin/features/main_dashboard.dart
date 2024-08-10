@@ -4,7 +4,7 @@ import 'dart:io';
 void mainDashboard() {
   // Main Dashboard to select Admin or Customer from here
   print(
-      '\n_____________________#### Main Dashboard ####_____________________\n');
+      '\n___________________#### Main Dashboard ####_____________________\n');
   print('___________________#### Book Store ####_____________________');
   print('Welcome to our library. What would you like to do today?');
   print('Please sign in to your account.\n');
