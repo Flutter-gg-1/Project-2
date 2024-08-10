@@ -1,3 +1,4 @@
+// class to represent book in library
 class Book {
   final String id;
   final String title;

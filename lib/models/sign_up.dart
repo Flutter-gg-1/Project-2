@@ -1,6 +1,6 @@
-import 'dart:io';
-import 'dart:math';
-import 'package:library_system/models/customer.dart';
+import 'dart:io';                                     // library used to interact with user
+import 'dart:math';                                   // library used to generate random id number
+import 'package:library_system/models/customer.dart'; // customer class
 
 void signUp({required List<Customer> customers}) {
   int id = Random().nextInt(99999);
@@ -25,8 +25,6 @@ void signUp({required List<Customer> customers}) {
   }
   
   Customer customer = Customer(customerId: id, name: name, balance: double.parse(balance));
-  
   customers.add(customer);
-
   print("customer ${customer.name} with ID ${customer.customerId} is created ✅\n");
 }
