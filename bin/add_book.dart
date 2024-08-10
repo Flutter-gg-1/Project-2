@@ -2,15 +2,19 @@ import 'dart:io';
 import 'print_with_color.dart';
 import 'library_data.dart';
 import 'admin.dart';
-  
+
+ /*
+ This function for add a book
+  */ 
 addBook() {
+  // enter book details
   print("Enter book's id: ");
   String bookId = stdin.readLineSync()!;
   print("Enter book's title: ");
   String bookTitle = stdin.readLineSync()!;
-  print("Enter book's authors: ");
+  print("Enter book's authors: (comma to separate ',') ");
   final bookAuthors = stdin.readLineSync()?.trim().split(',') ?? [];
-  print("Enter book's categories: ");
+  print("Enter book's categories: (comma to separate ',')");
   final bookCategories = stdin.readLineSync()?.trim().split(',') ?? [];
   print("Enter book's year: ");
   int? bookYear;
@@ -52,6 +56,7 @@ addBook() {
     admin();
   }
 
+  // store book details in map
   Map<String,dynamic> book = {
       "authors": bookAuthors,
       "categories": bookCategories,
@@ -60,8 +65,9 @@ addBook() {
       "title": bookTitle,
       "year": bookYear,
       "price": bookPrice};
-  
+  // creating a list containing all library data
   List<dynamic> books = List.from(libraryData['library']);
+  // add book to library system
   books.add(book);
   libraryData['library'] = books;
   printWithColor(text: "\nThe book was successfully added!", color: "Green");

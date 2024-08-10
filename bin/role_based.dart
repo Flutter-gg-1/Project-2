@@ -3,6 +3,10 @@ import 'print_with_color.dart';
 import 'admin.dart';
 import 'customer.dart';
 
+/*
+This function for determining if user an admin or a customer 
+ */
+
 rolebased() {
   printWithColor(
       text: "\n              Welcome to Library System \n", color: "Magenta");
@@ -34,6 +38,7 @@ rolebased() {
       break;
     case 2:
       customer();
+      
       break;
 
     default:

@@ -6,9 +6,15 @@ import 'buy_book.dart';
 import 'role_based.dart';
 import 'view_receipt_customer.dart';
 import 'exit_system.dart';
+
+/*
+This function for displaying customer features
+ */
+
 customer(){
   bool isExit = false;
   do{
+    // displaying customer's features
   printWithColor(text: "\n          What would you like to do?\n", color: "Magenta");
   printWithColor(text: "(1) List all books", color: "Cyan");
   printWithColor(text: "(2) Buy books", color: "Cyan");

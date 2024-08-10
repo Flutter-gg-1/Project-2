@@ -1,3 +1,7 @@
+/*
+This class containing the book detail 
+ */
+
 class Book {
   final String id;
   final String title;
@@ -6,7 +10,7 @@ class Book {
   final int year;
   final int quantity;
   final double price;
-
+  // constructor
   Book(
       {required this.authors,
       required this.categories,
@@ -15,7 +19,7 @@ class Book {
       required this.title,
       required this.year,
       required this.price});
-
+      // factory cinstructor to convert Json data to object
   factory Book.fromJson(Map<String, dynamic> json){ 
         return Book(
             id: json["id"],
@@ -27,7 +31,7 @@ class Book {
             price: json["price"],
         );
     }
-
+    // convert an object to Json format
     Map<String, dynamic> toJson() => {
         "id": id,
         "title": title,

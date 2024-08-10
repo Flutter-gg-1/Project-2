@@ -8,9 +8,13 @@ import 'view_receipt_admin.dart';
 import 'role_based.dart';
 import 'exit_system.dart';
 
+/*
+This function for displaying admin features
+ */
 admin() {
   bool isExit = false;
   do {
+    // displaying admin's features
     printWithColor(
         text: "\n          What would you like to do?\n", color: "Magenta");
     printWithColor(text: "(1) List all books", color: "Cyan");
@@ -39,7 +43,7 @@ admin() {
     switch (input) {
       case 1:
         Library b1 = Library.fromJson(libraryData);
-        print(b1.books.first.authors);
+        print(b1.toJson());
         printWithColor(
             text: "\nTo return back to the main features press (Enter)\n",
             color: "Black");

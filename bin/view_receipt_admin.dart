@@ -1,6 +1,9 @@
 import 'dart:io';
-
 import 'print_with_color.dart';
+
+/*
+This function for view all receipt for purchases
+ */
 List<Map<String, dynamic>> receipts =[];
 viewReceiptAdmin(){
 
@@ -8,6 +11,7 @@ viewReceiptAdmin(){
     printWithColor(text: "\nNo receipt available");
   }else{
     for (var element in receipts) {
+      print("Customer ID: ${element["customerID"]}");
       print("Book title: ${element["title"]}");
       print("Book price: ${element["price"]}");
       print("Book quantity: ${element["quantity"]}");
