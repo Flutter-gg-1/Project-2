@@ -13,37 +13,37 @@ class UserPermissions {
       print("1. View books");
       print("2. Purchase book");
       print("3. View receipt");
-      print("4. View purchased books");
-      print("5. Sign out");
-      print("6. Exit");
+      print("4. Sign out");
+      print("5. Exit");
       stdout.write("Enter your choice: ");
 
       userChoice = int.parse(stdin.readLineSync()!);
-
-      switch (userChoice) {
-        case 1:
-          viewBooks();
-          break;
-        case 2:
-          purchaseBook();
-          break;
-        case 3:
-          viewReceipt();
-          break;
-        case 4:
-          viewPurchasedBooks();
-          break;
-        case 5:
-          Accounts().signOut();
-          break;
-        case 6:
-          print("Thank you for using the library system :D");
-          print("Goodbye!");
-          break;
-        default:
-          print("Invalid option");
+      try {
+        switch (userChoice) {
+          case 1:
+            viewBooks();
+            break;
+          case 2:
+            purchaseBook();
+            break;
+          case 3:
+            viewReceipt();
+            break;
+          case 4:
+            Accounts().signOut();
+            break;
+          case 5:
+            print("Thank you for using the library system :D");
+            print("Goodbye!");
+            break;
+          default:
+            print("Invalid option");
+        }
+      } catch (e) {
+        print("Error: $e");
+        FormatException("Please enter a valid number");
       }
-    } while (userChoice != 6);
+    } while (userChoice != 5);
   }
 
   //Can view all books.
@@ -75,6 +75,14 @@ class UserPermissions {
     } else {
       print("Book not found");
     }
+    try {
+      if (id == "") {
+        throw Exception("Please enter the book id");
+      }
+    } catch (e) {
+      print(e);
+      return purchaseBook();
+    }
   }
 
   //Can view the receipt for their purchases.
@@ -89,24 +97,17 @@ class UserPermissions {
       print("Category: ${book.categories}");
       print("Year: ${book.year}");
       print("Quantity: ${book.quantity}");
-      print("Price: ${book.price}");
+      print("Price: ${book.price}\n");
     } else {
       print("Book not found");
     }
-  }
-
-  //Can view all books they have purchased.
-  void viewPurchasedBooks() {
-    print("View purchased books");
-    for (var book in library.books) {
-      if (book.quantity < 5) {
-        print("Title: ${book.title}");
-        print("Author: ${book.authors}");
-        print("Category: ${book.categories}");
-        print("Year: ${book.year}");
-        print("Quantity: ${book.quantity}");
-        print("Price: ${book.price}");
+    try {
+      if (id == "") {
+        throw Exception("Please enter the book id");
       }
+    } catch (e) {
+      print(e);
+      return viewReceipt();
     }
   }
 }
