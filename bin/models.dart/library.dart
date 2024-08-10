@@ -1,4 +1,4 @@
-// This is librar class which is contain bookes data
+// This is librar class which is contains book data
 class Library {
   //Attributes
   final String id;
@@ -31,15 +31,13 @@ class Library {
     );
   }
   //toJson return nedd data
-  Map<String, dynamic> toJson() {
-    Map<String, dynamic> data = {};
-    data["id"] = id;
-    data["title"] = title;
-    data["authors"] = List<dynamic>.from(authors.map((a) => a));
-    data["categories"] = List<dynamic>.from(categories.map((c) => c));
-    data["year"] = year;
-    data["quantity"] = quantity;
-    data["price"] = price;
-    return data;
-  }
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "title": title,
+        "authors": authors.map((a) => a).toList(),
+        "categories": categories.map((c) => c).toList(),
+        "year": year,
+        "quantity": quantity,
+        "price": price,
+      };
 }
