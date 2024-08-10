@@ -48,11 +48,12 @@ class SystemModel {
 
 
         library.add(BookModel(authors: authors, categories: categories, id: (lastBookId+1).toString(), price: price, quantity: quantity, title: title, year: year));
+        print("\n#####    Book has been add!    #####\n");
         print(library.last.toJson());
       }
 
 
-      void removeBook({required serch , required bool idNot}){
+      void removeBook({required String serch , required bool idNot}){
 
         if(idNot){
 
@@ -60,6 +61,9 @@ class SystemModel {
 
             if(library[i].title == serch){
               library.removeAt(i);
+              print("\n#####    Book has been del!    #####\n");
+                      print(toJson());
+
 
               return;
 
@@ -74,6 +78,10 @@ class SystemModel {
 
             if(library[i].id == serch){
               library.removeAt(i);
+              print("\n#####    Book has been del!    #####\n");
+                      print(toJson());
+
+              
               
               return;
 
@@ -81,6 +89,11 @@ class SystemModel {
           }
 
         }
+
+
+        print("\n#####    Book has not been found!    #####\n");
+
+        print(toJson());
 
       }
 

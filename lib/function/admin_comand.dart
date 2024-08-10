@@ -249,12 +249,51 @@ whileauthors :
     print("1: title");
     print("-"*25);
 
+    try{
+
+       op = int.parse(stdin.readLineSync()!);
+
+    switch(op){
+
+      case  0:
+      print("\n######   give the book id      ######\n");
+
+      int bookId = int.parse(stdin.readLineSync()!);
+
+
+       library.removeBook(serch: bookId.toString(), idNot: false);
+
+       break whileIdBreak;
+
+
+       case 1 :
+
+        print("\n######   give the book title     ######\n");
+
+      String bookTitle = stdin.readLineSync()!;
+
+
+       library.removeBook(serch: bookTitle, idNot: true);
+
+       break whileIdBreak;
+
+
+
+    }
+
+    }catch(err){
+      print("\n#####    eorr only int no string   #######\n");
+
+    }
+
+   
+
         }
 
 
 
 
-        library.removeBook(serch: serch, idNot: idNot);
+       
 
         break;
 
