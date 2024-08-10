@@ -67,45 +67,6 @@
             "year": 1951,
             "quantity": 2,
             "price": 13.49
-        },
-        {
-            "id": "6",
-            "title": "Flutter",
-            "authors": [
-                "Fahad"
-            ],
-            "categories": [
-                "Education"
-            ],
-            "year": 2024,
-            "quantity": 20,
-            "price": 99.99
-        },
-        {
-            "id": "7",
-            "title": "Dart",
-            "authors": [
-                "Abdulaziz"
-            ],
-            "categories": [
-                "Education"
-            ],
-            "year": 2024,
-            "quantity": 20,
-            "price": 20.0
-        },
-        {
-            "id": "8",
-            "title": "Java",
-            "authors": [
-                "Ahmed"
-            ],
-            "categories": [
-                "Entertainment"
-            ],
-            "year": 2020,
-            "quantity": 50,
-            "price": 5.99
         }
     ]
 }

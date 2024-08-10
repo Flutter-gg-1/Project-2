@@ -23,15 +23,7 @@ The Library Management System is designed to allow Admin to manage a library's b
 - Red color is used to print error messages to draw attention to the user
 - asynchronous operations are used for reading json files
 - Inheritance (Admin and Customer extend User)
-- 
 
-### Folders Structure
-/bin        [library_system.dart]
-/data       [data.json, users.json]
-/model      [library.dart, book.dart, user [user.dart, admin.dart, customer.dart]]
-/screens    [menu.dart]
-/utils      [filemngmt.dart, login.dart, updatedata.dart, updateuser.dart]
-/images     [1.png, 2.png, 3.png, ...]
 
 ![Start of Program](./assets/images/1.png)
 
@@ -112,21 +104,56 @@ Abdulaziz Alamri
 
 ## Version History
 **See commits history for more details**
-fixed printing of purchased books
-added Ansicolor package and changed print colors
-added menu() in screens folder, tested and corrected data flow
-added displayAllCustomers() and login functionality
-added customer methods, updateUser(), updated readFile()
-added class User and Customer and Admin + fixed file reading
-added updateData() and readFile()
-added methods to add/remove/buy book and displayReceipt
-added class Library and Book + tested data to objects correctness
-created library-system dart project
+- fixed printing of purchased books
+- added Ansicolor package and changed print colors
+- added menu() in screens folder, tested and corrected data flow
+- added displayAllCustomers() and login functionality
+- added customer methods, updateUser(), updated readFile()
+- added class User and Customer and Admin + fixed file reading
+- added updateData() and readFile()
+- added methods to add/remove/buy book and displayReceipt
+- added class Library and Book + tested data to objects correctness
+- created library-system dart project
 
 
 ## Acknowledgments
 Tuwaiq Academy
 
 ![Tuwaiq Academy](./assets/images/Tuwaiq%20Academy.png)
+
+
+## Project Folders Structure
+Library-Management-System/
+│
+├── assets/
+│   └── images/
+│       ├── 1.png
+│       ├── 2.png
+│       ├── 3.png
+│       └── ...              # Images for README.md
+│
+├── bin/
+│   └── library_system.dart  # Main entry point
+│
+├── data/
+│   ├── data.json            # json file containing library data
+│   └── users.json           # json file containing users data
+│
+├── model/
+│   ├── library.dart         # Library class and related methods
+│   ├── book.dart            # Book class and related methods
+│   └── user/
+│       ├── user.dart        # Super User class with common attributes
+│       ├── admin.dart       # Admin class, inheriting from User
+│       └── customer.dart    # Customer class, inheriting from User
+│
+├── screens/
+│   └── menu.dart            # Handles the main menu UI
+│
+└── utils/
+    ├── filemngmt.dart       # File management method for reading and writing JSON files
+    ├── login.dart           # Handles login functionality and user authentication
+    ├── updatedata.dart      # Function for updating library data
+    └── updateuser.dart      # Function for updating customer information
 
 
