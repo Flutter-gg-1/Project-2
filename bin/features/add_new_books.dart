@@ -1,6 +1,5 @@
 import '../core/all_file.dart';
 import 'dart:io';
-
 // Implement Operations : Add a Book: Write a function to add new books to the library.
 void addNewBook() {
   LibraryModel libraryObject = LibraryModel.fromJson(libraryJSONData);
@@ -24,8 +23,7 @@ void addNewBook() {
     'categories': [bookCategory],
     'year': bookYear,
     'quantity': bookQuantity,
-    'price': bookPrice,
-  });
+    'price': bookPrice,});
   print(libraryObject.toJson());
   print('\nBook added successfully.\n');
   adminDashboard();
