@@ -1,3 +1,5 @@
+
+
 import 'package:pro2/models/book_model.dart';
 import 'package:pro2/models/user_model.dart';
 
@@ -46,6 +48,7 @@ class SystemModel {
 
 
         library.add(BookModel(authors: authors, categories: categories, id: (lastBookId+1).toString(), price: price, quantity: quantity, title: title, year: year));
+        print(library.last.toJson());
       }
 
 
@@ -81,5 +84,23 @@ class SystemModel {
 
       }
 
-  void appRun() {}
+  void appRun() {
+
+
+
+    
+
+
+
+
+    
+
+
+
+    
+    
+
+
+
+  }
 }
