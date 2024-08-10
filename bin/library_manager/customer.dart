@@ -1,5 +1,6 @@
 import '../model/receipt.dart';
 import '../model/user.dart';
+import '../utils/colorful_print.dart';
 import 'library_manager.dart';
 
 extension Customer on LibraryManager {
@@ -24,9 +25,12 @@ extension Customer on LibraryManager {
     print('${customer.name} Reciepts');
     var myReciepts =
         reciepts.where((e) => e.customerId == customer.id).toList();
-
-    for (var r in myReciepts) {
-      r.showReceipt();
+    if (myReciepts.isEmpty) {
+      ColorfulPrint.green('You do not have any reciepts!');
+    } else {
+      for (var r in myReciepts) {
+        r.showReceipt();
+      }
     }
   }
 }
