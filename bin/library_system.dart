@@ -14,7 +14,7 @@ AnsiPen cyan = AnsiPen()..cyan(bold: true);
 AnsiPen green = AnsiPen()..green(bold: true);
 AnsiPen yellow = AnsiPen()..yellow(bold: true);
 AnsiPen blue = AnsiPen()..blue(bold: true);
-AnsiPen red = AnsiPen()..red(bold: true); 
+AnsiPen red = AnsiPen()..red(bold: true);
 
 void main(List<String> arguments) async {
   Library lib = Library([]);
@@ -34,19 +34,27 @@ void main(List<String> arguments) async {
 
     switch (choice) {
       case '1':
-       try {
-      Customer.addNewCustomer();
-    } catch (e) {
-      print(red(e));
-      continue;
-    }
-      menu(lib, await login());
+        try {
+          Customer.addNewCustomer();
+        } catch (e) {
+          print(red(e));
+          continue;
+        }
+        try {
+          menu(lib, await login());
+        } catch (e) {
+          print(red(e));
+        }
       case '2':
-      menu(lib, await login());
+        try {
+          menu(lib, await login());
+        } catch (e) {
+          print(red(e));
+        }
       case '0':
-      break whileLoop;
+        break whileLoop;
       default:
-      print(red('Invalid Choice!!'));
+        print(red('Invalid Choice!!'));
     }
   }
 }

@@ -13,9 +13,20 @@ Future<User?> login({bool? isAdmin}) async {
 
   print(color('\nEnter your Login information'));
   stdout.write(cyan('ID: '));
-  String id = stdin.readLineSync()!;
+  String id = '';
+  try {
+    id = checkInput(stdin.readLineSync()!);
+  } catch (e) {
+    rethrow;
+  }
   stdout.write(cyan('password: '));
-  String password = stdin.readLineSync()!;
+  String password = '';
+  try {
+    password = checkInput(stdin.readLineSync()!);
+  } catch (e) {
+    rethrow;
+  }
+
   String hash = sha256.convert(utf8.encode(password)).toString();
 
   User? user;
@@ -34,4 +45,11 @@ Future<User?> login({bool? isAdmin}) async {
     }
   }
   return null;
+}
+
+String checkInput(String input) {
+  if (input.isEmpty) {
+    throw Exception('empty value');
+  }
+  return input;
 }
