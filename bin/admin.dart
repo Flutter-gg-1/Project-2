@@ -97,6 +97,13 @@ printAdminUi() {
           print("\n\nenter book publish year:");
           try {
             year = int.parse(stdin.readLineSync()!);
+            if (year > 2024 || year < 0) {
+              print("\n------------------------------------");
+              print(
+                  "you should enter a positive integer and should be less than 2024");
+              print("------------------------------------");
+              continue;
+            }
             break;
           } catch (ex) {
             print("\n------------------------------------");
@@ -176,4 +183,3 @@ printAdminUi() {
     }
   } while (!exit);
 }
-
