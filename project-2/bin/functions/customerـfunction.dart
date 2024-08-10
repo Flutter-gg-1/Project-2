@@ -30,15 +30,15 @@ void handleCustomer(Library library) {
         print(yalowPen("Book not found."));
         print(blackPen(
             "......................................................................."));
-        return;
+      } else{
       }
       var book = library.books[bookIndex];
       if (book.quantity == 0) {
         print(yalowPen("Sorry, this book is out of stock."));
         print(blackPen(
             "......................................................................."));
-        return;
-      }
+       }else{
+       }
       book.quantity -= 1;
       var purchasedBook = Book(
           id: book.id,
@@ -65,3 +65,6 @@ void handleCustomer(Library library) {
     }
   }
 }
+
+
+      
