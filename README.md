@@ -1,121 +1,50 @@
-# Library System Project 📚
+# Bookstore Management System
 
-Welcome to the Library System Project! This project involves creating a command-line application in Dart to manage a library. The system will allow users to perform various operations based on their role: Admin or Customer.
+## Overview
+This is a simple command-line-based Bookstore Management System written in Dart. The system supports two types of users: Admin and Customer. The Admin can add, remove, and view books, as well as view purchase histories. The Customer can buy books and view their purchase receipts. The system is designed to manage a bookstore's inventory and handle book purchases.
 
-## Project Overview
-
-You will develop a Library System that can perform the following operations:
-
-- **Add a Book**: Add new books to the library.
-- **Remove a Book**: Remove books from the library.
-- **Buy a Book**: Purchase a book if it's available.
-- **Display Receipt**: Show a receipt for the purchase.
-
-## JSON Data Structure
-The library data is stored in a JSON format with the following structure:
-```
-{
-  "library": [
-    {
-      "id": "1",
-      "title": "The Great Gatsby",
-      "authors": ["F. Scott Fitzgerald"],
-      "categories": ["Fiction"],
-      "year": 1925,
-      "quantity": 5,
-      "price": 10.99
-    },
-    {
-      "id": "2",
-      "title": "To Kill a Mockingbird",
-      "authors": ["Harper Lee"],
-      "categories": ["Fiction", "Classic"],
-      "year": 1960,
-      "quantity": 0,
-      "price": 12.99
-    },
-    {
-      "id": "3",
-      "title": "1984",
-      "authors": ["George Orwell"],
-      "categories": ["Dystopian", "Science Fiction"],
-      "year": 1949,
-      "quantity": 3,
-      "price": 15.49
-    },
-    {
-      "id": "4",
-      "title": "Pride and Prejudice",
-      "authors": ["Jane Austen"],
-      "categories": ["Romance", "Classic"],
-      "year": 1813,
-      "quantity": 4,
-      "price": 8.99
-    },
-    {
-      "id": "5",
-      "title": "The Catcher in the Rye",
-      "authors": ["J.D. Salinger"],
-      "categories": ["Fiction"],
-      "year": 1951,
-      "quantity": 2,
-      "price": 13.49
-    }
-  ]
-}
-
-```
-## Attributes
-
-- **id**: Unique identifier for the book.
-- **title**: Title of the book.
-- **authors**: List of authors.
-- **categories**: List of categories.
-- **year**: Year of publication.
-- **quantity**: Number of copies available.
-
-## User Roles
+## Features
 
 ### Admin
-
-- Can add or remove books.
-- Can view the receipt for purchases.
+- **View All Books**: The Admin can view all books available in the bookstore.
+- **Add Books**: The Admin can add new books to the bookstore by providing details such as ID, title, authors, categories, year of publication, quantity, and price.
+- **Remove Books**: The Admin can remove books from the bookstore using the book ID.
+- **View Purchase History**: The Admin can view the receipts of all book purchases made by customers.
+- **Switch User**: The Admin can switch to the Customer mode.
+- **Exit**: The Admin can exit the application.
 
 ### Customer
+- **Buy a Book**: The Customer can purchase a book by providing the book ID. The system checks if the book is available in stock and then processes the purchase.
+- **View All Books**: The Customer can view all available books in the bookstore.
+- **View Receipts**: The Customer can view their purchase receipts.
+- **Switch User**: The Customer can switch to the Admin mode.
+- **Exit**: The Customer can exit the application.
 
-- Can buy books if they are available.
-- Can view the receipt for their purchase.
+## Files
 
-## Instructions
+- **main.dart**: The entry point of the application that handles user login, menu navigation, and interactions for both Admin and Customer.
+- **admin.dart**: Defines the Admin class, which extends the Customer class and includes methods for viewing all books, adding books, removing books, and viewing purchase histories.
+- **customer.dart**: Defines the Customer class, which includes methods for buying books, viewing all books, and viewing purchase receipts.
+- **bookStore.dart**: Defines the BookStore class, which manages the library's book collection.
+- **library.dart**: Defines the Library class, which represents individual books in the bookstore.
+- **libdata.dart**: Contains the JSON data representing the initial set of books in the bookstore.
 
-### Set Up the Project
+## How It Works
 
-1. Create a Dart command-line application.
-2. Use the provided JSON data to initialize your library.
+### Login
+The user is prompted to enter a username and password. Depending on the credentials, the user is logged in as either an Admin or a Customer.
 
-### Implement Operations
+### Admin Menu
+Once logged in as Admin, the user can view all books, add or remove books, view the purchase history, switch to another user, or exit the application.
 
-- **Add a Book**: Write a function to add new books to the library.
-- **Remove a Book**: Implement a function to remove books from the library.
-- **Buy a Book**: Create a function to handle book purchases. Ensure the book is available before completing the purchase.
-- **Display Receipt**: Develop a function to display a receipt for the purchased books.
+### Customer Menu
+Once logged in as a Customer, the user can buy books, view all books, view their receipts, switch to another user, or exit the application.
 
-### Role Management
+### Book Management
+The Admin can manage the bookstore's inventory by adding new books or removing existing ones. The inventory is updated in real-time.
 
-- Implement role-based functionality to differentiate between Admin and Customer actions.
+### Purchasing Books
+The Customer can purchase books if they are available in stock. The purchase details are saved as a receipt and can be viewed later.
 
-## Submission
-Please submit your project by including all necessary Dart files and a brief description of how to run the application.
-
-## Evaluation
-
-- **Functionality**: Ensure all required functions work correctly and handle edge cases.
-- **Code Quality**: Write clean, readable, and well-organized code. Use meaningful variable and function names.
-- **Error Handling**: Implement proper error handling for invalid operations and edge cases.
-- **User Interface**: For a command-line application, ensure that prompts and outputs are user-friendly and clear.
-- **Role Enforcement**: Verify that user roles are properly enforced and only allow appropriate actions for each role.
-
-## Deadline
-
-Please submit your completed project by **Sunday, August 11, 2024, at 9:59 AM**.
-
+### View Receipts
+Both Admin and Customer can view the receipts of purchases. The Admin can view all customer receipts, while the Customer can only view their own receipts.
