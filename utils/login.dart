@@ -22,14 +22,14 @@ Future<User?> login({bool? isAdmin}) async {
   for (var member in members['admin']) {
     if (member['id'] == id && member['password'] == hash) {
       user = Admin.fromJson(member);
-      print(green('--- Welcome ${user.firstName} ---'));
+      print(green('\n--- Welcome ${user.firstName} ---'));
       return user;
     }
   }
   for (var member in members['customer']) {
     if (member['id'] == id && member['password'] == hash) {
       user = Customer.fromJson(member);
-      print(green('--- Welcome ${user.firstName} ---'));
+      print(green('\n--- Welcome ${user.firstName} ---'));
       return user;
     }
   }

@@ -9,6 +9,7 @@ class Book {
   int? year;
   int? quantity;
   double? price;
+  static int sequence = 0;
 
   Book(
       {required this.id,
@@ -17,7 +18,9 @@ class Book {
       required this.categories,
       required this.year,
       required this.quantity,
-      required this.price});
+      required this.price}){
+        sequence++;
+      }
 
   factory Book.fromJson(Map<String, dynamic> json) {
     return Book(
@@ -47,8 +50,7 @@ class Book {
 
     print(color('Fill the following book info:'));
 
-    stdout.write(cyan('ID: '));
-    bookInfo['id'] = stdin.readLineSync();
+    bookInfo['id'] = '${Book.sequence}';
 
     stdout.write(cyan('Title: '));
     bookInfo['title'] = stdin.readLineSync();

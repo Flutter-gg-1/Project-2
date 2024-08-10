@@ -26,5 +26,6 @@ readFile(List<Book>? books, List<User> users) async {
     users.add(Customer.fromJson(customer));
   }
 
+  Book.sequence = (bookList['library'] as List).length+1;
   Customer.sequence = (userList['customer']as List).length +2;
 }

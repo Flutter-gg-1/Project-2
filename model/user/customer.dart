@@ -51,13 +51,13 @@ class Customer extends User {
   }
 
   static addNewCustomer() {
-    print(color('Fill in the following information\n'));
+    print(color('\nFill in the following information'));
     String id = '$sequence';
 
     stdout.write(cyan('First Name: '));
     String firstName = '';
     try {
-      firstName = checkName(stdin.readLineSync()!);
+      firstName = checkInput(stdin.readLineSync()!);
     } catch (e) {
       rethrow;
     }
@@ -65,11 +65,17 @@ class Customer extends User {
     stdout.write(cyan('Last Name: '));
     String lastName = '';
     try {
-      lastName = checkName(stdin.readLineSync()!);
+      lastName = checkInput(stdin.readLineSync()!);
     } catch (e) {
       rethrow;
     }
-    String password = setPassword();
+
+    String password='';
+    try {
+     password = setPassword();
+    } catch (e) {
+      rethrow;
+    }
 
     Customer customer = Customer(
         id: id,
@@ -84,7 +90,13 @@ class Customer extends User {
 
   static String setPassword() {
     stdout.write(cyan('Enter password: '));
-    String password = stdin.readLineSync()!;
+    String password='';
+    try {
+    password = checkInput(stdin.readLineSync()!);
+    } catch (e) {
+      rethrow;
+    }
+
     String hashedPassword = sha256.convert(utf8.encode(password)).toString();
     return hashedPassword;
   }
@@ -103,10 +115,13 @@ class Customer extends User {
     }
   }
 
-  static String checkName(String name) {
-    if (name.split('').any((char) => '0123456789'.contains(char))) {
+  static String checkInput(String input) {
+    if(input.isEmpty){
+      throw Exception('empty value');
+    }
+    if (input.split('').any((char) => '0123456789'.contains(char))) {
       throw Exception('First and Last Name cannot have numbers!!');
     }
-    return name;
+    return input;
   }
 }

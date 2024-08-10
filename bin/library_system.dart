@@ -21,6 +21,8 @@ void main(List<String> arguments) async {
   await readFile(lib.books, User.usersList);
   String? choice = '';
 
+  print(highlight(gold('\n---- Welcome to the Library ----')));
+
   whileLoop:
   while (true) {
     print(yellow('\n1- Register'));
