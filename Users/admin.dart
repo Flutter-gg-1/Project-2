@@ -62,10 +62,13 @@ class Admin extends Custmer {
   void removeBook(BookStore books) {
     print("Enter the id: ");
     String id = stdin.readLineSync()!;
+    if (books.library.first.id == id) {
+      books.library.removeWhere((books) => books.id == id); //remove by id
 
-    books.library.removeWhere((books) => books.id == id); //remove by id
-
-    print("Book removed successfully!");
+      print("Book removed successfully!");
+    } else {
+      print("book not fund");
+    }
   }
 
   void viewReceiptAdmin(List recAdmin) {

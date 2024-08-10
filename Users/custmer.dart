@@ -28,6 +28,7 @@ class Custmer {
 
         print("You have buy ${book.title} for ${book.price}SR");
         Map<String, dynamic> receipt = {
+          //this map will created to save all data in customerReceipts to print it
           'Book ID': book.id,
           'Title': book.title,
           'Price': book.price,
