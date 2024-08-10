@@ -17,17 +17,15 @@ void menu({required String mode, Customer? customer}) {
   }
   if(mode == 'customer') {
     print("Hello ${customer!.name}, Your balance is ${customer.balance} SR");
-    print('-' * 36);
-    print('| 1 |     display library books    |');
-    print('-' * 36);
-    print('| 2 |       add a book to cart     |');
-    print('-' * 36);
-    print('| 3 |          display cart        |');
-    print('-' * 36);
-    print('| 4 |  purchase all books in cart  |');
-    print('-' * 36);
-    print('| 0 |            Sign Out          |');
-    print('-' * 36);
+    print('-' * 32);
+    print('| 1 |   Display library books  |');
+    print('-' * 32);
+    print('| 2 |         Buy a book       |');
+    print('-' * 32);
+    print('| 3 |        View receipts     |');
+    print('-' * 32);
+    print('| 0 |          Sign Out        |');
+    print('-' * 32);
   }
   if(mode == 'admin') {
     print('1 -> display library books');

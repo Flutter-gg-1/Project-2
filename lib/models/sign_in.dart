@@ -18,7 +18,6 @@ void signIn({required List<Customer> customers}) {
     case '1' :
     case '2' :
     case '3' :
-    case '4' :
     case '0' :
       print("ERROR : Invalid Input ❌\n");
   }

@@ -28,5 +28,5 @@ void signUp({required List<Customer> customers}) {
   
   customers.add(customer);
 
-  print("customer ${customer.name} with ${customer.customerId} is created\n");
+  print("customer ${customer.name} with ID ${customer.customerId} is created ✅\n");
 }
