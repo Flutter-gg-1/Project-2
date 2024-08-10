@@ -1,26 +1,21 @@
-import 'dart:io';
+ import 'dart:io';
 import '../model/book.dart';
 import '../model/library.dart';
 import 'package:ansicolor/ansicolor.dart';
-
 
 final AnsiPen greenPen = AnsiPen()..green();
 final AnsiPen bluePen = AnsiPen()..blue();
 final AnsiPen yalowPen = AnsiPen()..yellow();
 final AnsiPen magentaPen = AnsiPen()..magenta();
 
-
-
 List<Book> purchasedBooks = [];
-
- // view receipts
-  void displayReceipts() {
+void displayReceipts() {
   if (purchasedBooks.isEmpty) {
     print(yalowPen("No purchases yet."));
   } else {
-     double totalAmount = 0.0;
+    double totalAmount = 0.0;
     for (var book in purchasedBooks) {
-      totalAmount+=book.price;
+      totalAmount += book.price * book.quantity;
       book.display();
       print(blackPen(
           "......................................................................."));
@@ -28,7 +23,7 @@ List<Book> purchasedBooks = [];
     print('Total Amount: \$$totalAmount');
   }
 }
-// menu for Admin
+
 void handleAdmin(Library library) {
   while (true) {
     print(magentaPen("----------------------------------------------"));
@@ -46,41 +41,46 @@ void handleAdmin(Library library) {
       print(bluePen("Enter book details:"));
       stdout.write(bluePen("ID book: "));
       var id = stdin.readLineSync()!;
-      stdout.write(bluePen("Title book: "));
-      var title = stdin.readLineSync()!;
-      stdout.write(bluePen("Authors (comma separated): "));
-      var authors =
-          stdin.readLineSync()!.split(',').map((s) => s.trim()).toList();
-      stdout.write(bluePen("Categories (comma separated): "));
-      var categories =
-          stdin.readLineSync()!.split(',').map((s) => s.trim()).toList();
-      stdout.write(bluePen("Year: "));
-      var year = int.tryParse(stdin.readLineSync()!) ?? 0;
-      stdout.write(bluePen("Quantity : "));
-      var quantity = int.tryParse(stdin.readLineSync()!) ?? 0;
-      stdout.write(bluePen("Price: "));
-      var price = double.tryParse(stdin.readLineSync()!) ?? 0.0;
-      if (id.isEmpty ||
-          title.isEmpty ||
-          authors.isEmpty ||
-          categories.isEmpty ||
-          year <= 0 ||
-          quantity <= 0 ||
-          price <= 0) {
-        print(yalowPen(
-            "Invalid input. Please make sure all fields are filled out correctly."));
-        print(blackPen( "......................................................................."));
-        return;}
-      
-      library.addBook(Book(
-          id: id,
-          title: title,
-          authors: authors,
-          categories: categories,
-          year: year,
-          quantity: quantity,
-          price: price));
-          // if removed books
+      int index = library.books.indexWhere((element) => element.id == id);
+      if (index >= 0) {
+        print(yalowPen("This book's id is already exist."));
+      } else {
+        stdout.write(bluePen("Title book: "));
+        var title = stdin.readLineSync()!;
+        stdout.write(bluePen("Authors (comma separated): "));
+        var authors =
+            stdin.readLineSync()!.split(',').map((s) => s.trim()).toList();
+        stdout.write(bluePen("Categories (comma separated): "));
+        var categories =
+            stdin.readLineSync()!.split(',').map((s) => s.trim()).toList();
+        stdout.write(bluePen("Year: "));
+        var year = int.tryParse(stdin.readLineSync()!) ?? 0;
+        stdout.write(bluePen("Quantity : "));
+        var quantity = int.tryParse(stdin.readLineSync()!) ?? 0;
+        stdout.write(bluePen("Price: "));
+        var price = double.tryParse(stdin.readLineSync()!) ?? 0.0;
+        if (id.isEmpty ||
+            title.isEmpty ||
+            authors.isEmpty ||
+            categories.isEmpty ||
+            year <= 0 ||
+            quantity <= 0 ||
+            price <= 0) {
+          print(yalowPen("Invalid input. Please make sure all fields are filled out correctly."));
+          print(blackPen(
+              "......................................................................."));
+        } else {
+          library.addBook(Book(
+            id: id,
+            title: title,
+            authors: authors,
+            categories: categories,
+            year: year,
+            quantity: quantity,
+            price: price,
+          ));
+        }
+      }
     } else if (choice == "2") {
       stdout.write(bluePen("Enter book ID to removed: "));
       var id = stdin.readLineSync()!;
@@ -91,7 +91,8 @@ void handleAdmin(Library library) {
             "......................................................................."));
       } else {
         print(yalowPen("Book not found."));
-        print(blackPen("......................................................................."));
+        print(blackPen(
+            "......................................................................."));
       }
     } else if (choice == "3") {
       library.displayAllBooks();
@@ -101,7 +102,8 @@ void handleAdmin(Library library) {
       break;
     } else {
       print(yalowPen("Invalid choice. Please try again."));
-      print(blackPen( "......................................................................."));
+      print(blackPen(
+          "......................................................................."));
     }
   }
 }

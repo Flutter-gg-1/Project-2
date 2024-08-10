@@ -8,7 +8,7 @@ final AnsiPen greenPen = AnsiPen()..green();
 final AnsiPen bluePen = AnsiPen()..blue();
 final AnsiPen yalowPen = AnsiPen()..yellow();
 final AnsiPen magentaPen = AnsiPen()..magenta();
-
+//  menu for Customer
 void handleCustomer(Library library) {
   while (true) {
     print(magentaPen("----------------------------------------------"));
@@ -37,17 +37,23 @@ void handleCustomer(Library library) {
           print(blackPen(
               "......................................................................."));
         } else {
+          int index =
+              purchasedBooks.indexWhere((element) => element.id == book.id);
           book.quantity -= 1;
-          var purchasedBook = Book(
+          if (index >= 0) {
+            purchasedBooks[index].quantity++;
+          } else {
+            var purchasedBook = Book(
               id: book.id,
               title: book.title,
               quantity: 1,
               price: book.price,
               year: book.year,
               categories: book.categories,
-              authors: book.authors);
-          purchasedBooks.add(purchasedBook);
-
+              authors: book.authors,
+            );
+            purchasedBooks.add(purchasedBook);
+          }
           print(greenPen("Book purchased successfully."));
           print(bluePen("Receipt:"));
           print(bluePen("Title: ${book.title}"));
@@ -65,6 +71,4 @@ void handleCustomer(Library library) {
     }
   }
 }
-
-
       
