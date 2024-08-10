@@ -13,7 +13,8 @@ final AnsiPen magentaPen = AnsiPen()..magenta();
 
 List<Book> purchasedBooks = [];
  double totalAmount = 0.0;
-void displayReceipts() {
+ // view receipts
+  void displayReceipts() {
   if (purchasedBooks.isEmpty) {
     print(yalowPen("No purchases yet."));
   } else {
@@ -25,7 +26,7 @@ void displayReceipts() {
     print('Total Amount: \$$totalAmount');
   }
 }
-
+// menu for Admin
 void handleAdmin(Library library) {
   while (true) {
     print(magentaPen("----------------------------------------------"));
@@ -77,6 +78,7 @@ void handleAdmin(Library library) {
           year: year,
           quantity: quantity,
           price: price));
+          // if removed books
     } else if (choice == "2") {
       stdout.write(bluePen("Enter book ID to removed: "));
       var id = stdin.readLineSync()!;

@@ -45,6 +45,7 @@ class Book {
     };
   }
 
+//methods display
   void display() {
     print(greenPen("ID:$magentaPen$id"));
     print(greenPen("Title:$magentaPen$title"));

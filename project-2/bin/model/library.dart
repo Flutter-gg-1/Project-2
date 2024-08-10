@@ -31,7 +31,7 @@ class Library {
     data["library"] = books.map((element) => element.toJson()).toList();
     return data;
   }
-
+//method display all book 
   void displayAllBooks() {
     if (books.isEmpty) {
       print(yalowPen('No books available.'));
@@ -55,7 +55,7 @@ class Library {
     }
   }
 
-  //حطيت الميثود الاضافه والحذف
+  //methods add an removed books 
   void addBook(Book book) {
     books.add(book);
     print(greenPen("Book added successfully."));

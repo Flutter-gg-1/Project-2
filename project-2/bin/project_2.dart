@@ -12,7 +12,7 @@ final AnsiPen yalowPen = AnsiPen()..yellow();
 final AnsiPen magentaPen = AnsiPen()..magenta();
 
 void main() {
- 
+ // here first page displayed for user
   final library = Library.fromJson(dataLibrary);
   while (true) {
     print(magentaPen("......................................................"));
