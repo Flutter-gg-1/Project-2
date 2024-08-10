@@ -1,8 +1,10 @@
+import 'package:project_2/helpers/color_print.dart';
+
 import 'management.dart';
 
 void main() {
-  print("Welcome to the library");
-  print("Happy to see you again !");
+  printSuccess("Welcome to the library");
+  printSuccess("Happy to see you again!");
 
   Accounts accounts = Accounts();
   accounts.logIn();
