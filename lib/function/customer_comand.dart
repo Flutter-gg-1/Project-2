@@ -1,4 +1,4 @@
-import 'dart:ffi';
+
 import 'dart:io';
 
 import 'package:pro2/models/system_model.dart';
@@ -22,11 +22,6 @@ bool customerComand(SystemModel library) {
       op = int.parse(stdin.readLineSync()!);
 
       switch (op) {
-        
-         
-
-       
-
         case 0:
           library.buyBook();
 
@@ -38,17 +33,14 @@ bool customerComand(SystemModel library) {
           break;
 
         case 2:
-        return false;
-          
+          return false;
 
         case 3:
-        return true;
-
+          return true;
 
         default:
-        print("######   chose one of the option   ######");
-        break;
-          
+          print("######   chose one of the option   ######");
+          break;
       }
     } catch (err) {
       print("-" * 25);

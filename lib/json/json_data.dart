@@ -1,9 +1,4 @@
-
-
-
-
-
-Map<String,dynamic> jsonData =  {
+Map<String, dynamic> jsonData = {
   "library": [
     {
       "id": "1",
@@ -52,4 +47,3 @@ Map<String,dynamic> jsonData =  {
     }
   ]
 };
-

@@ -68,7 +68,6 @@ class SystemModel {
         if (library[i].title == serch) {
           library.removeAt(i);
           print("\n#####    Book has been del!    #####\n");
-          
 
           return;
         }
@@ -78,7 +77,6 @@ class SystemModel {
         if (library[i].id == serch) {
           library.removeAt(i);
           print("\n#####    Book has been del!    #####\n");
-          
 
           return;
         }
@@ -86,8 +84,6 @@ class SystemModel {
     }
 
     print("\n#####    Book has not been found!    #####\n");
-
-    
   }
 
   void buyBook() {
@@ -134,7 +130,6 @@ class SystemModel {
 
       try {
         int buyId = int.parse(stdin.readLineSync()!);
-       
 
         if (buyId == 0) {
           break whileBreak;
@@ -142,7 +137,7 @@ class SystemModel {
 
         for (int i = 0; i < library.length; i++) {
           if (library[i].id == buyId.toString()) {
-             print("num take");
+            print("num take");
             if (library[i].quantity == 0) {
               print("\n#####    sorry book is out of stock!   #######\n");
               break;
@@ -169,179 +164,135 @@ class SystemModel {
   void displayReceipt() {
     print('\n');
 
-
-    if(user.bookBuy.isNotEmpty){
-      
-
+    if (user.bookBuy.isNotEmpty) {
       print("\n#####   your Receipt   #######\n");
 
-    for (var val in user.bookBuy) {
-      print("-" * 25);
+      for (var val in user.bookBuy) {
+        print("-" * 25);
 
-      print("\ntitle ---> ${val.title}");
-      //  for authors
-      stdout.write("\nauthors ----> ");
-      for (var authName in val.authors) {
-        //  stdout.write() will print in the same line and the if condtion is jsut for dont add (,) in the end
-        if (authName == val.authors.last) {
-          stdout.write("$authName\n");
-        } else {
-          stdout.write("$authName , ");
+        print("\ntitle ---> ${val.title}");
+        //  for authors
+        stdout.write("\nauthors ----> ");
+        for (var authName in val.authors) {
+          //  stdout.write() will print in the same line and the if condtion is jsut for dont add (,) in the end
+          if (authName == val.authors.last) {
+            stdout.write("$authName\n");
+          } else {
+            stdout.write("$authName , ");
+          }
         }
-      }
 
 // for categories
-      stdout.write("\ncategories ----> ");
-      for (var categoriesName in val.categories) {
-        //  stdout.write() will print in the same line and the if condtion is jsut for dont add (,) in the end
-        if (categoriesName == val.categories.last) {
-          stdout.write("$categoriesName\n");
-        } else {
-          stdout.write("$categoriesName , ");
+        stdout.write("\ncategories ----> ");
+        for (var categoriesName in val.categories) {
+          //  stdout.write() will print in the same line and the if condtion is jsut for dont add (,) in the end
+          if (categoriesName == val.categories.last) {
+            stdout.write("$categoriesName\n");
+          } else {
+            stdout.write("$categoriesName , ");
+          }
         }
+
+        print("\nyear ----> ${val.year}");
+
+        print("\nprice ----> ${val.price}");
+
+        print("-" * 25);
       }
-
-      print("\nyear ----> ${val.year}");
-
-      print("\nprice ----> ${val.price}");
-
-      print("-" * 25);
-    }
-    }
-    else{
+    } else {
       print("\n#####    you did not buy any book   #######\n");
     }
   }
 
-
-  void addAdmin(){
-
+  void addAdmin() {
     print("\n######      plase give new Admin name     ######\n");
 
     String userName = stdin.readLineSync()!;
-
 
     print("\n######      plase give new Admin password     ######\n");
 
     String passowrd = stdin.readLineSync()!;
 
-
-    usermModelLis.add(UserModel(userName: userName, passWord: passowrd, isAdmin: true));
-
-
-
+    usermModelLis
+        .add(UserModel(userName: userName, passWord: passowrd, isAdmin: true));
   }
 
-
-
   void appRun(SystemModel library) {
-
     bool sameName = false;
-
-
 
     print(" &---> Hello to Library System <---& \n");
 
     whileBreak:
-    while(true){
+    while (true) {
       sameName = false;
-
 
       print("\n######      are you new User? T/F    ######\n");
       String isNew = stdin.readLineSync()!;
 
-      if(isNew == "t"){
-
+      if (isNew == "t") {
         print("\n######      plase give me your userName     ######\n");
 
-    String userName = stdin.readLineSync()!;
+        String userName = stdin.readLineSync()!;
 
-    for(var val in usermModelLis){
-      if(userName == val.userName){
-        print("\n######      there is user with same name change the name     ######\n");
-        sameName = true;
-        break;
-
-      }
-    }
-
-    if(sameName == true){
-      continue;
-
-    }
-
-
-    print("\n######      plase give me your passowrd     ######\n");
-
-    String passowrd = stdin.readLineSync()!;
-
-
-    usermModelLis.add(UserModel(userName: userName, passWord: passowrd, isAdmin: false));
-
-
-
-
-
-      }
-      else if(isNew == "f"){
-
-    print("\n######      plase give me your userName     ######\n");
-
-    String userName = stdin.readLineSync()!;
-
-
-    print("\n######      plase give me your passowrd     ######\n");
-
-    String passowrd = stdin.readLineSync()!;
-
-
-    for(int i = 0 ; i < usermModelLis.length ; i++){
-
-      if(usermModelLis[i].userName == userName && usermModelLis[i].passWord == passowrd){
-        
-        if(usermModelLis[i].isAdmin == true){
-          user = usermModelLis[i];
-        bool isExit =  adminComand(library);
-
-          if(isExit == false){
-          break;
-           }
-           else{
-            break whileBreak;
-           }
-          
+        for (var val in usermModelLis) {
+          if (userName == val.userName) {
+            print(
+                "\n######      there is user with same name change the name     ######\n");
+            sameName = true;
+            break;
+          }
         }
-        else{
-         user = usermModelLis[i];
-           bool isExit = customerComand(library);
 
-           if(isExit == false){
-          break;
-           }else{
-            break whileBreak;
-           }
+        if (sameName == true) {
+          continue;
         }
-      } else if(i == usermModelLis.length-1){
-        print("\n######      user not found    ######\n");
-        break;
 
+        print("\n######      plase give me your passowrd     ######\n");
+
+        String passowrd = stdin.readLineSync()!;
+
+        usermModelLis.add(
+            UserModel(userName: userName, passWord: passowrd, isAdmin: false));
+      } else if (isNew == "f") {
+        print("\n######      plase give me your userName     ######\n");
+
+        String userName = stdin.readLineSync()!;
+
+        print("\n######      plase give me your passowrd     ######\n");
+
+        String passowrd = stdin.readLineSync()!;
+
+        for (int i = 0; i < usermModelLis.length; i++) {
+          if (usermModelLis[i].userName == userName &&
+              usermModelLis[i].passWord == passowrd) {
+            if (usermModelLis[i].isAdmin == true) {
+              user = usermModelLis[i];
+              bool isExit = adminComand(library);
+
+              if (isExit == false) {
+                break;
+              } else {
+                break whileBreak;
+              }
+            } else {
+              user = usermModelLis[i];
+              bool isExit = customerComand(library);
+
+              if (isExit == false) {
+                break;
+              } else {
+                break whileBreak;
+              }
+            }
+          } else if (i == usermModelLis.length - 1) {
+            print("\n######      user not found    ######\n");
+            break;
+          }
+        }
+      } else {
+        print(
+            "\n######      plase chose (t) or (f) no numer or capital leteer    ######\n");
       }
-     
     }
-      } else{
-
-        print("\n######      plase chose (t) or (f) no numer or capital leteer    ######\n");
-
-      }
-
-
-
-
-
-
-    }
-
-
-
   }
 }
