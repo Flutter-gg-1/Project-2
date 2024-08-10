@@ -33,7 +33,7 @@ Welcome to the Library System Project! This project involves creating a command-
 - View all purchases made by the user.
 
 
-## Sample OUTPUT
+## SAMPLE OUTPUT
 
 ### ADD BOOK - REMOVE BOOK - BUY BOOK
 ![image1](https://i.ibb.co/VgChm6T/image.png)
