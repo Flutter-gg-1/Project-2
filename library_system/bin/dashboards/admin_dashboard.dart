@@ -4,6 +4,7 @@ import '../model/library.dart';
 import '../global/global_variabels.dart';
 import '../global/print_with_color.dart';
 import '../global/press_enter.dart';
+import '../global/check_input.dart';
 
 adminDashboard() {
   do {
@@ -56,42 +57,133 @@ HOME -> ADMIN
 }
 
 showAddBook() {
+  bool isExitTitle = false;
+  bool isExitNumAuthers = false;
+  bool isExitAuthoers = false;
+  bool isExitNumCat = false;
+  bool isExitCat = false;
+  bool isExitYear = false;
+  bool isExitQnt;
+  bool isExitPrice;
+  String? inputTitle;
+  String? inputNumAuthers;
+  List<String>? newListAuthors;
+  String? inputNumCat;
+  List<String>? newListCat;
+  String? inputYear;
+  String? inputQnt;
+  String inputPrice;
   PrintWithColors.yellow('''
 
 HOME -> ADMIN -> ADD BOOK
 ---------------------------------------
 ''');
-  print("Enter title of book :");
-  String inputTitle = stdin.readLineSync()!;
-  print("Enter a number of authers :");
-  int inputNumAuthers = int.parse(stdin.readLineSync()!);
-  print("please input the names");
-  List<String> newListAuthors =
-      List.filled(inputNumAuthers, "", growable: false);
-  int i = 0;
-  while (i < inputNumAuthers) {
-    newListAuthors[i] = stdin.readLineSync()!;
-    i++;
-  }
-  print("Enter a number of categories :");
-  int inputNumCat = int.parse(stdin.readLineSync()!);
-  print("please input the names");
-  List<String> newListCat = List.filled(inputNumCat, "", growable: false);
-  int j = 0;
-  while (j < inputNumCat) {
-    newListCat[j] = stdin.readLineSync()!;
-    j++;
-  }
-  print("Enter year of book :");
-  int inputYear = int.parse(stdin.readLineSync()!);
 
-  print("Enter the quantity:");
-  int inputQnt = int.parse(stdin.readLineSync()!);
+  do {
+    print("Enter title of book :");
+    inputTitle = stdin.readLineSync()!;
+    isExitTitle = checkInput(inputTitle, "Sorry!Please fill the title");
+  } while (!isExitTitle);
 
-  print("Enter the price :");
-  double inputPrice = double.parse(stdin.readLineSync()!);
-  addBook(
-      inputTitle, newListAuthors, newListCat, inputYear, inputQnt, inputPrice);
+  do {
+    print("Enter a number of authers :");
+    inputNumAuthers = stdin.readLineSync()!;
+    if (int.tryParse(inputNumAuthers) != null) {
+      isExitNumAuthers = true;
+    } else {
+      isExitNumAuthers = false;
+      PrintWithColors.red("Sorry! You must add a number.");
+    }
+  } while (!isExitNumAuthers);
+
+  do {
+    newListAuthors =
+        List.filled(int.parse(inputNumAuthers), "", growable: false);
+    int i = 0;
+    while (i < int.parse(inputNumAuthers)) {
+      print("Enter a name of authers[${i + 1}] :");
+
+      newListAuthors[i] = stdin.readLineSync()!;
+      if (newListAuthors[i].isEmpty) {
+        PrintWithColors.red("Sorry!Please fill the authoer name");
+        isExitAuthoers = false;
+      } else {
+        isExitAuthoers = true;
+        i++;
+      }
+    }
+  } while (!isExitAuthoers);
+
+  do {
+    print("Enter a number of categories :");
+    inputNumCat = stdin.readLineSync()!;
+    if (int.tryParse(inputNumCat) != null) {
+      isExitNumCat = true;
+    } else {
+      isExitNumCat = false;
+      PrintWithColors.red("Sorry! You must add a number.");
+    }
+  } while (!isExitNumCat);
+
+  do {
+    newListCat = List.filled(int.parse(inputNumCat), "", growable: false);
+    int j = 0;
+    while (j < int.parse(inputNumCat)) {
+      print("please input the names [${j + 1}]");
+
+      newListCat[j] = stdin.readLineSync()!;
+      if (newListCat[j].isEmpty) {
+        PrintWithColors.red("Sorry!Please fill the authoer name");
+        isExitCat = false;
+      } else {
+        isExitCat = true;
+        j++;
+      }
+    }
+  } while (!isExitCat);
+
+  do {
+    print("Enter year of book :");
+    inputYear = stdin.readLineSync()!;
+
+    if (int.tryParse(inputYear) != null &&
+        int.tryParse(inputYear)! >= 200 &&
+        int.tryParse(inputYear)! <= 2024) {
+      isExitYear = true;
+    } else {
+      isExitYear = false;
+      PrintWithColors.red(
+          "Sorry! You must add a positive number between [200-2024].");
+    }
+  } while (!isExitYear);
+
+  do {
+    print("Enter the quantity:");
+    inputQnt = stdin.readLineSync()!;
+
+    if (int.tryParse(inputQnt) != null && int.tryParse(inputQnt)! > 0) {
+      isExitQnt = true;
+    } else {
+      isExitQnt = false;
+      PrintWithColors.red("Sorry! You must add a number greater than 0.");
+    }
+  } while (!isExitQnt);
+
+  do {
+    print("Enter the price :");
+    inputPrice = stdin.readLineSync()!;
+
+    if (double.tryParse(inputPrice) != null &&
+        double.tryParse(inputPrice)! > 0) {
+      isExitPrice = true;
+    } else {
+      isExitPrice = false;
+      PrintWithColors.red("Sorry! You must add a number greater than 0.");
+    }
+  } while (!isExitPrice);
+
+  addBook(inputTitle, newListAuthors, newListCat, int.parse(inputYear),
+      int.parse(inputQnt), double.parse(inputPrice));
 }
 
 addBook(String title, List<String> authors, List<String> categories, int year,
@@ -110,13 +202,23 @@ addBook(String title, List<String> authors, List<String> categories, int year,
 }
 
 removeBook() {
+  bool isExitRemoveBook = false;
+  String? id;
   PrintWithColors.yellow('''
 
 HOME -> ADMIN -> REMOVE BOOK
 ---------------------------------------
 ''');
-  print("Enter the ID of the Book :");
 
-  int id = int.parse(stdin.readLineSync()!);
-  MyLibrary.removeBook(id.toString());
+  do {
+    print("Enter the ID of the Book :");
+    id = stdin.readLineSync()!;
+    if (int.tryParse(id) != null && int.tryParse(id)! > 0) {
+      MyLibrary.removeBook(id.toString());
+      isExitRemoveBook = true;
+    } else {
+      isExitRemoveBook = false;
+      PrintWithColors.red("Sorry!Please add a number greater than 0");
+    }
+  } while (!isExitRemoveBook);
 }

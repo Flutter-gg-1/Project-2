@@ -5,6 +5,7 @@ import './customer.dart';
 import '../global/global_variabels.dart';
 import './purchase.dart';
 import '../global/print_with_color.dart';
+import '../global/check_input.dart';
 
 class MyLibrary {
   //Display All books for admin & Customer
@@ -85,8 +86,10 @@ HOME -> $user -> Display BOOKS
     if (foundID) {
       if (isThereQnt) {
         PrintWithColors.green("Purchase it complete it :)");
+        isExitMainBuyBook = true;
       } else {
         PrintWithColors.red("Sorry! we don't have this quantity");
+        isExitMainBuyBook = false;
       }
     } else {
       PrintWithColors.red("ID not founded!");
@@ -148,15 +151,36 @@ HOME -> ADMIN -> CUSTOMERS PURCHASES
   }
 
   static void getInfoBuyBook() {
+    bool isExitUserInputID = false;
+    bool isExitUserInputQnt = false;
+    String? userInputID;
+    String? userInputQnt;
     PrintWithColors.yellow('''
 
 HOME -> CUSTOMER -> BUY BOOK
 ---------------------------------------
 ''');
-    print("Enter book ID :");
-    String userInputID = stdin.readLineSync()!;
-    print("Enter the quntity :");
-    int userInputQnt = int.parse(stdin.readLineSync()!);
-    MyLibrary.buyBook(userInputID, userInputQnt, user);
+    do {
+      do {
+        print("Enter book ID :");
+        userInputID = stdin.readLineSync()!;
+        isExitUserInputID =
+            checkInput(userInputID, "You must enter a number of book.");
+      } while (!isExitUserInputID);
+
+      do {
+        print("Enter the quntity :");
+        userInputQnt = stdin.readLineSync()!;
+        if (int.tryParse(userInputQnt) != null &&
+            int.tryParse(userInputQnt)! > 0) {
+          isExitUserInputQnt = true;
+        } else {
+          isExitUserInputQnt = false;
+          PrintWithColors.red("You must enter a number greater than 0.");
+        }
+      } while (!isExitUserInputQnt);
+
+      MyLibrary.buyBook(userInputID, int.parse(userInputQnt), user);
+    } while (!isExitMainBuyBook);
   }
 }

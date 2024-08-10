@@ -12,3 +12,4 @@ int customerID = 1003;
 bool isExitMainPage = false;
 bool isExitAdmin = false;
 bool isExitCustomer = false;
+bool isExitMainBuyBook = false;

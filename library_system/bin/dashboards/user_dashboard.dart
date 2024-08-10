@@ -5,6 +5,7 @@ import 'customer_dashboard.dart';
 import '../model/customer.dart';
 import '../global/print_with_color.dart';
 import '../global/press_enter.dart';
+import '../global/check_input.dart';
 
 userDashboard() {
   PrintWithColors.yellow('''
@@ -84,14 +85,41 @@ userDashboardLogin(String username, String password) {
 
 userDashboardCreateCustomer() {
   bool foundDuplicate = false;
-  print("Enter a name");
-  String inputUserName = stdin.readLineSync()!;
-  print("Enter a phone");
-  String inputUserPhone = stdin.readLineSync()!;
-  print("Enter a username");
-  String inputUserUsername = stdin.readLineSync()!;
-  print("Enter a password");
-  String inputUserPassword = stdin.readLineSync()!;
+  bool isExitInputName = false;
+  bool isExitInputPhone = false;
+  bool isExitInputUsername = false;
+  bool isExitInputPassword = false;
+
+  String? inputUserName;
+  String? inputUserPhone;
+  String? inputUserUsername;
+  String? inputUserPassword;
+
+  do {
+    print("Enter a name");
+    inputUserName = stdin.readLineSync()!;
+    isExitInputName = checkInput(inputUserName, "Please enter your name");
+  } while (!isExitInputName);
+
+  do {
+    print("Enter a phone");
+    inputUserPhone = stdin.readLineSync()!;
+    isExitInputPhone = checkInput(inputUserPhone, "Please enter your phone ");
+  } while (!isExitInputPhone);
+
+  do {
+    print("Enter a username");
+    inputUserUsername = stdin.readLineSync()!;
+    isExitInputUsername =
+        checkInput(inputUserUsername, "Please enter your username");
+  } while (!isExitInputUsername);
+
+  do {
+    print("Enter a password");
+    inputUserPassword = stdin.readLineSync()!;
+    isExitInputPassword =
+        checkInput(inputUserPassword, "Please enter your password");
+  } while (!isExitInputPassword);
 
   for (var element in customer) {
     if (element.username.toString().toLowerCase() ==
