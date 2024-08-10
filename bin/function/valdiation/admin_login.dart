@@ -1,10 +1,10 @@
 
 import 'dart:io';
 
-import '../model/records.dart';
-import '../utlis/admin_menu.dart';
-import '../utlis/menu.dart';
-import '../utlis/print_with_color.dart';
+import '../../model/records.dart';
+import '../../utlis/admin_menu.dart';
+import '../../utlis/menu.dart';
+import '../../utlis/print_with_color.dart';
 
 adminLogin(){
 Menu restart = Menu();

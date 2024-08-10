@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import '../function/admin_login.dart';
+import '../function/valdiation/admin_login.dart';
 import 'customer_menu.dart';
 import 'print_with_color.dart';
 

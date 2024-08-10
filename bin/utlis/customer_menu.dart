@@ -1,11 +1,9 @@
 import 'dart:io';
 import '../model/users/customer.dart';
-import 'menu.dart';
 import 'print_with_color.dart';
 
 customerMenu() async {
   Customer customorFunction = Customer();
-  Menu restart = Menu();
   const instructure = '1| Buy a book 📚'
       '\n2| Show book list 📖';
 

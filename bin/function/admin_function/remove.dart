@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import '../../utlis/print_with_color.dart';
-import '../nullchecker.dart';
+import '../valdiation/nullchecker.dart';
 
 remove() async {
   bool isBookFound = false;
@@ -34,10 +34,10 @@ remove() async {
 
       PrintWithColor.green('Book with id $id is romved');
     } else {
-      PrintWithColor.red('⚠️Book not found');
+      PrintWithColor.red('⚠️  Book not found');
     }
   } catch (e) {
-    PrintWithColor.red('⚠️Erorr : $e\nTry again');
+    PrintWithColor.red('⚠️   Erorr : $e\nTry again');
     remove();
   }
 }

@@ -4,7 +4,7 @@ import 'dart:io';
 import '../../model/records.dart';
 import '../../utlis/print_with_color.dart';
 import '../display.dart';
-import '../nullchecker.dart';
+import '../valdiation/nullchecker.dart';
 import 'receipt.dart';
 
 buy() async {
@@ -45,7 +45,7 @@ buy() async {
     }
     //purches the book & check user balance
     else if (!Records.cards.containsKey(accountNumber)) {
-      PrintWithColor.red('⚠️Wrong account number');
+      PrintWithColor.red('⚠️   Wrong account number');
     } else if (Records.cards[accountNumber]! > price) {
       Records.cards.update(accountNumber, (value) => value - price);
       
@@ -66,7 +66,7 @@ buy() async {
       PrintWithColor.red('you do not have enoutgh balance to buy this book');
     }
   } catch (e) {
-    PrintWithColor.red('⚠️Erorr : $e\nTry again');
+    PrintWithColor.red('⚠️  Erorr : $e\nTry again');
     buy();
   }
 }

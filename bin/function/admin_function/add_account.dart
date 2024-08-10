@@ -13,6 +13,6 @@ addAccount(){
 
     Records.cards.addAll({accountNumber : balance});
   } catch (e) {
-    PrintWithColor.red('⚠️Error : $e\nTry again');
+    PrintWithColor.red('⚠️   Error : $e\nTry again');
   }
 }
