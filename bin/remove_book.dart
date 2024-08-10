@@ -22,5 +22,6 @@ removeBook(){
   }
   
   printWithColor(text: "The book with ID $id not found", color: "Red");
+  stdin.readLineSync();
   
 }

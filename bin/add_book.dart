@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'print_with_color.dart';
 import 'library_data.dart';
+import 'admin.dart';
   
 addBook() {
   print("Enter book's id: ");
@@ -12,11 +13,44 @@ addBook() {
   print("Enter book's categories: ");
   final bookCategories = stdin.readLineSync()?.trim().split(',') ?? [];
   print("Enter book's year: ");
-  int bookYear = int.parse(stdin.readLineSync()!);
+  int? bookYear;
+  try {
+    bookYear = int.parse(stdin.readLineSync()!);
+  } catch (error) {
+    printWithColor(text: "A number must be entered.", color: "Red");
+    print(error);
+    printWithColor(
+        text: "\nTo return back to the main features press (Enter)\n",
+        color: "Black");
+    stdin.readLineSync();
+    admin();
+  }
   print("Enter book's quantity: ");
-  int bookQuantity = int.parse(stdin.readLineSync()!);
+  int? bookQuantity;
+  try {
+    bookQuantity = int.parse(stdin.readLineSync()!);
+  } catch (error) {
+    printWithColor(text: "A number must be entered.", color: "Red");
+    print(error);
+    printWithColor(
+        text: "\nTo return back to the main features press (Enter)\n",
+        color: "Black");
+    stdin.readLineSync();
+    admin();
+  }
   print("Enter book's price: ");
-  double bookPrice = double.parse(stdin.readLineSync()!);
+  double? bookPrice;
+  try {
+    bookPrice = double.parse(stdin.readLineSync()!);
+  } catch (error) {
+    printWithColor(text: "\nA number must be entered.", color: "Red");
+    print(error);
+    printWithColor(
+        text: "\nTo return back to the main features press (Enter)\n",
+        color: "Black");
+    stdin.readLineSync();
+    admin();
+  }
 
   Map<String,dynamic> book = {
       "authors": bookAuthors,

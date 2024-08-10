@@ -14,8 +14,9 @@ viewReceiptCustomer(){
       print("Book title: ${element["title"]}");
       print("Book price: ${element["price"]}");
       print("Book quantity: ${element["quantity"]}");
+      print("Time: ${element["time"]}");
       double cost = element['price'] * element['quantity'];
-      print("cost: $cost");
+      print("Cost: $cost");
       print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     }
   }
