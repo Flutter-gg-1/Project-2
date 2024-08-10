@@ -81,7 +81,7 @@ dart run
 
 
    - Display all receipt of purchases of all customer
-     <p align="center">
+<p align="center">
 <img src="./assets/12.png"  width="400"/>
 
    - Display receipt of purchases for one customer by `customerID`.
