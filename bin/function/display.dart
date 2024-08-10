@@ -12,12 +12,12 @@ bookDisplayer() async {
   for (var element in (data['library'] as List)) {
 
     PrintWithColor.purple('=========Book============');
-    
+
     (element as Map).forEach((key, value) {
       print('$key : $value');
     });
 
     PrintWithColor.purple('=========================\n');
   }
-  PrintWithColor.green('^^^^^^^^^^Book list^^^^^^^^^^^^');
+  PrintWithColor.green('========⬆️Book list⬆️=============');
 }

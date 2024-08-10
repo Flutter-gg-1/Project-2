@@ -30,7 +30,7 @@ add() async {
 
     PrintWithColor.green('enter price : ');
     double price = double.parse(stdin.readLineSync().toString());
-    
+
     //get json data
     String jsonData = await File('./bin/data.json').readAsString();
     Map<String, dynamic> data = jsonDecode(jsonData);
@@ -58,7 +58,7 @@ add() async {
     stdin.readLineSync();
 
   } catch (e) {
-    PrintWithColor.red('error $e Try again');
+    PrintWithColor.red('⚠️error $e Try again');
     add();
   }
 }

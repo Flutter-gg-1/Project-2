@@ -45,7 +45,7 @@ buy() async {
     }
     //purches the book & check user balance
     else if (!Records.cards.containsKey(accountNumber)) {
-      PrintWithColor.red('Wrong account number');
+      PrintWithColor.red('⚠️Wrong account number');
     } else if (Records.cards[accountNumber]! > price) {
       Records.cards.update(accountNumber, (value) => value - price);
       
@@ -61,12 +61,12 @@ buy() async {
         balance: Records.cards[accountNumber]!
         );
 
-      PrintWithColor.green('Thank you :) visit us again');
+      PrintWithColor.green('Thank you 😊 visit us again');
     } else {
       PrintWithColor.red('you do not have enoutgh balance to buy this book');
     }
   } catch (e) {
-    PrintWithColor.red('Erorr : $e\nTry again');
+    PrintWithColor.red('⚠️Erorr : $e\nTry again');
     buy();
   }
 }

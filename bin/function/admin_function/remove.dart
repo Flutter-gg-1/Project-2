@@ -5,6 +5,7 @@ import '../../utlis/print_with_color.dart';
 import '../nullchecker.dart';
 
 remove() async {
+  bool isBookFound = false;
   try {
     //git data from json
     String jsonData = await File('./bin/data.json').readAsString();
@@ -15,18 +16,28 @@ remove() async {
         value: stdin.readLineSync().toString(),
         title: 'id',
         func: () => remove());
-    //update data
-    (data['library'] as List).removeWhere((element) => element['id'] == id);
-    
-    //update json data
-    String updatedJsonData = jsonEncode(data);
-    File('./bin/data.json')
-        .writeAsStringSync(updatedJsonData, mode: FileMode.write);
+        
+    //search for the book
+    for (var element in (data['library'] as List)) {
+      if ((element['id'] == id)) {
+        isBookFound = true;
+      }
+    }
+    if (isBookFound) {
+      //update data
+      (data['library'] as List).removeWhere((element) => element['id'] == id);
 
-    PrintWithColor.green('Book with id $id is romved');
-    
+      //update json data
+      String updatedJsonData = jsonEncode(data);
+      File('./bin/data.json')
+          .writeAsStringSync(updatedJsonData, mode: FileMode.write);
+
+      PrintWithColor.green('Book with id $id is romved');
+    } else {
+      PrintWithColor.red('⚠️Book not found');
+    }
   } catch (e) {
-    PrintWithColor.red('Erorr : $e\nTry again');
+    PrintWithColor.red('⚠️Erorr : $e\nTry again');
     remove();
   }
 }
