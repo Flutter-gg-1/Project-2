@@ -73,4 +73,16 @@ class Book {
 
     return bookInfo;
   }
+
+  Map<String, dynamic> displayBookBought(Book book) {
+    return {
+      'id': book.id,
+      'title': book.title,
+      'authors': book.authors,
+      'categories': book.categories,
+      'year': book.year,
+      'quantity': 1,
+      'price': book.price?.toStringAsFixed(2)
+    };
+  }
 }

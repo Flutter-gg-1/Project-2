@@ -2,14 +2,16 @@ import '../model/library.dart';
 import '../utils/filemngmt.dart';
 import '../model/user.dart';
 import '../model/customer.dart';
+import '../model/admin.dart';
 
 void main(List<String> arguments) async {
 
   Library lib = Library([]);
   readFile(lib.books,User.usersList);
 
+  
 
-  Customer.addNewCustomer();
+  Admin.displayAllCustomers();
 
 
   //  lib.buyBook('5');

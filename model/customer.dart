@@ -4,6 +4,7 @@ import 'dart:io';
 import 'dart:convert';
 import 'package:crypto/crypto.dart';
 import '../utils/updateuser.dart';
+import 'admin.dart';
 
 class Customer extends User {
   List<Book> purchaseHistory = [];
@@ -16,6 +17,7 @@ class Customer extends User {
       required super.password,
       required this.purchaseHistory}){
         sequence++;
+        Admin.customerList.add(this);
       }
 
   factory Customer.fromJson(Map<String, dynamic> json) {

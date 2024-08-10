@@ -14,17 +14,13 @@ readFile(List<Book>? books, List<User> users) async {
     books?.add(Book.fromJson(book));
   }
 
-  print('here 1');
   file = File('data/users.json');
   content = file.readAsStringSync();
   Map<String, dynamic> userList = jsonDecode(content);
 
-  print('here 2');
-
   for (var admin in userList['admin']) {
     users.add(Admin.fromJson(admin));
   }
-  print('here 3');
 
   for (var customer in userList['customer']) {
     users.add(Customer.fromJson(customer));
