@@ -8,7 +8,7 @@ final AnsiPen greenPen = AnsiPen()..green();
 final AnsiPen bluePen = AnsiPen()..blue();
 final AnsiPen yalowPen = AnsiPen()..yellow();
 final AnsiPen magentaPen = AnsiPen()..magenta();
-//  menu for Customer
+//في حال ادخل المستخدم ٢ راح ينقله الي هذا المحتوى
 void handleCustomer(Library library) {
   while (true) {
     print(magentaPen("----------------------------------------------"));
@@ -21,8 +21,10 @@ void handleCustomer(Library library) {
     stdout.write(greenPen("Choose an action: "));
     final choice = stdin.readLineSync();
     if (choice == "1") {
+      //للعرض جميع الكتب
       library.displayAllBooks();
     } else if (choice == "2") {
+      //لشراء
       stdout.write(bluePen("Enter book ID to buy: "));
       var id = stdin.readLineSync()!;
       var bookIndex = library.books.indexWhere((book) => book.id == id);
@@ -32,6 +34,7 @@ void handleCustomer(Library library) {
             "......................................................................."));
       } else {
         var book = library.books[bookIndex];
+        //اذا الكميه صفر راح يطبع له رساله
         if (book.quantity == 0) {
           print(yalowPen("Sorry, this book is out of stock."));
           print(blackPen(
@@ -43,6 +46,7 @@ void handleCustomer(Library library) {
           if (index >= 0) {
             purchasedBooks[index].quantity++;
           } else {
+            //هنا يخزن كتب عشان يحسب كم من مشتريات
             var purchasedBook = Book(
               id: book.id,
               title: book.title,
@@ -63,12 +67,13 @@ void handleCustomer(Library library) {
         }
       }
     } else if (choice == "3") {
+      // يعرض له جميع مشتريات
       displayReceipts();
     } else if (choice == "4") {
       break;
     } else {
+      //ادخل يوزر رقم غلط
       print(yalowPen("Invalid choice. Please try again."));
     }
   }
 }
-      

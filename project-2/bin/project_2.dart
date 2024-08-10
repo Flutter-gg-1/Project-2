@@ -12,8 +12,9 @@ final AnsiPen yalowPen = AnsiPen()..yellow();
 final AnsiPen magentaPen = AnsiPen()..magenta();
 
 void main() {
- // here frist page displayed for user
+//اول صفحه تظهر عند تشغيل البرنامج وتحتوي على مجموعه من خيارات
   final library = Library.fromJson(dataLibrary);
+  //
   while (true) {
     print(magentaPen("......................................................"));
     print(magentaPen("......................................................"));
@@ -34,6 +35,7 @@ void main() {
       print(bluePen("Exiting"));
       break;
     } else {
+      // في حال ادخل رقم غير ١،٢،٣،
       print(yalowPen("Invalid choice. Please try again."));
     }
   }

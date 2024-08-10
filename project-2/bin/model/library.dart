@@ -9,7 +9,7 @@ final AnsiPen blackPen = AnsiPen()..black();
 final AnsiPen grayPen = AnsiPen()..gray();
 final AnsiPen yalowPen = AnsiPen()..yellow();
 final AnsiPen magentaPen = AnsiPen()..magenta();
-
+//كلاس المكتبه 
 class Library {
   final List<Book> books;
 
@@ -31,13 +31,15 @@ class Library {
     data["library"] = books.map((element) => element.toJson()).toList();
     return data;
   }
-//method display all book 
+
+//فكشن لعرض جميع الكتب
   void displayAllBooks() {
     if (books.isEmpty) {
+      //في حال اول شغل البرنامج وطلب يشوف ليست راح تظهرله هذه الرساله
       print(yalowPen('No books available.'));
       return;
     }
-
+    //في حال كان ليست فيها كتب راح يتم عرضها بهذه الطريقه
     print(magentaPen("......................................................"));
     print(magentaPen("......................................................"));
     print(greenPen("--------------------- ALL Books ----------------------"));
@@ -55,7 +57,7 @@ class Library {
     }
   }
 
-  //methods add an removed books 
+  //فنكشن للحذف والاضافه
   void addBook(Book book) {
     books.add(book);
     print(greenPen("Book added successfully."));
@@ -72,5 +74,3 @@ class Library {
     return false;
   }
 }
-
-

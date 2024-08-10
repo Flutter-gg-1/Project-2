@@ -4,7 +4,7 @@ final AnsiPen greenPen = AnsiPen()..green();
 final AnsiPen bluePen = AnsiPen()..blue();
 final AnsiPen yalowPen = AnsiPen()..yellow();
 final AnsiPen magentaPen = AnsiPen()..magenta();
-
+//كلاس book 
 class Book {
   final String id;
   final String title;
@@ -45,7 +45,7 @@ class Book {
     };
   }
 
-//methods display
+//فنكشن العرض الفاتوره 
   void display() {
     print(greenPen("ID:$magentaPen$id"));
     print(greenPen("Title:$magentaPen$title"));
