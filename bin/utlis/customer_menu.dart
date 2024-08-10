@@ -5,8 +5,8 @@ import 'print_with_color.dart';
 customerMenu() {
   Customer customorFunction = Customer();
   const instructure =
-      '1| Buy a book'
-      '\n2| Show book list';
+      '1| Buy a book 📚'
+      '\n2| Show book list 📖';
 
   PrintWithColor.green(instructure);
   PrintWithColor.red('0|exit');
@@ -23,6 +23,6 @@ customerMenu() {
     case '0':
       break;
     default:
-    PrintWithColor.red('Wrong input');
+    PrintWithColor.red('⚠️Wrong input');
   }
 }

@@ -4,15 +4,15 @@ import '../../utlis/print_with_color.dart';
 
 class Customer{
 
-  buyABook(){
-    PrintWithColor.blue('==========Welcom===========');
-    buy();
+  buyABook()async{
+    PrintWithColor.blue('==========Welcome===========');
+    await buy();
     PrintWithColor.blue('===========================');
   }
 
-  showBookList(){
+  showBookList()async{
     PrintWithColor.blue('==========Welcom===========');
-    bookDisplayer();
+    await bookDisplayer();
     PrintWithColor.blue('===========================');
   }
 }

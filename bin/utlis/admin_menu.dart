@@ -34,6 +34,6 @@ adminMenu() {
     case '0':
       break;
     default:
-    PrintWithColor.red('Wrong input');
+    PrintWithColor.red('⚠️Wrong input');
   }
 }

@@ -1,39 +1,37 @@
-import 'dart:io';
 import '../../function/admin_function/add.dart';
 import '../../function/admin_function/add_account.dart';
 import '../../function/admin_function/receipt_displayer.dart';
 import '../../function/admin_function/remove.dart';
 import '../../function/display.dart';
 import '../../utlis/print_with_color.dart';
-import '../library_data.dart';
 
 class Admin {
   static List receiptLog = [];
-  void addBook() {
+  void addBook()async{
     PrintWithColor.blue('=========Add Book=======');
-     add();
+    await add();
     PrintWithColor.blue('========================');
   }
 
-  void removeBook() {
+  void removeBook()async{
     PrintWithColor.blue('=========Remove Book=======');
-    remove();
+    await remove();
     PrintWithColor.blue('===========================');
   }
 
-  void displayReceipt() {
+  void displayReceipt()async{
     PrintWithColor.blue('=========Receipt Records=======');
-    receiptDisplayer();
+    await receiptDisplayer();
     PrintWithColor.blue('===============================');
   }
 
-  void displayBook() {
+  void displayBook()async{
     PrintWithColor.blue('=========================');
-    bookDisplayer();
+    await bookDisplayer();
     PrintWithColor.blue('=========================');
   }
 
-  void addCustomorAccount() {
+  void addCustomorAccount(){
     PrintWithColor.blue('=========Add Account=======');
      addAccount();
     PrintWithColor.blue('===========================');
