@@ -1,6 +1,7 @@
 import '../library_list.dart';
 import 'dart:io';
 import 'receipt.dart';
+import '../color_print.dart/print_with_colors.dart';
 
 //this function is used by a customer to buy a book form the library
 buyBook(
@@ -15,19 +16,21 @@ buyBook(
       break;
     }
   }
+
   //cheack book is exist
   if (book.isEmpty) {
-    print("X Book ID does not exist! X");
+    printWithColor(text: "X Book ID does not exist! X", color: "Red");
     return;
   }
 
   // Check if the requested quantity is valid
   if (bookQuantity <= 0) {
-    print("X Quantity must more than zero! X");
+    printWithColor(text: "X Quantity must more than zero! X", color: "Red");
     return;
   }
   if (bookQuantity > book['quantity']) {
-    print("X Not enough book available! X");
+    printWithColor(text: "X Not enough book available! X", color: "Red");
+
     return;
   }
 
@@ -38,7 +41,9 @@ buyBook(
   if (book['quantity'] == 0) {
     libraryList.remove(book);
   }
-  print(" * The book with ID $bookId has been purchased successfully *");
+  printWithColor(
+      text: " * The book with ID $bookId has been purchased successfully *",
+      color: "Green");
 
   stdin.readLineSync();
 }

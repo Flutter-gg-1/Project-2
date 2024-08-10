@@ -1,6 +1,7 @@
 import '../library_list.dart';
 import 'dart:io';
 import '../receipt_list.dart';
+import '../color_print.dart/print_with_colors.dart';
 
 //function to create receipt for purchases
 receipt({required String bookId, required int customerId}) {
@@ -31,11 +32,13 @@ receipt({required String bookId, required int customerId}) {
     };
 
     receiptList.add(receiptData);
-    print(
-        " * Receipt with ID $receiptId for customer $customerId is added successfully * ");
+    printWithColor(
+        text:
+            " * Receipt with ID $receiptId for customer $customerId is added successfully * ",
+        color: "Green");
     receiptId++;
   } else {
-    print(" X Book with ID $bookId not found X ");
+    printWithColor(text: " X Book with ID $bookId not found X ", color: "Red");
   }
 
   stdin.readLineSync();

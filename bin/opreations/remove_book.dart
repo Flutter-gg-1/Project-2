@@ -1,5 +1,6 @@
 import '../library_list.dart';
 import 'dart:io';
+import '../color_print.dart/print_with_colors.dart';
 
 //this function is used by the admin to remove a book from the library
 removebook({required String bookId}) {
@@ -14,9 +15,11 @@ removebook({required String bookId}) {
   //error handling if the book ID is not exist
   if (book.isNotEmpty) {
     libraryList.remove(book);
-    print(" * The book with ID $bookId is removed successfully *");
+    printWithColor(
+        text: " * The book with ID $bookId is removed successfully * ",
+        color: "Green");
   } else {
-    print(" X Book ID is not exist! X ");
+    printWithColor(text: " X Book ID is not exist! X ", color: "Red");
   }
   stdin.readLineSync();
 }

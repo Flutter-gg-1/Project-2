@@ -1,5 +1,6 @@
 import 'dart:io';
 import '../receipt_list.dart';
+import '../color_print.dart/print_with_colors.dart';
 
 //this function is used to display receipt for customer using customer's ID
 customerReceipt({required int customerId}) {
@@ -12,20 +13,36 @@ customerReceipt({required int customerId}) {
   }
   //if not empty print receipt
   if (receipt.isNotEmpty) {
-    print("\n_______________ Customer $customerId receipts _______________ \n");
-    print(" * Receipt ID is: ${receipt["receiptId"]}");
-    print(" * Customer ID is: ${receipt["customerId"]}");
-    print(" * Purchase date is: ${receipt["purchaseDate"]}");
-    print(" * Book ID is: ${receipt["bookId"]}");
-    print(" * Book title is: ${receipt["bookTitle"]}");
-    print(" * book Price is: ${receipt["bookPrice"]}");
-    print(" * book Quantitye is: ${receipt["bookQuantity"]}");
-    print(" * book Authors is: ${receipt["bookAuthors"]}");
-    print(" * book Categories is: ${receipt["bookCategories"]}");
-    print(" * book Year is: ${receipt["bookYear"]}");
-    print("_________________________________________________\n");
+    printWithColor(
+        text:
+            "\n_______________ Customer $customerId receipts _______________ \n",
+        color: "Black");
+    printWithColor(
+        text: " * Receipt ID is: ${receipt["receiptId"]}", color: "Cyan");
+    printWithColor(
+        text: " * Customer ID is: ${receipt["customerId"]}", color: "Cyan");
+    printWithColor(
+        text: " * Purchase date is: ${receipt["purchaseDate"]}", color: "Cyan");
+    printWithColor(text: " * Book ID is: ${receipt["bookId"]}", color: "Cyan");
+    printWithColor(
+        text: " * Book title is: ${receipt["bookTitle"]}", color: "Cyan");
+    printWithColor(
+        text: " * book Price is: ${receipt["bookPrice"]}", color: "Cyan");
+    printWithColor(
+        text: " * book Quantitye is: ${receipt["bookQuantity"]}",
+        color: "Cyan");
+    printWithColor(
+        text: " * book Authors is: ${receipt["bookAuthors"]}", color: "Cyan");
+    printWithColor(
+        text: " * book Categories is: ${receipt["bookCategories"]}",
+        color: "Cyan");
+    printWithColor(
+        text: " * book Year is: ${receipt["bookYear"]}", color: "Cyan");
+    printWithColor(
+        text: "_________________________________________________\n",
+        color: "Black");
   } else {
-    print("there is no custmer id $customerId");
+    printWithColor(text: "There is no custmer id $customerId", color: "Red");
   }
   stdin.readLineSync();
 }

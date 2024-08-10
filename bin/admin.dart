@@ -6,21 +6,27 @@ import 'opreations/customer_receipt.dart';
 import 'opreations/all_receipts.dart';
 import 'receipt_list.dart';
 import 'library_list.dart';
+import 'color_print.dart/print_with_colors.dart';
 
 admin() {
   //variable
   bool isExit = false;
   //loop of admin opreation
   do {
-    print("\n_______________Welcome to Admin System_______________\n");
-    print("* Select what type of opreation do you want to perform:");
-    print("0: Add Book");
-    print("1: Remove Book");
-    print("2: View all receipt of purchases");
-    print("3: View receipt of purchases by customer ID");
-    print("Q: Exit");
+    printWithColor(
+        text: "\n_______________Welcome to Admin System_______________\n",
+        color: "Magenta");
+    printWithColor(
+        text: "* Select what type of opreation do you want to perform:",
+        color: "Blue");
+    printWithColor(text: "0: Add Book", color: "Blue");
+    printWithColor(text: "1: Remove Book", color: "Blue");
+    printWithColor(text: "2: Display all receipt of purchases", color: "Blue");
+    printWithColor(
+        text: "3: Display receipt of purchases by customer ID", color: "Blue");
+    printWithColor(text: "Q: Exit", color: "Blue");
 
-    print("Enter your choice:");
+    printWithColor(text: "Enter your choice:", color: "Blue");
     String? userInput = stdin.readLineSync();
     //error handling
     try {
@@ -33,7 +39,7 @@ admin() {
         case "0":
           try {
             //add and cheack book id
-            print("Enter Book ID :");
+            printWithColor(text: "Enter Book ID :", color: "Blue");
             String? bookId = stdin.readLineSync();
             if (bookId == null || bookId.isEmpty) {
               throw FormatException("X Book ID cannot be empty X");
@@ -45,13 +51,13 @@ admin() {
             }
 
             //add and cheack book title
-            print("Enter Book title :");
+            printWithColor(text: "Enter Book title:", color: "Blue");
             String? bookTitle = stdin.readLineSync();
             if (bookTitle == null || bookTitle.isEmpty) {
               throw FormatException("X Book title cannot be empty X");
             }
             //add and cheack book authors
-            print("Enter Book authors :");
+            printWithColor(text: "Enter Book authors :", color: "Blue");
             String? authorsInput = stdin.readLineSync();
             List<String> bookAuthors = authorsInput != null
                 ? authorsInput
@@ -65,7 +71,7 @@ admin() {
             }
 
             //add and cheack book categories
-            print("Enter Book categories :");
+            printWithColor(text: "Enter Book categories :", color: "Blue");
             String? categoriesInput = stdin.readLineSync();
             List<String> bookCategories = categoriesInput != null
                 ? categoriesInput
@@ -79,23 +85,24 @@ admin() {
                   "X At least one category must be entered X");
             }
             //add and cheack book year
-            print("Enter Book year :");
+            printWithColor(text: "Enter Book year :", color: "Blue");
             int bookYear = int.parse(stdin.readLineSync()!);
-            if (bookYear <= 1500 && bookYear >= 2024) {
+            if (bookYear <= 1500 || bookYear >= 2024) {
               throw FormatException(
                   "X Book year must be between 1500 and 2024 X");
             }
             //add and cheack book quantity
-            print("Enter Book quantity :");
+            printWithColor(text: "Enter Book quantity :", color: "Blue");
             int bookQuantity = int.parse(stdin.readLineSync()!);
             if (bookQuantity <= 0) {
               throw FormatException("X Book quantity must be at least one X");
             }
 
             //add and cheack book price
-            print("Enter Book price (more than 20):");
+            printWithColor(
+                text: "Enter Book price (more than 20):", color: "Blue");
             double bookPrice = double.parse(stdin.readLineSync()!);
-            if (bookPrice <= 20 && bookPrice >= 2000) {
+            if (bookPrice <= 20 || bookPrice >= 2000) {
               throw FormatException(
                   "X Book price must be between 20 and 2000 X");
             }
@@ -109,13 +116,13 @@ admin() {
                 bookQuantity: bookQuantity,
                 bookPrice: bookPrice);
           } catch (e) {
-            print("X Error: $e X");
+            printWithColor(text: "X Error: $e X", color: "Red");
           }
           break;
 
         //Remove Book
         case "1":
-          print("Enter Book ID :");
+          printWithColor(text: "Enter Book ID :", color: "Blue");
           String bookId = stdin.readLineSync()!;
           removebook(bookId: bookId);
 
@@ -128,7 +135,7 @@ admin() {
 
         //View receipt of purchases by customer ID
         case "3":
-          print("Enter Customer ID :");
+          printWithColor(text: "Enter Customer ID :", color: "Blue");
           int customerId = int.parse(stdin.readLineSync()!);
           customerReceipt(customerId: customerId);
           break;
@@ -139,13 +146,15 @@ admin() {
           break;
 
         default:
-          print("X Invalid choice please select choice from the list X");
+          printWithColor(
+              text: "X Invalid choice please select choice from the list X",
+              color: "Red");
       }
     } catch (e) {
-      print("X Error: $e X");
+      printWithColor(text: "X Error: $e X", color: "Red");
     }
 
     //end loop
   } while (!isExit);
-  print("See you later (:");
+  printWithColor(text: "See you later (:", color: "Magenta");
 }

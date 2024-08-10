@@ -2,25 +2,35 @@ import 'dart:io';
 import 'admin.dart';
 import 'customer.dart';
 import 'exit_method.dart';
+import 'color_print.dart/print_with_colors.dart';
 
 void main() {
-
   //variable
   bool isExit = false;
   //loop of opreation
   do {
     print("\n\n\n\n\n");
-    print(" _____________________________________________________ ");
-    print("|                                                     |");
-    print("|              Welcome to Library System              |");
-    print("|                                                     |");
-    print("|_____________________________________________________|");
-    print("\n\n* Select user type:");
-    print("0: Admin");
-    print("1: Customer");
-    print("Q: Exit");
+    printWithColor(
+        text: " _____________________________________________________ ",
+        color: "Magenta");
+    printWithColor(
+        text: "|                                                     |",
+        color: "Magenta");
+    printWithColor(
+        text: "|              Welcome to Library System              |",
+        color: "Magenta");
+    printWithColor(
+        text: "|                                                     |",
+        color: "Magenta");
+    printWithColor(
+        text: "|_____________________________________________________|",
+        color: "Magenta");
 
-    print("Enter your choice:");
+    printWithColor(text: "\n\n * Select user type:", color: "Blue");
+    printWithColor(text: "0: Admin", color: "Blue");
+    printWithColor(text: "1: Customer", color: "Blue");
+    printWithColor(text: "Q: Exit", color: "Blue");
+    printWithColor(text: "\n Enter your choice:", color: "Blue");
     String? userInput = stdin.readLineSync();
     //error handling
     try {
@@ -45,13 +55,15 @@ void main() {
           break;
 
         default:
-          print("X Invalid choice please select choice from the list X");
+          printWithColor(
+              text: "X Invalid choice please select choice from the list X",
+              color: "Red");
       }
     } catch (e) {
-      print("X Error: $e X");
+      printWithColor(text: "X Error: $e X", color: "Red");
     }
 
     //end loop
   } while (!isExit);
-  print("See you later (:");
+  printWithColor(text: "See you later (:", color: "Magenta");
 }

@@ -2,18 +2,23 @@ import 'exit_method.dart';
 import 'dart:io';
 import 'opreations/customer_receipt.dart';
 import 'opreations/buy_book.dart';
+import 'color_print.dart/print_with_colors.dart';
 
 customer() {
   //variable
   bool isExit = false;
   //loop of admin opreation
   do {
-    print("\n_______________Welcome to Customer System_______________\n");
-    print("* Select what type of opreation do you want to perform:");
-    print("0: buy a book");
-    print("1: View receipt of purchases");
-    print("Q: Exit");
-    print("Enter your choice:");
+    printWithColor(
+        text: "\n_______________Welcome to Customer System_______________\n",
+        color: "Magenta");
+    printWithColor(
+        text: "* Select what type of opreation do you want to perform:",
+        color: "Blue");
+    printWithColor(text: "0: buy a book", color: "Blue");
+    printWithColor(text: "1: View receipt of purchases", color: "Blue");
+    printWithColor(text: "Q: Exit", color: "Blue");
+    printWithColor(text: "Enter your choice:", color: "Blue");
     String? userInput = stdin.readLineSync();
 
     //error handling
@@ -25,11 +30,11 @@ customer() {
       switch (userInput) {
         //buy a Book
         case "0":
-          print("Enter Book ID :");
+          printWithColor(text: "Enter Book ID :", color: "Blue");
           String bookId = stdin.readLineSync()!;
-          print("Enter Customer ID :");
+          printWithColor(text: "Enter Customer ID :", color: "Blue");
           int customerId = int.parse(stdin.readLineSync()!);
-          print("Enter Book Quantity :");
+          printWithColor(text: "Enter Book Quantity :", color: "Blue");
           int bookQuantity = int.parse(stdin.readLineSync()!);
           buyBook(
               bookId: bookId,
@@ -39,7 +44,7 @@ customer() {
 
         //View receipt of purchases by customer ID
         case "1":
-          print("Enter Customer ID :");
+          printWithColor(text: "Enter Customer ID :", color: "Blue");
           int customerId = int.parse(stdin.readLineSync()!);
           customerReceipt(customerId: customerId);
           break;
@@ -50,13 +55,15 @@ customer() {
           break;
 
         default:
-          print("X Invalid choice please select choice from the list X");
+          printWithColor(
+              text: "X Invalid choice please select choice from the list X",
+              color: "Red");
       }
     } catch (e) {
-      print("X Error: $e X");
+      printWithColor(text: "X Error: $e X", color: "Red");
     }
 
     //end loop
   } while (!isExit);
-  print("See you later (:");
+  printWithColor(text: "See you later (:", color: "Magenta");
 }

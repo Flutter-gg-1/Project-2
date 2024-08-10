@@ -1,5 +1,6 @@
 import '../library_list.dart';
 import 'dart:io';
+import '../color_print.dart/print_with_colors.dart';
 
 //this function is used by the admin to add a new book to library
 addBook({
@@ -32,14 +33,14 @@ addBook({
   };
   //to add new book to library system
   libraryList.add(newBook);
-  print(" * The book is added successfully * ");
-  print(" * Book ID is: $id");
-  print(" * Book title is: $title");
-  print(" * Book authors is: $authors");
-  print(" * Book categories is: $categories");
-  print(" * Book year is: $year");
-  print(" * Book quantity is: $quantity");
-  print(" * Book price is: $price");
+  printWithColor(text: " * The book is added successfully * ", color: "Green");
+  printWithColor(text: " * Book ID is: $id", color: "Green");
+  printWithColor(text: " * Book title is: $title", color: "Green");
+  printWithColor(text: " * Book authors is: $authors", color: "Green");
+  printWithColor(text: " * Book categories is: $categories", color: "Green");
+  printWithColor(text: " * Book year is: $year", color: "Green");
+  printWithColor(text: " * Book quantity is: $quantity", color: "Green");
+  printWithColor(text: " * Book price is: $price", color: "Green");
 
   stdin.readLineSync();
 }
