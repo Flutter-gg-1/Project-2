@@ -71,8 +71,6 @@ class UserPermissions {
         book.quantity--;
         purchasedBooks.add(book);
         print("Book purchased successfully");
-      } else {
-        print("Book out of stock");
       }
     } else {
       print("Book not found");

@@ -1,121 +1,87 @@
 # Library System Project 📚
 
-Welcome to the Library System Project! This project involves creating a command-line application in Dart to manage a library. The system will allow users to perform various operations based on their role: Admin or Customer.
+## Description
+Welcome to the Library System Project! In this project, you'll develop a command-line application in Dart to manage a library. The system will support various operations tailored to different user roles, including Admin and Customer.
 
-## Project Overview
+## Getting Started
 
-You will develop a Library System that can perform the following operations:
+### Dependencies
+- Dart SDK
 
-- **Add a Book**: Add new books to the library.
-- **Remove a Book**: Remove books from the library.
-- **Buy a Book**: Purchase a book if it's available.
-- **Display Receipt**: Show a receipt for the purchase.
+### Installing
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/imahacs/Project-2
+    ```
+2. **Navigate to the project directory:**
 
-## JSON Data Structure
-The library data is stored in a JSON format with the following structure:
+    ```bash
+    cd project-2
+    ```
+3. **Install the required dependencies:**
+
+    ```bash
+    dart pub get
+    ```
+4. **Ensure that you have the Dart SDK installed.** If not, download and install it from the [Dart's official website](https://dart.dev/get-dart).
+
+### Executing Program
+To run the program, use the following command:
+```sh
+dart run
 ```
-{
-  "library": [
-    {
-      "id": "1",
-      "title": "The Great Gatsby",
-      "authors": ["F. Scott Fitzgerald"],
-      "categories": ["Fiction"],
-      "year": 1925,
-      "quantity": 5,
-      "price": 10.99
-    },
-    {
-      "id": "2",
-      "title": "To Kill a Mockingbird",
-      "authors": ["Harper Lee"],
-      "categories": ["Fiction", "Classic"],
-      "year": 1960,
-      "quantity": 0,
-      "price": 12.99
-    },
-    {
-      "id": "3",
-      "title": "1984",
-      "authors": ["George Orwell"],
-      "categories": ["Dystopian", "Science Fiction"],
-      "year": 1949,
-      "quantity": 3,
-      "price": 15.49
-    },
-    {
-      "id": "4",
-      "title": "Pride and Prejudice",
-      "authors": ["Jane Austen"],
-      "categories": ["Romance", "Classic"],
-      "year": 1813,
-      "quantity": 4,
-      "price": 8.99
-    },
-    {
-      "id": "5",
-      "title": "The Catcher in the Rye",
-      "authors": ["J.D. Salinger"],
-      "categories": ["Fiction"],
-      "year": 1951,
-      "quantity": 2,
-      "price": 13.49
-    }
-  ]
-}
+### Sample Output
+The program will provide the following outputs based on user roles:
 
-```
-## Attributes
+**Admin**:
 
-- **id**: Unique identifier for the book.
-- **title**: Title of the book.
-- **authors**: List of authors.
-- **categories**: List of categories.
-- **year**: Year of publication.
-- **quantity**: Number of copies available.
+- Add, remove, or update books.
+- View receipts for purchases.
+- View books.
 
-## User Roles
+**Customer**:
 
-### Admin
+- Purchase available books.
+- View receipts for their purchases.
+- View books.
 
-- Can add or remove books.
-- Can view the receipt for purchases.
+### Example Usage
+- Admin login correctly:
 
-### Customer
+    <img src="assets/img/output1.png" alt="dart" width="400" style= "" />
 
-- Can buy books if they are available.
-- Can view the receipt for their purchase.
+- Error handling "FormatException":
 
-## Instructions
+    <img src="assets/img/output2.png" alt="dart" width="400" style= "" />
 
-### Set Up the Project
+- Book purchase successfully:
 
-1. Create a Dart command-line application.
-2. Use the provided JSON data to initialize your library.
+    <img src="assets/img/output3.png" alt="dart" width="300" style= "" />
 
-### Implement Operations
+- View receipt:
 
-- **Add a Book**: Write a function to add new books to the library.
-- **Remove a Book**: Implement a function to remove books from the library.
-- **Buy a Book**: Create a function to handle book purchases. Ensure the book is available before completing the purchase.
-- **Display Receipt**: Develop a function to display a receipt for the purchased books.
+    <img src="assets/img/output4.png" alt="dart" width="270" style= "" />
 
-### Role Management
+## Help
+For common issues or troubleshooting:
 
-- Implement role-based functionality to differentiate between Admin and Customer actions.
+- Ensure all dependencies are correctly installed.
+- Verify that your Dart SDK is up to date.
+- Review the code and verify that JSON data structures match expected formats.
 
-## Submission
-Please submit your project by including all necessary Dart files and a brief description of how to run the application.
+For additional help, consult the Dart documentation or open an issue on the project's GitHub repository.
 
-## Evaluation
+## Authors
+- imahacs - [GitHub Profile](https://github.com/imahacs)
 
-- **Functionality**: Ensure all required functions work correctly and handle edge cases.
-- **Code Quality**: Write clean, readable, and well-organized code. Use meaningful variable and function names.
-- **Error Handling**: Implement proper error handling for invalid operations and edge cases.
-- **User Interface**: For a command-line application, ensure that prompts and outputs are user-friendly and clear.
-- **Role Enforcement**: Verify that user roles are properly enforced and only allow appropriate actions for each role.
+## Version History
+- 0.1 - Initial Release
 
-## Deadline
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+.
 
-Please submit your completed project by **Sunday, August 11, 2024, at 9:59 AM**.
+## Acknowledgments
+- Inspired by various Dart and JSON handling tutorials.
+- Thanks to the open-source community for their contributions and support.
 

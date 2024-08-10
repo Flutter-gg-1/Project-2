@@ -9,7 +9,7 @@ class Accounts {
     print("Please enter your username:");
     String? username = stdin.readLineSync()?.trim();
 
-    if (username == null || username.isEmpty) {
+    if (username == "") {
       print("Username cannot be empty. Please try again.");
       return;
     }
@@ -17,7 +17,7 @@ class Accounts {
     print("Please enter your password:");
     String? password = stdin.readLineSync()?.trim();
 
-    if (password == null || password.isEmpty) {
+    if (password == "") {
       print("Password cannot be empty. Please try again.");
       return;
     }
