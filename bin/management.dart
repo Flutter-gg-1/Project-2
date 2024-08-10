@@ -25,10 +25,10 @@ class Accounts {
     try {
       if (username == "admin" && password == "admin") {
         print("Admin logged in\n");
-        AdminPermissions();
+        AdminPermissions().adminInput();
       } else if (username == "user" && password == "user") {
         print("User logged in\n");
-        UserPermissions();
+        UserPermissions().userInput();
       } else {
         print("Invalid username or password. Please try again.");
       }
@@ -38,7 +38,7 @@ class Accounts {
   }
 
   void signOut() {
-    print("You are signed out");
-    print("Thank you for using the library system :D");
+    print("You are signed out\n");
+    logIn();
   }
 }

@@ -1,5 +1,5 @@
 import 'dart:io';
-
+import 'management.dart';
 import 'package:project_2/database/json/library.dart';
 import 'package:project_2/database/model/model.dart';
 
@@ -7,15 +7,43 @@ class UserPermissions {
   Library library = Library.fromJson(libraryBook);
 
   userInput() {
-    print("Please enter your choice:");
-    print("01. View books");
-    print("02. Purchase book");
-    print("03. View receipt");
-    print("04. View purchased books");
-    print("05. Sign out");
+    int userChoice;
+    do {
+      print("Please enter your choice:");
+      print("1. View books");
+      print("2. Purchase book");
+      print("3. View receipt");
+      print("4. View purchased books");
+      print("5. Sign out");
+      print("6. Exit");
+      stdout.write("Enter your choice: ");
 
-    int userChoice = int.parse(stdin.readLineSync()!);
-    return userChoice;
+      userChoice = int.parse(stdin.readLineSync()!);
+
+      switch (userChoice) {
+        case 1:
+          viewBooks();
+          break;
+        case 2:
+          purchaseBook();
+          break;
+        case 3:
+          viewReceipt();
+          break;
+        case 4:
+          viewPurchasedBooks();
+          break;
+        case 5:
+          Accounts().signOut();
+          break;
+        case 6:
+          print("Thank you for using the library system :D");
+          print("Goodbye!");
+          break;
+        default:
+          print("Invalid option");
+      }
+    } while (userChoice != 6);
   }
 
   //Can view all books.
