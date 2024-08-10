@@ -27,7 +27,7 @@ class Menu {
         PrintWithColor.green('Good bye 😊');
         exit(0);
       default:
-        PrintWithColor.red('⚠️Wrong input');
+        PrintWithColor.red('⚠️  Wrong input');
     }
   }
 }

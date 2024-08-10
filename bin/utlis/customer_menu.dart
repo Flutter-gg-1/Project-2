@@ -1,11 +1,12 @@
 import 'dart:io';
 import '../model/users/customer.dart';
+import 'menu.dart';
 import 'print_with_color.dart';
 
-customerMenu() {
+customerMenu() async {
   Customer customorFunction = Customer();
-  const instructure =
-      '1| Buy a book 📚'
+  Menu restart = Menu();
+  const instructure = '1| Buy a book 📚'
       '\n2| Show book list 📖';
 
   PrintWithColor.green(instructure);
@@ -15,14 +16,15 @@ customerMenu() {
   PrintWithColor.blue('================================================== \n');
   switch (input) {
     case '1':
-    customorFunction.buyABook();
+      customorFunction.buyABook();
       break;
     case '2':
-    customorFunction.showBookList();
+      await customorFunction.showBookList();
       break;
     case '0':
       break;
     default:
-    PrintWithColor.red('⚠️Wrong input');
+      PrintWithColor.red('⚠️   Wrong input');
+      customerMenu();
   }
 }

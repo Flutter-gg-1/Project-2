@@ -19,5 +19,5 @@ bookDisplayer() async {
 
     PrintWithColor.purple('=========================\n');
   }
-  PrintWithColor.green('========⬆️Book list⬆️=============');
+  PrintWithColor.green('====== ⬆️  Book list ⬆️  =======');
 }

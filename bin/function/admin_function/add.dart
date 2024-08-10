@@ -55,10 +55,9 @@ add() async {
         .writeAsStringSync(updatedJsonData, mode: FileMode.write);
 
     PrintWithColor.green('Book has been add to the library');
-    stdin.readLineSync();
 
   } catch (e) {
-    PrintWithColor.red('⚠️error $e Try again');
+    PrintWithColor.red('⚠️  error $e Try again');
     add();
   }
 }
