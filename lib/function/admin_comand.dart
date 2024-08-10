@@ -307,6 +307,8 @@ whileauthors :
 
         case 3 :
 
+        library.displayReceipt();
+
         break;
 
 

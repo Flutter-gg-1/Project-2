@@ -6,12 +6,6 @@ import 'package:pro2/models/user_model.dart';
 class SystemModel {
   List<BookModel> library = [];
 
-
-  
-
-
-  
-
   static int lastBookId = 0;
 
   // this List have UserModel and in it have the first admin that can add new Admin in the system
@@ -19,13 +13,10 @@ class SystemModel {
     UserModel(userName: "admin", passWord: "1234", isAdmin: true)
   ];
 
-
-
-
   late UserModel user;
 
-  SystemModel({required this.library}){
-      user = usermModelLis[0];
+  SystemModel({required this.library}) {
+    user = usermModelLis[0];
   }
 
   factory SystemModel.fromJson(Map<String, dynamic> json) {
@@ -100,14 +91,15 @@ class SystemModel {
   }
 
   void buyBook() {
-    print("\n######       chose book form this list that you want to buy     ######\n");
+    print(
+        "\n######       chose book form this list that you want to buy     ######\n");
 
     for (var val in library) {
       print("-" * 25);
       print("\nid ---> ${val.id}");
       print("\ntitle ---> ${val.title}");
-    //  for authors
-      print("\nauthors ----> ");
+      //  for authors
+      stdout.write("\nauthors ----> ");
       for (var authName in val.authors) {
         //  stdout.write() will print in the same line and the if condtion is jsut for dont add (,) in the end
         if (authName == val.authors.last) {
@@ -118,7 +110,7 @@ class SystemModel {
       }
 
 // for categories
-        print("\ncategories ----> ");
+      stdout.write("\ncategories ----> ");
       for (var categoriesName in val.categories) {
         //  stdout.write() will print in the same line and the if condtion is jsut for dont add (,) in the end
         if (categoriesName == val.categories.last) {
@@ -131,71 +123,90 @@ class SystemModel {
       print("\nyear ----> ${val.year}");
       print("\nquantity ----> ${val.quantity}");
       print("\nprice ----> ${val.price}");
-      
-
 
       print("-" * 25);
     }
 
-     whileBreak :
-    while(true){
+    whileBreak:
+    while (true) {
+      print(
+          "\n######     chose book form this list that you want to buy above enter (0) if you want to cancel     ######\n");
 
-      print("\n######     chose book form this list that you want to buy above enter (0) if you want to cancel     ######\n");
-
-
-      try{
-
+      try {
         int buyId = int.parse(stdin.readLineSync()!);
 
-        if(buyId == 0){
-
+        if (buyId == 0) {
           break whileBreak;
-
         }
-        
-
 
         for (int i = 0; i < library.length; i++) {
-          
-        if (library[i].id == buyId.toString()) {
-          
+          if (library[i].id == buyId.toString()) {
+            if (library[i].quantity == 0) {
+              print("\n#####    sorry book is out of stock!   #######\n");
+              break;
+            } else {
+              library[i].quantity -= 1;
 
-          if(library[i].quantity == 0){
+              user.bookBuy.add(library[i]);
+              print(
+                  "\n#####    book (${library[i].title}) has been purchased   #######\n");
 
-            print("\n#####    sorry book is out of stock!   #######\n");
-            
-
-
-
-          }else{
-
-            library[i].quantity -= 1 ;
-
-            user.bookBuy.add(library[i]);
-            print("\n#####    book (${library[i].title}) has been purchased   #######\n");
-
-            break whileBreak;
-
-            
-
-
+              break whileBreak;
+            }
+          } else if (i == library.length - 1) {
+            print("\n#####    chose book form the list!   #######\n");
           }
         }
-        else if( i == library.length-1){
-          print("\n#####    chose book form the list!   #######\n");
+      } catch (err) {
+        print("\n#####    eorr only int no string   #######\n");
+      }
+    }
+  }
 
+  void displayReceipt() {
+    print('\n');
+
+
+    if(user.bookBuy.isNotEmpty){
+      
+
+      print("\n#####   your Receipt   #######\n");
+
+    for (var val in user.bookBuy) {
+      print("-" * 25);
+
+      print("\ntitle ---> ${val.title}");
+      //  for authors
+      stdout.write("\nauthors ----> ");
+      for (var authName in val.authors) {
+        //  stdout.write() will print in the same line and the if condtion is jsut for dont add (,) in the end
+        if (authName == val.authors.last) {
+          stdout.write("$authName\n");
+        } else {
+          stdout.write("$authName , ");
         }
       }
 
-      
-
-
-      } catch(err){
-
-        print("\n#####    eorr only int no string   #######\n");
-
+// for categories
+      stdout.write("\ncategories ----> ");
+      for (var categoriesName in val.categories) {
+        //  stdout.write() will print in the same line and the if condtion is jsut for dont add (,) in the end
+        if (categoriesName == val.categories.last) {
+          stdout.write("$categoriesName\n");
+        } else {
+          stdout.write("$categoriesName , ");
+        }
       }
 
+      print("\nyear ----> ${val.year}");
+
+      print("\nprice ----> ${val.price}");
+
+      print("-" * 25);
+    }
+    }
+    else{
+      print("\n#####    you did not buy any book   #######\n");
     }
   }
 
