@@ -201,7 +201,7 @@ Enter cancel at anytime to exit this screen
           } else {
             if (verifyQuantity(quantityInput ?? '')) {
               var selectedQuantity = int.parse(quantityInput!);
-              if (book.quantity! >= selectedQuantity) {
+              if ((book.quantity ?? 0) >= selectedQuantity) {
                 if (selectedQuantity != 0) {
                   // Buy Book
                   library.buyBook(
@@ -209,7 +209,7 @@ Enter cancel at anytime to exit this screen
                       bookId: idInput!,
                       quantity: selectedQuantity);
 
-                  // book.quantity! -= selectedQuantity;
+                  book.quantity = (book.quantity ?? 0) - selectedQuantity;
                   ColorfulPrint.green('✅ Purchase Successful!');
                 } else {
                   ColorfulPrint.red(

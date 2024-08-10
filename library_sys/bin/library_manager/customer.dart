@@ -15,7 +15,6 @@ extension Customer on LibraryManager {
           bookName: selectedBook.title ?? '',
           quantity: quantity,
           price: selectedBook.price ?? 0));
-      print('Book Purchased');
     } else {
       print('Book Not Available!');
     }
