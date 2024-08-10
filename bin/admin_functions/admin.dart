@@ -1,6 +1,7 @@
 import 'dart:io';
-import 'global_varbiels.dart';
-import 'new_book.dart';
+import 'delete_book.dart';
+import '../global_varbiels.dart';
+import 'add_book.dart';
 
 admin() {
   bool isExit = false;
@@ -11,21 +12,26 @@ admin() {
     print("1. Add book");
     print("2. Delete book");
     print("3. View the receipt for users purchases");
+    print("4. Display all books");
     print("q. Exit");
     String input = stdin.readLineSync()!;
 
     switch (input) {
       case "1":
-        library.addBook(newBook());
-
+        addBook();
         break;
       case "2":
         print("enter id you want to delete");
         String bookId = stdin.readLineSync()!;
-        library.removeBook(bookId);
+        deleteBook(bookId);
 
         break;
       case "3":
+        print(receipt);
+        break;
+
+      case "4":
+        library.listAllLibrary();
         break;
 
       case "q" || "Q":

@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'admin.dart';
-import 'user.dart';
+import 'admin_functions/admin.dart';
+import 'user_functions/user.dart';
 
 void main() {
   bool isExit = false;

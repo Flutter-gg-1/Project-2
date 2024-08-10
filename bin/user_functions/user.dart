@@ -1,6 +1,8 @@
 import 'dart:io';
 
-import 'global_varbiels.dart';
+import 'buy_book.dart';
+import '../global_varbiels.dart';
+import 'receipt.dart';
 
 user(String usreName) {
   bool isExit = false;
@@ -18,11 +20,11 @@ user(String usreName) {
         library.listAllLibrary();
         print("\n Enter a book title you want to buy:");
         String title = stdin.readLineSync()!;
-        library.buyBook(title);
+        buyBook(title);
 
         break;
       case "2":
-        library.displayReceipts();
+        displayReceipts();
         break;
 
       case "q" || "Q":
