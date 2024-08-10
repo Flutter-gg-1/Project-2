@@ -12,4 +12,20 @@ void purchaseBook() {
       print(element);
     }
   }
+  print('\nEnter book id for purchase of book:');
+  int bookId = int.parse(stdin.readLineSync()!);
+  for (var element in libraryJSONData['library']) {
+    String bookIdChecked = bookId.toString();
+    if (element['id'] == bookIdChecked && libraryJSONData['library'].length > 0) {
+      element['quantity'] = element['quantity'] - 1;
+      print('\n_____________________________\n');
+      print('Book Id was $bookId\n');
+      print(element);
+      print('\nBook purchased successfully.\n');
+      break;
+    } else {
+      print('Book not found.\n');
+    }
+  }
+  customerDashboard();
 }
