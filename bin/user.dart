@@ -5,8 +5,9 @@ import 'package:project_2/database/model/model.dart';
 
 class UserPermissions {
   Library library = Library.fromJson(libraryBook);
+  List<Book> purchasedBooks = [];
 
-  userInput() {
+  void userInput() {
     int userChoice;
     do {
       print("Please enter your choice:");
@@ -46,7 +47,7 @@ class UserPermissions {
     } while (userChoice != 5);
   }
 
-  //Can view all books.
+  // Can view all books.
   void viewBooks() {
     print("View books");
     for (var book in library.books) {
@@ -59,7 +60,7 @@ class UserPermissions {
     }
   }
 
-  //Can purchase books.
+  // Can purchase books.
   void purchaseBook() {
     print("Purchase book");
     print("Please enter the book id:");
@@ -68,6 +69,7 @@ class UserPermissions {
       var book = library.books.firstWhere((element) => element.id == id);
       if (book.quantity > 0) {
         book.quantity--;
+        purchasedBooks.add(book);
         print("Book purchased successfully");
       } else {
         print("Book out of stock");
@@ -85,29 +87,19 @@ class UserPermissions {
     }
   }
 
-  //Can view the receipt for their purchases.
+  // Can view the receipt for their purchases.
   void viewReceipt() {
     print("View receipt");
-    print("Please enter the book id:");
-    String id = stdin.readLineSync()!;
-    if (library.books.any((element) => element.id == id)) {
-      var book = library.books.firstWhere((element) => element.id == id);
-      print("Title: ${book.title}");
-      print("Author: ${book.authors}");
-      print("Category: ${book.categories}");
-      print("Year: ${book.year}");
-      print("Quantity: ${book.quantity}");
-      print("Price: ${book.price}\n");
+    if (purchasedBooks.isEmpty) {
+      print("No purchases made yet.");
     } else {
-      print("Book not found");
-    }
-    try {
-      if (id == "") {
-        throw Exception("Please enter the book id");
+      for (var book in purchasedBooks) {
+        print("Title: ${book.title}");
+        print("Author: ${book.authors}");
+        print("Category: ${book.categories}");
+        print("Year: ${book.year}");
+        print("Price: ${book.price}\n");
       }
-    } catch (e) {
-      print(e);
-      return viewReceipt();
     }
   }
 }
