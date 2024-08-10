@@ -5,6 +5,15 @@ import '../model/user/user.dart';
 import '../model/user/customer.dart';
 import '../screens/menu.dart';
 import '../utils/login.dart';
+import 'package:ansicolor/ansicolor.dart';
+
+AnsiPen color = AnsiPen()..rgb(r: 1, g: 0.576, b: 0);
+AnsiPen gold = AnsiPen()..rgb(r: 0.7, g: 0.7, b: 0.25);
+AnsiPen cyan = AnsiPen()..cyan(bold: true);
+AnsiPen green = AnsiPen()..green(bold: true);
+AnsiPen yellow = AnsiPen()..yellow(bold: true);
+AnsiPen blue = AnsiPen()..blue(bold: true);
+AnsiPen red = AnsiPen()..red(bold: true); 
 
 void main(List<String> arguments) async {
   Library lib = Library([]);
@@ -13,11 +22,11 @@ void main(List<String> arguments) async {
 
   whileLoop:
   while (true) {
-    print('\n1- Register');
-    print('2- Login');
-    print('0- Exit');
+    print(yellow('\n1- Register'));
+    print(yellow('2- Login'));
+    print(yellow('0- Exit'));
 
-    stdout.write('\nEnter your choice: ');
+    stdout.write(cyan('\nEnter your choice: '));
     choice = stdin.readLineSync();
 
     switch (choice) {
@@ -29,7 +38,7 @@ void main(List<String> arguments) async {
       case '0':
       break whileLoop;
       default:
-      print('Invalid Choice!!');
+      print(red('Invalid Choice!!'));
     }
   }
 }

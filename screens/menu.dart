@@ -3,20 +3,23 @@ import '../model/user/customer.dart';
 import '../model/user/admin.dart';
 import '../model/library.dart';
 import 'dart:io';
+import '../bin/library_system.dart';
 
 menu(Library lib, User? user) {
   bool isExit = false;
 
+  print(Admin.customerList.length);
+
   do {
     if (user != null) {
       if (user is Admin) {
-        print('\n1- Add a Book');
-        print('2- Remove a Book');
-        print('3- Display All Customers');
-        print('4- Display All Books');
-        print('0- Exit');
+        print(yellow('\n1- Add a Book'));
+        print(yellow('2- Remove a Book'));
+        print(yellow('3- Display All Customers'));
+        print(yellow('4- Display All Books'));
+        print(yellow('0- Exit'));
 
-        stdout.write('\nEnter your choice: ');
+        stdout.write(cyan('\nEnter your choice: '));
         String? choice = stdin.readLineSync();
 
         switch (choice) {
@@ -24,15 +27,15 @@ menu(Library lib, User? user) {
             try{
               lib.addBook();
             }catch(e){
-              print(e);
+              print(red(e));
             }
           case '2':
-            stdout.write('Enter Book ID: ');
+            stdout.write(cyan('Enter Book ID: '));
             String? bookId = stdin.readLineSync();
             try {
               lib.removeBook(bookId!);
             } catch (e) {
-              print(e);
+              print(red(e));
             }
           case '3':
             Admin.displayAllCustomers();
@@ -41,15 +44,15 @@ menu(Library lib, User? user) {
           case '0':
             isExit = true;
           default:
-            print('Invalid Choice!!');
+            print(red('Invalid Choice!!'));
         }
       } else {
-        print('\n1- Display available Books');
-        print('2- Display Purchased Books');
-        print('3- Buy a Book');
-        print('0- Exit');
+        print(yellow('\n1- Display available Books'));
+        print(yellow('2- Display Purchased Books'));
+        print(yellow('3- Buy a Book'));
+        print(yellow('0- Exit'));
 
-        stdout.write('\nEnter your choice: ');
+        stdout.write(cyan('\nEnter your choice: '));
         String? choice = stdin.readLineSync();
 
         switch (choice) {
@@ -59,21 +62,21 @@ menu(Library lib, User? user) {
             (user as Customer).displayPurchasedBooks();
           case '3':
             lib.displayAllBooks();
-            stdout.write('Enter Book ID: ');
-            String? bookId = stdin.readLineSync();
+            stdout.write(cyan('Enter Book ID: '));
+            String bookId = stdin.readLineSync()!;
             try {
-              lib.buyBook(user: user, bookId: bookId!);
-            } catch (error) {
-              print('Please enter a value in Book ID');
+              lib.buyBook(user: user, bookId: bookId);
+            } catch (e) {
+              print(red(e));
             }
           case '0':
             isExit = true;
           default:
-            print('Invalid Choice!!');
+            print(red('Invalid Choice!!'));
         }
       }
     }else{
-     print('Login Failed!!');
+     print(red('Login Failed!!'));
       isExit = true;
     }
   } while (!isExit);

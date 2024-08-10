@@ -1,4 +1,5 @@
 import 'dart:io';
+import '../bin/library_system.dart';
 
 class Book {
   String? id;
@@ -44,44 +45,44 @@ class Book {
   static Map<String, dynamic> fillBookInformation() {
     Map<String, dynamic> bookInfo = {};
 
-    print('Fill the following book info:');
+    print(color('Fill the following book info:'));
 
-    stdout.write('ID: ');
+    stdout.write(cyan('ID: '));
     bookInfo['id'] = stdin.readLineSync();
 
-    stdout.write('Title: ');
+    stdout.write(cyan('Title: '));
     bookInfo['title'] = stdin.readLineSync();
 
-    stdout.write('Authors (separated by comma): ');
+    stdout.write(cyan('Authors (separated by comma): '));
     String? authorsInput = stdin.readLineSync();
     bookInfo['authors'] =
         authorsInput?.split(',').map((author) => author.trim()).toList();
 
-    stdout.write('Categories (separated by comma): ');
+    stdout.write(cyan('Categories (separated by comma): '));
     String? categoriesInput = stdin.readLineSync();
     bookInfo['categories'] =
         categoriesInput?.split(',').map((category) => category.trim()).toList();
 
-    stdout.write('Year: ');
+    stdout.write(cyan('Year: '));
 
     try {
       bookInfo['year'] = int.parse(stdin.readLineSync()!);
     } on Exception {
-      throw Exception('Wrong Input in Book Year');
+      throw Exception(red('Wrong Input in Book Year'));
     }
 
-    stdout.write('Quantity: ');
+    stdout.write(cyan('Quantity: '));
     try {
     bookInfo['quantity'] = int.parse(stdin.readLineSync() ?? '');
     } on Exception {
-      throw Exception('Wrong Input in Book quantity');
+      throw Exception(red('Wrong Input in Book quantity'));
     }
 
-    stdout.write('Price: ');
+    stdout.write(cyan('Price: '));
     try {
     bookInfo['price'] = double.parse(stdin.readLineSync() ?? '');
     } on Exception {
-      throw Exception('Wrong Input in Book price');
+      throw Exception(red('Wrong Input in Book price'));
     }
 
     return bookInfo;

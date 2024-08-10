@@ -2,6 +2,7 @@ import '../utils/updateuser.dart';
 import 'book.dart';
 import '../utils/updatedata.dart';
 import 'user/user.dart';
+import '../bin/library_system.dart';
 
 class Library {
   List<Book> books;
@@ -31,7 +32,7 @@ class Library {
           book.title == newBook.title &&
           book.year == newBook.year) {
         book.quantity = (book.quantity ?? 0) + (newBook.quantity ?? 0);
-        print('Quantity of book (${newBook.title}) incremented');
+        print(green('Quantity of book (${newBook.title}) incremented'));
         updateData(this, newBook, 1, true);
         return;
       }
@@ -39,57 +40,61 @@ class Library {
 
     books.add(newBook);
     updateData(this, newBook, 1, false);
-    print('Book of ID (${newBook.id}) added');
+    print(green('Book of ID (${newBook.id}) added'));
   }
 
   void removeBook(String id) {
     if(id.isEmpty){
-      throw Exception('No Value in book ID!!');
+      throw Exception(red('No Value in book ID!!'));
     }
     for (var book in books) {
       if (book.id == id) {
         books.removeWhere((book) => book.id == id);
         updateData(this, book, 2, false);
-        print('Book of ID ($id) removed from the Library');
+        print(green('Book of ID ($id) removed from the Library'));
         return;
       }
     }
-    print('Book of ID ($id) does not exist');
+    print(color('Book of ID ($id) does not exist'));
   }
 
   void buyBook({required User user,required String bookId}) {
+    if(bookId.isEmpty){
+      throw Exception(red('No Value in book ID!!'));
+    }
     // check if book exist to decrement quantity
     for (var book in books) {
       if (book.id == bookId) {
         if (book.quantity != 0) {
           book.quantity = book.quantity! - 1;
-          print('Thank you for your purchase of (${book.title})');
+          print(green('Thank you for your purchase of (${book.title})'));
           updateData(this, book, 2, true);
           displayReceipt(book);
           updateUser(user, book: book);
           return;
         }else{
-          print('Book of ID ($bookId) is out of stock!!');
+          print(blue('Book of ID ($bookId) is out of stock!!'));
           return;
         }
       }
     }
-    print('Book of ID ($bookId) does not exist!!');
+    print(color('Book of ID ($bookId) does not exist!!'));
   }
 
   void displayReceipt(Book book) {
-    print('--- Purchase Receipt ---');
-    print('Title: ${book.title}');
-    print('Authors: ${book.authors?.join(', ')}');
-    print('Categories: ${book.categories?.join(', ')}');
-    print('Year: ${book.year}');
-    print('Quantity: 1');
-    print('Price: \$${book.price?.toStringAsFixed(2)}');
-    print('------------------------');
+    print(gold('Purchase Receipt'));
+    print(gold('------------------------'));
+    print(gold('Title: ${book.title}'));
+    print(gold('Authors: ${book.authors?.join(', ')}'));
+    print(gold('Categories: ${book.categories?.join(', ')}'));
+    print(gold('Year: ${book.year}'));
+    print(gold('Quantity: 1'));
+    print(gold('Price: \$${book.price?.toStringAsFixed(2)}'));
+    print(gold('------------------------'));
   }
 
    displayAllBooks(){
-    print('\n--- Available Books ---\n');
+    print(color('\n--- Available Books ---'));
     for (var book in books) {
       print('Book ID: ${book.id}');
       print('Book title: ${book.title}');

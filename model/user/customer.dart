@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:crypto/crypto.dart';
 import '../../utils/updateuser.dart';
 import 'admin.dart';
+import '../../bin/library_system.dart';
 
 class Customer extends User {
   List<Book> purchaseHistory = [];
@@ -17,6 +18,11 @@ class Customer extends User {
       required super.password,
       required this.purchaseHistory}) {
     sequence++;
+    for (var customer in Admin.customerList) {
+      if (customer.id == id) {
+        return;
+      }
+    }
     Admin.customerList.add(this);
   }
 
@@ -45,11 +51,11 @@ class Customer extends User {
   }
 
   static addNewCustomer() {
-    print('Fill in the following information\n');
+    print(color('Fill in the following information\n'));
     String id = '$sequence';
-    stdout.write('First Name: ');
+    stdout.write(cyan('First Name: '));
     String firstName = stdin.readLineSync()!;
-    stdout.write('Last Name: ');
+    stdout.write(cyan('Last Name: '));
     String lastName = stdin.readLineSync()!;
     String password = setPassword();
 
@@ -59,25 +65,26 @@ class Customer extends User {
         lastName: lastName,
         password: password,
         purchaseHistory: []);
-    print('Your ID is ${customer.id}');
+    print(green('Registration Successful!!'));
+    print(gold('Your ID is ${customer.id}'));
     updateUser(customer);
   }
 
   static String setPassword() {
-    stdout.write('Enter password: ');
+    stdout.write(cyan('Enter password: '));
     String password = stdin.readLineSync()!;
     String hashedPassword = sha256.convert(utf8.encode(password)).toString();
     return hashedPassword;
   }
 
   displayPurchasedBooks() {
-    print('Books Bought:');
+    print(blue('Books Bought:'));
     if (purchaseHistory.isEmpty) {
       print('No Books purchased');
       return;
     }
     for (var book in purchaseHistory) {
-      print(book.toJson());
+      print(gold(book.toJson()));
     }
   }
 }
