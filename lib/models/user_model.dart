@@ -4,12 +4,16 @@
 
 
 
+import 'package:pro2/models/book_model.dart';
+
 class UserModel{
 
 
   String userName;
   String passWord;
   bool isAdmin;
+
+  List<BookModel> bookBuy = [];
 
 
 

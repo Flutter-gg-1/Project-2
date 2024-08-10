@@ -300,6 +300,8 @@ whileauthors :
 
         case 2 :
 
+        library.buyBook();
+
         break;
 
 

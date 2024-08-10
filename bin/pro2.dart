@@ -18,9 +18,7 @@ void main(){
   
 
 
-  library.addBook(authors: ["ammar"] , categories: ["money"] , price: 100 , quantity: 4 , title: "live" , year: 1999 );
-  library.removeBook(idNot: false , serch: "2");
-  print(library.toJson());
+  
 
 
 
