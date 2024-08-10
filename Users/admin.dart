@@ -62,6 +62,7 @@ class Admin extends Custmer {
   void removeBook(BookStore books) {
     print("Enter the id: ");
     String id = stdin.readLineSync()!;
+    
     if (books.library.first.id == id) {
       books.library.removeWhere((books) => books.id == id); //remove by id
 
