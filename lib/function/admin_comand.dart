@@ -13,7 +13,7 @@ import 'dart:io';
 
 import 'package:pro2/models/system_model.dart';
 
-void adminComand(SystemModel library){
+bool adminComand(SystemModel library){
 
 int op = 0;
 
@@ -29,9 +29,11 @@ int op = 0;
     print("-"*25);
     print("3: Display Receipt");
     print("-"*25);
-    print("4: Log out");
+    print("4: add Admin");
     print("-"*25);
-    print("5: exit");
+    print("5: Log out");
+    print("-"*25);
+    print("6: exit");
     print("-"*25);
 
 
@@ -314,12 +316,27 @@ whileauthors :
 
         case 4 :
 
+        library.addAdmin();
+        
+
         break;
+
+        
 
 
         case 5 :
+        return false;
 
+
+        case 6 :
+        return true;
+
+
+        default:
+        print("######   chose one of the option   ######");
         break;
+
+        
 
 
       }

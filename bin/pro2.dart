@@ -8,13 +8,20 @@ import 'package:pro2/models/system_model.dart';
 
 void main(){
 
-  print("\n######            ######\n");
+  
 
 
 
   SystemModel library = SystemModel.fromJson(jsonData);
 
 
+
+  library.appRun(library);
+
+
+  
+
+
   
 
 
@@ -22,6 +29,6 @@ void main(){
 
 
 
-  adminComand(library);
+  
 
 }
