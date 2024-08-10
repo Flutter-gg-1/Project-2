@@ -107,7 +107,7 @@ void main() {
               try { 
                 books.buyBook(inputUser);
               } catch (e) {
-                print("Book not found."); // If book title isn't found
+                print("$red Book not found.$reset"); // If book title isn't found
               }
               break;
             case "2": // View all available books
