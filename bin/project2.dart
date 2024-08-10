@@ -1,5 +1,8 @@
 import 'dart:io';
-
+import 'dart:math';
+import 'dataset.dart';
+import 'models/library_data.dart';
+import 'models/library.dart';
 void main() {
 
 print("\n\n\n\n");
@@ -79,7 +82,7 @@ void login(){
         for(Map<String,dynamic> customer in customers){
           if (customer['username']==username && customer["password"]==password){ //check if entered values are correct
             wrongUser= false; 
-            print("signed in ");
+            buyBooks(username!);
           }
           else{ 
             print("username or password is wrong. Please try again");
@@ -103,7 +106,7 @@ void customerSignup(){
       print("Please enter a valid username and password");
     } else {
       // Check if username exists
-      bool userExist = false; // Initialize to false
+      bool userExist = false; 
       for (Map<String, dynamic> customer in customers) {
         if (customer['username'] == username) {
           userExist = true;
@@ -111,8 +114,7 @@ void customerSignup(){
           break; // Exit the loop if username is found
         }
       }
-      // If username doesn't exist, create the account
-      if (!userExist) {
+      if (!userExist) { // If username doesn't exist, create the account
         Map<String, dynamic> newUser = {
           "username": username,
           "password": password
@@ -127,9 +129,92 @@ void customerSignup(){
   }
 
 
+void buyBooks(String username){
+  print("\n\n\n\n");
+  print("Hello $username! Here is a list of all available books:");
+  print("-----------------------------------");
+  LibraryData books = LibraryData.fromJson(libraryData);
+  for (Library book in books.library) {
+    print("ID: ${book.id}, Title: ${book.title}");
+  }
+  print("-----------------------------------");
+  print("Enter the ID of the book you want to purchase");
+  String? bookId = stdin.readLineSync();
+  for (Library book in books.library) {
+    if(book.id==bookId){ 
+      if(book.quantity>0){ //check if book is available
+        print("Are you sure you want to buy '${book.title}'?");
+        print("\n 1-Yes \n 2-No");
+        String? answer = stdin.readLineSync();
+        while(answer!="1" && answer!="2"){
+          print("Please enter a valid option.");
+          answer = stdin.readLineSync();
+        }
+        if(answer=='1'){
+          printReceipt(username, bookId!, book.title, book.price);    
+        }
+        else{
+          break;
+        }
+      }
+      else{
+        print("This book, '${book.title}', is out of stock");
+        break;
+      }
+    }
+    else{
+      print("No such book exist");
+    }
+  }
+  print("Do you want to buy another book?");
+  print("\n 1-Yes \n 2-No");
+  String? answer = stdin.readLineSync();
+  while(answer!="1" && answer!="2"){
+    print("Please enter a valid option.");
+    answer = stdin.readLineSync();
+  }
+  if(answer=='1'){
+    buyBooks(username);
+  }
+  else{
+    main();
+  }
+}
+
+void printReceipt(String username, String bookId, String bookTitle, double bookPrice) {
+  print("\n\n");
+  print("----------------------------------------");
+  print("-- Receipt for Library Book Purchase  -- ");
+  print("----------------------------------------");
+  print(" Book: $bookTitle ");
+  print(" Price: $bookPrice ");
+  print("----------------------------------------");
+  Random random = Random();
+  String receiptId =random.nextInt(10000).toString(); 
+  //add Receipt
+  Map<String,dynamic> receipt ={
+    "receiptsId" : receiptId,
+    "username" : username,
+    "bookTitle" : bookTitle,
+    "price" : bookPrice
+    };
+    receipts.add(receipt);
+  stdin.readLineSync();
+}
+
 List<Map<String,dynamic>> customers = [
   {
     "username" : "user1",
-    "password" : "123"
+    "password" : "123",
+    "receiptsId" : [22]
   }
+];
+
+List<Map<String,dynamic>> receipts = [
+  {
+    "receiptsId" : 22,
+    "username" : "user1",
+    "bookTitle" : "little red riding hood",
+    "price" : 10
+  } 
 ];

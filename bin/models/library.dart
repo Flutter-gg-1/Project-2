@@ -6,7 +6,7 @@ class Library {
    final List<String> authors;
    final List<String> categories;
    final int year;
-   final int quantity;
+   late final int quantity;
    final double price;
 
     Library({
