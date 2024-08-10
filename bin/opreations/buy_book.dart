@@ -29,7 +29,7 @@ buyBook(
     return;
   }
   if (bookQuantity > book['quantity']) {
-    printWithColor(text: "X Not enough book available! X", color: "Red");
+    printWithColor(text: "X Not enough books available! X", color: "Red");
 
     return;
   }
