@@ -12,13 +12,15 @@ final AnsiPen magentaPen = AnsiPen()..magenta();
 
 
 List<Book> purchasedBooks = [];
- double totalAmount = 0.0;
+
  // view receipts
   void displayReceipts() {
   if (purchasedBooks.isEmpty) {
     print(yalowPen("No purchases yet."));
   } else {
+     double totalAmount = 0.0;
     for (var book in purchasedBooks) {
+      totalAmount+=book.price;
       book.display();
       print(blackPen(
           "......................................................................."));
