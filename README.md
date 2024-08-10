@@ -1,19 +1,22 @@
+
 # Library System Project 📚
 
-Welcome to the Library System Project! This project involves creating a command-line application in Dart to manage a library. The system will allow users to perform various operations based on their role: Admin or Customer.
+Welcome to the **Library System Project**! This project is a command-line application built in Dart designed to manage a library system efficiently. It provides functionalities for both Admins and Customers.
 
-## Project Overview
+## 🎯 Project Overview
 
-You will develop a Library System that can perform the following operations:
+This application empowers users with the following features:
 
-- **Add a Book**: Add new books to the library.
-- **Remove a Book**: Remove books from the library.
-- **Buy a Book**: Purchase a book if it's available.
-- **Display Receipt**: Show a receipt for the purchase.
+- **Add New Books**: Seamlessly introduce new titles to the library’s collection.
+- **Remove Existing Books**: Efficiently remove books that are no longer needed.
+- **Purchase Available Books**: Easily buy books that are currently in stock.
+- **Generate Receipts**: Instantly create and view detailed receipts for all transactions.
 
-## JSON Data Structure
-The library data is stored in a JSON format with the following structure:
-```
+## 📂 JSON Data Structure
+
+The library data is organized in a JSON format. Here are examples of two books from the library. Note that these are just examples, and the library contains additional books.
+
+```json
 {
   "library": [
     {
@@ -33,89 +36,90 @@ The library data is stored in a JSON format with the following structure:
       "year": 1960,
       "quantity": 0,
       "price": 12.99
-    },
-    {
-      "id": "3",
-      "title": "1984",
-      "authors": ["George Orwell"],
-      "categories": ["Dystopian", "Science Fiction"],
-      "year": 1949,
-      "quantity": 3,
-      "price": 15.49
-    },
-    {
-      "id": "4",
-      "title": "Pride and Prejudice",
-      "authors": ["Jane Austen"],
-      "categories": ["Romance", "Classic"],
-      "year": 1813,
-      "quantity": 4,
-      "price": 8.99
-    },
-    {
-      "id": "5",
-      "title": "The Catcher in the Rye",
-      "authors": ["J.D. Salinger"],
-      "categories": ["Fiction"],
-      "year": 1951,
-      "quantity": 2,
-      "price": 13.49
     }
+    // More books are available in the library.
   ]
 }
-
 ```
-## Attributes
 
-- **id**: Unique identifier for the book.
-- **title**: Title of the book.
-- **authors**: List of authors.
-- **categories**: List of categories.
-- **year**: Year of publication.
-- **quantity**: Number of copies available.
+## 🖥️ Sample Outputs
+###  ⚪️ Menu
+<img width="454" alt="Screenshot 2024-08-11 at 1 31 10 AM" src="https://github.com/user-attachments/assets/87eef17f-e1c0-47a4-abb6-b231cb50f68f">
 
-## User Roles
+### ▫️ Admin Menu
+##### - Admin prees 1
+<img width="454" alt="Screenshot 2024-08-11 at 1 31 26 AM" src="https://github.com/user-attachments/assets/9b066d8d-5eae-472f-8d2b-5d24967e3412">
 
-### Admin
+### ◽️ Function for Admin 
 
-- Can add or remove books.
-- Can view the receipt for purchases.
+ ##### * The admin presses 1 want add book but the id  of book adding is existing 
+ 
+<img width="454" alt="Screenshot 2024-08-11 at 1 31 46 AM" src="https://github.com/user-attachments/assets/80441482-fc17-4366-ba4c-36cbd6bc8503">
 
-### Customer
+######  Here admin can add book 
 
-- Can buy books if they are available.
-- Can view the receipt for their purchase.
+<img width="454" alt="Screenshot 2024-08-11 at 1 33 21 AM" src="https://github.com/user-attachments/assets/00de39fa-7fe1-4290-8fc0-51357730e38a">
 
-## Instructions
+ ##### * The admin presses 2 and all the books appear.
 
-### Set Up the Project
+<img width="454" alt="Screenshot 2024-08-11 at 1 34 05 AM" src="https://github.com/user-attachments/assets/730e236b-3fe6-4882-a500-4e36a77aa71f">
 
-1. Create a Dart command-line application.
-2. Use the provided JSON data to initialize your library.
 
-### Implement Operations
+ ##### * The admin presses 3 wants to delete a book but this book does not exist
 
-- **Add a Book**: Write a function to add new books to the library.
-- **Remove a Book**: Implement a function to remove books from the library.
-- **Buy a Book**: Create a function to handle book purchases. Ensure the book is available before completing the purchase.
-- **Display Receipt**: Develop a function to display a receipt for the purchased books.
+<img width="454" alt="Screenshot 2024-08-11 at 1 34 29 AM" src="https://github.com/user-attachments/assets/772ee370-ff9e-4a85-9f3f-4032f86a817f">
 
-### Role Management
+######  Here admin can removed  book
+<img width="454" alt="Screenshot 2024-08-11 at 1 34 43 AM" src="https://github.com/user-attachments/assets/ae9553de-7960-4777-bd9b-ba3a08ab2fd7">
 
-- Implement role-based functionality to differentiate between Admin and Customer actions.
+ ##### * The admin presses 4 wants to see all Receipt but no purchase has been made yet.
+<img width="454" alt="Screenshot 2024-08-11 at 1 35 00 AM" src="https://github.com/user-attachments/assets/8dfc3f7c-b1c9-4604-b3ac-c58801990706">
 
-## Submission
-Please submit your project by including all necessary Dart files and a brief description of how to run the application.
+######  Here admin can can see the receipts
 
-## Evaluation
+<img width="454" alt="Screenshot 2024-08-11 at 1 36 14 AM" src="https://github.com/user-attachments/assets/23a4dd17-3841-42d9-afc8-297dba1a129d">
 
-- **Functionality**: Ensure all required functions work correctly and handle edge cases.
-- **Code Quality**: Write clean, readable, and well-organized code. Use meaningful variable and function names.
-- **Error Handling**: Implement proper error handling for invalid operations and edge cases.
-- **User Interface**: For a command-line application, ensure that prompts and outputs are user-friendly and clear.
-- **Role Enforcement**: Verify that user roles are properly enforced and only allow appropriate actions for each role.
+ #### ........................................................................................................
+ 
+###  ▫️ Customer Menu
 
-## Deadline
+##### - Customer prees 2 
+<img width="374" alt="Screenshot 2024-08-11 at 1 55 47 AM" src="https://github.com/user-attachments/assets/0744e9f4-d389-4f52-8269-9836179214b4">
 
-Please submit your completed project by **Sunday, August 11, 2024, at 9:59 AM**.
+### ▫️ Function for Customer 
+
+ ##### * The customer presses 1 and all the books appear. 
+
+<img width="405" alt="Screenshot 2024-08-11 at 1 56 08 AM" src="https://github.com/user-attachments/assets/f8d8cc7f-7d8a-49bb-b4bb-9ddeae15ef79">
+
+ ##### * The customer presses 2 for Buy books
+
+#### There are three cases for the purchase process:
+ ###### * The first case is if the book is not available.
+ ###### * The second case is if the quantity of the book is sold out.
+ ###### * The last case is that the purchase process is completed successfully.
+ 
+ <img width="405" alt="Screenshot 2024-08-11 at 1 56 41 AM" src="https://github.com/user-attachments/assets/eceeb6f8-4921-4488-a922-9665fc57bb7c">
+ 
+ ##### * The customer presses 3 can see the receipts.
+<img width="405" alt="Screenshot 2024-08-11 at 1 57 13 AM" src="https://github.com/user-attachments/assets/325c6fe3-251b-4e7f-aeed-5f2ac3da92a3">
+
+###### Here in this case, if the customer bought two books of the same type, but the quantity is more than one
+ 
+<img width="405" alt="Screenshot 2024-08-11 at 1 57 49 AM" src="https://github.com/user-attachments/assets/36f4b21e-074e-409e-86e1-72baacc23924">
+
+
+## 📝 Conclusion
+
+The Library System is designed to streamline library management:
+
+- **Admins** 🛠️: Efficiently manage books and view transaction receipts.
+- **Customers** 💳: Easily purchase books and track their purchases with receipts.
+
+thanks 🙏 🌺
+
+
+
+
+
 
