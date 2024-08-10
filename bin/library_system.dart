@@ -2,11 +2,12 @@ import 'dart:io'; // library used to interact with user
 import 'package:library_system/dataset.dart'; // dataset
 import 'package:library_system/models/menu.dart'; // menu function
 import 'package:library_system/models/sign_in.dart'; // sign in function
-import 'package:library_system/models/user.dart'; // user class
+import 'package:library_system/models/customer.dart'; // customer class
+import 'package:library_system/models/sign_up.dart'; // sign up function
 
 void main(List<String> arguments) {
   // initialize two important lists
-  List<User> users = [];
+  List<Customer> customers = [];
   List<Map<String,dynamic>> library = dataset['library'];
   print('\nProject 2 : Library System');
   while_loop :
@@ -15,10 +16,10 @@ void main(List<String> arguments) {
     stdout.write("Choose an option : ");
     switch(stdin.readLineSync()!) {
       case '1' :
-        signIn(users:users);
+        signIn(customers:customers);
 
       case '2' :
-        // signUp();
+        signUp(customers:customers);
 
       case '3' :
         // admin();

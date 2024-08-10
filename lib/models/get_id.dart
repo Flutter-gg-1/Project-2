@@ -1,11 +1,11 @@
 import 'dart:io';
-import 'package:library_system/models/user.dart';
+import 'package:library_system/models/customer.dart';
 
 // function to get customer ID
-int getId({required String? id, required List<User> users}) {
+int getId({required String? id, required List<Customer> customers}) {
   while (id == null ||
       int.tryParse(id) == null ||
-      users.map((user) => user.userId).toList().contains(int.parse(id)) ==
+      customers.map((customer) => customer.customerId).toList().contains(int.parse(id)) ==
           false) {
     if (id == '0') {
       return 0;

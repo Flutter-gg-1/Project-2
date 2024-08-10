@@ -1,10 +1,10 @@
-// class to represent user
-class User {
-  final int userId;
+// class to represent customer
+class Customer {
+  final int customerId;
   final String name;
   double balance;
 
-  User({required this.userId, required this.name, required this.balance});
+  Customer({required this.customerId, required this.name, required this.balance});
 
   set setBalance(double newBalance) {
     balance = newBalance;
