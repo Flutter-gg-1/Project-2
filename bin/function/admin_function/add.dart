@@ -7,8 +7,9 @@ import '../nullchecker.dart';
 
 add() async {
   try {
+    //genrate ID
     String id = '${Random().nextInt(999999) + 111111}';
-
+    
     PrintWithColor.green('enter title : ');
     String title = nullcheker(
         value: stdin.readLineSync().toString(),
@@ -29,10 +30,12 @@ add() async {
 
     PrintWithColor.green('enter price : ');
     double price = double.parse(stdin.readLineSync().toString());
-
+    
+    //get json data
     String jsonData = await File('./bin/data.json').readAsString();
     Map<String, dynamic> data = jsonDecode(jsonData);
 
+    //update the data 
     Map<String, dynamic> list = {};
     list.addAll({
       "id": id,
@@ -46,12 +49,14 @@ add() async {
 
     data['library']?.add(list);
 
+    //apply update to the json file
     String updatedJsonData = jsonEncode(data);
     File('./bin/data.json')
         .writeAsStringSync(updatedJsonData, mode: FileMode.write);
 
     PrintWithColor.green('Book has been add to the library');
     stdin.readLineSync();
+
   } catch (e) {
     PrintWithColor.red('error $e Try again');
     add();

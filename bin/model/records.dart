@@ -5,9 +5,7 @@ class Records{
   '12345666':20};
 
   static final Map<String,String> admins = {
-    'admin one' : '',
-    'admin tow' : '',
+    'admin one' : '123123',
+    'admin tow' : '123456',
   };
-
-  static List<String> unavilableBook = [];
 }
