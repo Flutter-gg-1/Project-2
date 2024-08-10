@@ -63,13 +63,26 @@ class Book {
         categoriesInput?.split(',').map((category) => category.trim()).toList();
 
     stdout.write('Year: ');
-    bookInfo['year'] = int.tryParse(stdin.readLineSync() ?? '');
+
+    try {
+      bookInfo['year'] = int.parse(stdin.readLineSync()!);
+    } on Exception {
+      throw Exception('Wrong Input in Book Year');
+    }
 
     stdout.write('Quantity: ');
-    bookInfo['quantity'] = int.tryParse(stdin.readLineSync() ?? '');
+    try {
+    bookInfo['quantity'] = int.parse(stdin.readLineSync() ?? '');
+    } on Exception {
+      throw Exception('Wrong Input in Book quantity');
+    }
 
     stdout.write('Price: ');
-    bookInfo['price'] = double.tryParse(stdin.readLineSync() ?? '');
+    try {
+    bookInfo['price'] = double.parse(stdin.readLineSync() ?? '');
+    } on Exception {
+      throw Exception('Wrong Input in Book price');
+    }
 
     return bookInfo;
   }
@@ -82,7 +95,7 @@ class Book {
       'categories': book.categories,
       'year': book.year,
       'quantity': 1,
-      'price': book.price?.toStringAsFixed(2)
+      'price': double.parse('${book.price?.toStringAsFixed(2)}')
     };
   }
 }

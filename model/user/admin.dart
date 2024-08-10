@@ -17,6 +17,7 @@ class Admin extends User {
         password: json['password']);
   }
 
+  @override
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -26,15 +27,18 @@ class Admin extends User {
     };
   }
 
-  static displayAllCustomers(){
+  static displayAllCustomers() {
     print('\n--- Customers of Library ---\n');
     for (var customer in customerList) {
       print('Customer ID: ${customer.id}');
       print('Customer Name: ${customer.firstName} ${customer.lastName}');
-      print('Books Bought: ${customer.purchaseHistory.map((item){
-      item.displayBookBought(item);
-      print('');
-      })}');
+      print('Books Bought:');
+      if(customer.purchaseHistory.isEmpty){
+        print('No Books purchased');
+      }
+      for (var book in customer.purchaseHistory) {
+        print(book.toJson());
+      }
       print('');
     }
   }

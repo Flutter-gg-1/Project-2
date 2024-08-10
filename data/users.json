@@ -13,7 +13,34 @@
             "firstName": "Abdulaziz",
             "lastName": "Alamri",
             "password": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
-            "books_bought": []
+            "books_bought": [
+                {
+                    "id": "6",
+                    "title": "Flutter",
+                    "authors": [
+                        "Fahad"
+                    ],
+                    "categories": [
+                        "Education"
+                    ],
+                    "year": 2024,
+                    "quantity": 1,
+                    "price": 99.99
+                },
+                {
+                    "id": "1",
+                    "title": "The Great Gatsby",
+                    "authors": [
+                        "F. Scott Fitzgerald"
+                    ],
+                    "categories": [
+                        "Fiction"
+                    ],
+                    "year": 1925,
+                    "quantity": 1,
+                    "price": 10.99
+                }
+            ]
         },
         {
             "id": "3",
@@ -27,6 +54,20 @@
             "firstName": "Ahmed",
             "lastName": "Alharbi",
             "password": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+            "books_bought": []
+        },
+        {
+            "id": "5",
+            "firstName": "Khalid",
+            "lastName": "Alharbi",
+            "password": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+            "books_bought": []
+        },
+        {
+            "id": "6",
+            "firstName": "a",
+            "lastName": "a",
+            "password": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb",
             "books_bought": []
         }
     ]

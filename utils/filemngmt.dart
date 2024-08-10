@@ -1,9 +1,9 @@
 import 'dart:io';
 import 'dart:convert';
-import '../model/admin.dart';
+import '../model/user/admin.dart';
 import '../model/book.dart';
-import '../model/customer.dart';
-import '../model/user.dart';
+import '../model/user/customer.dart';
+import '../model/user/user.dart';
 
 readFile(List<Book>? books, List<User> users) async {
   File file = File('data/data.json');
@@ -25,4 +25,6 @@ readFile(List<Book>? books, List<User> users) async {
   for (var customer in userList['customer']) {
     users.add(Customer.fromJson(customer));
   }
+
+  Customer.sequence = (userList['customer']as List).length +2;
 }

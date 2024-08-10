@@ -13,7 +13,7 @@ updateData(Library lib, Book book, int choice, bool isExistent) async {
       if (isExistent) {
         for (var element in (books['library'])) {
           if (element['id'] == book.id) {
-            element['quantity']++;
+            element['quantity']+=book.quantity;
           }
         }
       } else {
