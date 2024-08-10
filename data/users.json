@@ -47,7 +47,9 @@
             "firstName": "Basel",
             "lastName": "Alolwi",
             "password": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
-            "books_bought": []
+            "books_bought": [
+               
+            ]
         },
         {
             "id": "4",
@@ -75,9 +77,14 @@
             "firstName": "Mohammed",
             "lastName": "Ibrahim",
             "password": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
-            "books_bought": [
-                
-            ]
+            "books_bought": []
+        },
+        {
+            "id": "8",
+            "firstName": "Fahad",
+            "lastName": "Alazmi",
+            "password": "88d4266fd4e6338d13b845fcf289579d209c897823b9217da3e161936f031589",
+            "books_bought": []
         }
     ]
 }

@@ -58,7 +58,7 @@ class Library {
     print(color('Book of ID ($id) does not exist'));
   }
 
-  void buyBook({required User user,required String bookId}) {
+   buyBook({required User user,required String bookId}) async{
     if(bookId.isEmpty){
       throw Exception(red('No Value in book ID!!'));
     }
@@ -96,13 +96,13 @@ class Library {
    displayAllBooks(){
     print(color('\n--- Available Books ---'));
     for (var book in books) {
-      print('Book ID: ${book.id}');
-      print('Book title: ${book.title}');
-      print('Book authors: ${book.authors}');
-      print('Book categories: ${book.categories}');
-      print('Book year: ${book.year}');
-      print('Book quantity: ${book.quantity}');
-      print('Book price: ${book.price}');
+      print(highlight('Book ID: ${book.id}'));
+      print(highlight('Book title: ${book.title}'));
+      print(highlight('Book authors: ${book.authors}'));
+      print(highlight('Book categories: ${book.categories}'));
+      print(highlight('Book year: ${book.year}'));
+      print(highlight('Book quantity: ${book.quantity}'));
+      print(highlight('Book price: ${book.price}'));
       print('');
     }
   }

@@ -8,8 +8,6 @@ import '../bin/library_system.dart';
 menu(Library lib, User? user) {
   bool isExit = false;
 
-  print(Admin.customerList.length);
-
   do {
     if (user != null) {
       if (user is Admin) {
@@ -65,7 +63,7 @@ menu(Library lib, User? user) {
             stdout.write(cyan('Enter Book ID: '));
             String bookId = stdin.readLineSync()!;
             try {
-              lib.buyBook(user: user, bookId: bookId);
+             lib.buyBook(user: user, bookId: bookId);
             } catch (e) {
               print(red(e));
             }

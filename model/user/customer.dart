@@ -53,10 +53,22 @@ class Customer extends User {
   static addNewCustomer() {
     print(color('Fill in the following information\n'));
     String id = '$sequence';
+
     stdout.write(cyan('First Name: '));
-    String firstName = stdin.readLineSync()!;
+    String firstName = '';
+    try {
+      firstName = checkName(stdin.readLineSync()!);
+    } catch (e) {
+      rethrow;
+    }
+
     stdout.write(cyan('Last Name: '));
-    String lastName = stdin.readLineSync()!;
+    String lastName = '';
+    try {
+      lastName = checkName(stdin.readLineSync()!);
+    } catch (e) {
+      rethrow;
+    }
     String password = setPassword();
 
     Customer customer = Customer(
@@ -78,13 +90,23 @@ class Customer extends User {
   }
 
   displayPurchasedBooks() {
-    print(blue('Books Bought:'));
-    if (purchaseHistory.isEmpty) {
-      print('No Books purchased');
-      return;
+    for (var customer in Admin.customerList) {
+      if (customer.id == id) {
+        print(blue('Books Bought:'));
+        if (customer.purchaseHistory.isEmpty) {
+          print(('No Books purchased'));
+        }
+        for (var book in customer.purchaseHistory) {
+          print(gold(book.toJson()));
+        }
+      }
     }
-    for (var book in purchaseHistory) {
-      print(gold(book.toJson()));
+  }
+
+  static String checkName(String name) {
+    if (name.split('').any((char) => '0123456789'.contains(char))) {
+      throw Exception('First and Last Name cannot have numbers!!');
     }
+    return name;
   }
 }

@@ -8,6 +8,7 @@ import '../utils/login.dart';
 import 'package:ansicolor/ansicolor.dart';
 
 AnsiPen color = AnsiPen()..rgb(r: 1, g: 0.576, b: 0);
+AnsiPen highlight = AnsiPen()..rgb(r: 0.247, g: 0.318, b: 0.478, bg: true);
 AnsiPen gold = AnsiPen()..rgb(r: 0.7, g: 0.7, b: 0.25);
 AnsiPen cyan = AnsiPen()..cyan(bold: true);
 AnsiPen green = AnsiPen()..green(bold: true);
@@ -31,7 +32,12 @@ void main(List<String> arguments) async {
 
     switch (choice) {
       case '1':
+       try {
       Customer.addNewCustomer();
+    } catch (e) {
+      print(red(e));
+      continue;
+    }
       menu(lib, await login());
       case '2':
       menu(lib, await login());
