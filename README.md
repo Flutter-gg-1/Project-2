@@ -1,121 +1,187 @@
-# Library System Project 📚
+# Dart Library Management CLI Application
 
-Welcome to the Library System Project! This project involves creating a command-line application in Dart to manage a library. The system will allow users to perform various operations based on their role: Admin or Customer.
+A Dart-base CLI application to manage a Library with a collection of books. The original data is pre-defined in a JSON file which is parsed and saved into data models.
 
-## Project Overview
+## Table of Contents
 
-You will develop a Library System that can perform the following operations:
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Created By](#created-by)
 
-- **Add a Book**: Add new books to the library.
-- **Remove a Book**: Remove books from the library.
-- **Buy a Book**: Purchase a book if it's available.
-- **Display Receipt**: Show a receipt for the purchase.
+## Features
 
-## JSON Data Structure
-The library data is stored in a JSON format with the following structure:
+The applications has two user roles (Admin, Customer), and functionality is diffirent based on current user. 
+
+- Admin Functions:
+    - Add Book
+    - Delete Book
+    - View All Customer Reciepts
+- Customer Functions:
+    - Buy Book
+    - View Recipets
+
+## Installation
+
+To install and run this application, follow these steps:
+
+1. **Clone the repository:**
+
+    ```bash
+    git clone https://github.com/amer266030/Project-2.git
+    ```
+
+2. **Run the application:**
+
+    ```bash
+    dart run bin/library_sys
+    ```
+
+## Usage
+
+### General Info
+
+- The app does not have an implemented authentication mechanism, but it has user selection from pre-defined user ids.
+- The app does not have any Data Persistence mechanisms.
+
+### Sign In
+
+The app prompts for user selection by picking a user id from a list of users with different roles at app launch.
+
+```bash
+-----------------------------------
+Select a USER ID from the list below to sign in.
+
+((0, Mozart, admin), (1, Chopin, customer), (2, Beethoven, customer), (3, Liszt, customer))
+-----------------------------------
+
+0
+ ```
+
+ Entering 0 in the example above will select 'Mozart as the user.
+
+### Viewing Instructions within the app
+
+The Welcome message will ask you to enter 'i' to view instructions to understand basic app commands:
+
+```bash
+-----------------------------------
+Current User: Mozart, Role: admin
+Enter i for instructions
+-----------------------------------
+
+i
+------------------------------
+Common
+--------
+show |  View books
+so   |  Sign out
+q    |  Quit App
+------------------------------
+Admin
+--------
+add  |  Add Book
+rm   |  Remove Book
+vcr  |  View Customer Reciepts
+------------------------------
+Customer
+--------
+buy  |  Buy Book
+vmr  |  View My Reciepts
+-----------------------------
 ```
-{
-  "library": [
-    {
-      "id": "1",
-      "title": "The Great Gatsby",
-      "authors": ["F. Scott Fitzgerald"],
-      "categories": ["Fiction"],
-      "year": 1925,
-      "quantity": 5,
-      "price": 10.99
-    },
-    {
-      "id": "2",
-      "title": "To Kill a Mockingbird",
-      "authors": ["Harper Lee"],
-      "categories": ["Fiction", "Classic"],
-      "year": 1960,
-      "quantity": 0,
-      "price": 12.99
-    },
-    {
-      "id": "3",
-      "title": "1984",
-      "authors": ["George Orwell"],
-      "categories": ["Dystopian", "Science Fiction"],
-      "year": 1949,
-      "quantity": 3,
-      "price": 15.49
-    },
-    {
-      "id": "4",
-      "title": "Pride and Prejudice",
-      "authors": ["Jane Austen"],
-      "categories": ["Romance", "Classic"],
-      "year": 1813,
-      "quantity": 4,
-      "price": 8.99
-    },
-    {
-      "id": "5",
-      "title": "The Catcher in the Rye",
-      "authors": ["J.D. Salinger"],
-      "categories": ["Fiction"],
-      "year": 1951,
-      "quantity": 2,
-      "price": 13.49
-    }
-  ]
-}
 
+using the 'sign out' function will take you back to select another user.
+
+### Privilaged Access Rights
+
+Running Functions under the wrong user-role will give an 'Access Denied' message as shown below:
+
+```bash
+-----------------------------------
+Current User: Mozart, Role: admin
+Enter i for instructions
+-----------------------------------
+
+buy
+🛑 Oops! You cannot run this function with the current user. 
+ Try Signing in with a different user role 🛑
 ```
-## Attributes
 
-- **id**: Unique identifier for the book.
-- **title**: Title of the book.
-- **authors**: List of authors.
-- **categories**: List of categories.
-- **year**: Year of publication.
-- **quantity**: Number of copies available.
+### Data Validation
 
-## User Roles
+Data Validation is performed when creating a new book
 
-### Admin
+There are 7 fields for each employee that can be added/edited, which are:
+- ID (Must be a whole number)
+- Title (Cannot be empty)
+- Categories (Selection from pre-defined categories)
+- Authors (Cannot be empty)
+- Price (Must be a whole number between 1800 and 2030)
+- Quantity (Must be a whole number between 0 and 10000)
+- Price (Must be a number, whole or decimal, between 0 and 2000)
 
-- Can add or remove books.
-- Can view the receipt for purchases.
+Wrong Entry Example:
 
-### Customer
+```bash
+Adding a new Book
+Enter cancel at anytime to exit this screen
 
-- Can buy books if they are available.
-- Can view the receipt for their purchase.
+example Input for ID: 1
+Enter an ID number: 1
+❌ Book with ID "1" already Exists!
+example Input for ID: 1
+Enter an ID number: a
+❌ ERROR: Incorrect Entry for a number ID!
+```
 
-## Instructions
+For the 'Book Categories' field, the app prompts for a number selection of pre-defined categories and does not require typing the name.
 
-### Set Up the Project
+### Buying a Book
 
-1. Create a Dart command-line application.
-2. Use the provided JSON data to initialize your library.
+Only customer can buy books, but admins can view all thier reciepts.
+The purchase is only done if the requrested quantity is available. 
 
-### Implement Operations
+Example of unsuccessful purchase:
 
-- **Add a Book**: Write a function to add new books to the library.
-- **Remove a Book**: Implement a function to remove books from the library.
-- **Buy a Book**: Create a function to handle book purchases. Ensure the book is available before completing the purchase.
-- **Display Receipt**: Develop a function to display a receipt for the purchased books.
+```bash
+Enter a book ID to buy it 2
+How many number of copies do you want to purchase?
+Enter Quantity 1
+✅ Good Entry for Quantity
+🛑 ❌ Not Enough Books for desired Quantity! 🛑
+```
 
-### Role Management
+Example of successful purchase:
 
-- Implement role-based functionality to differentiate between Admin and Customer actions.
+```bash
+Enter a book ID to buy it 1
+How many number of copies do you want to purchase?
+Enter Quantity 2
+✅ Good Entry for Quantity
+✅ Purchase Successful!
+```
 
-## Submission
-Please submit your project by including all necessary Dart files and a brief description of how to run the application.
+### Viewing recipets
 
-## Evaluation
+Customers can only view thier own recipets, but admins can view all reciepts. Recipet example:
 
-- **Functionality**: Ensure all required functions work correctly and handle edge cases.
-- **Code Quality**: Write clean, readable, and well-organized code. Use meaningful variable and function names.
-- **Error Handling**: Implement proper error handling for invalid operations and edge cases.
-- **User Interface**: For a command-line application, ensure that prompts and outputs are user-friendly and clear.
-- **Role Enforcement**: Verify that user roles are properly enforced and only allow appropriate actions for each role.
+```bash
+Chopin Reciepts
+---------------------------------------------------
+Book title:                     The Great Gatsby
+price:                          10.99 SAR
+quantity:                       2
+                            
+total:                          21.98 SAR
 
-## Deadline
+Thank you for your purchase Chopin!
+Happy Reading!
+---------------------------------------------------
+```
 
-Please submit your completed project by **Sunday, August 11, 2024, at 9:59 AM**.
+## Created By
 
+- **Amer Alyusuf**
+- [Personal Website](https://amer266030.github.io)
+- [LinkedIn](https://www.linkedin.com/in/amer-alyusuf-77398587)
