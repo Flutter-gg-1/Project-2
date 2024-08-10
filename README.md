@@ -46,19 +46,19 @@ The program will provide the following outputs based on user roles:
 - View books.
 
 ### Example Usage
-- Admin login correctly:
+- User login, and book purchase successfully:
 
-    <img src="assets/img/output1.png" alt="dart" width="400" style= "" />
+    <img src="assets/img/output1.png" alt="dart" width="300" style= "" />
 
-- Error handling "FormatException":
+- View receipt by User:
 
-    <img src="assets/img/output2.png" alt="dart" width="400" style= "" />
+    <img src="assets/img/output2.png" alt="dart" width="230" style= "" />
 
-- Book purchase successfully:
+- Add book by Admin:
 
     <img src="assets/img/output3.png" alt="dart" width="300" style= "" />
 
-- View receipt:
+- Remove book, and input handler:
 
     <img src="assets/img/output4.png" alt="dart" width="270" style= "" />
 

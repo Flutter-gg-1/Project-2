@@ -2,20 +2,22 @@ import 'dart:io';
 import 'management.dart';
 import 'package:project_2/database/json/library.dart';
 import 'package:project_2/database/model/model.dart';
+import '../lib/helpers/color_print.dart';
 
 class UserPermissions {
   Library library = Library.fromJson(libraryBook);
   List<Book> purchasedBooks = [];
 
   void userInput() {
+    bool isExit = false;
     int userChoice;
     do {
       print("Please enter your choice:");
-      print("1. View books");
-      print("2. Purchase book");
-      print("3. View receipt");
-      print("4. Sign out");
-      print("5. Exit");
+      printInfo("1. View books");
+      printInfo("2. Purchase book");
+      printInfo("3. View receipt");
+      printError("4. Sign out");
+      printError("5. Exit");
       stdout.write("Enter your choice: ");
 
       userChoice = int.parse(stdin.readLineSync()!);
@@ -34,69 +36,71 @@ class UserPermissions {
             Accounts().signOut();
             break;
           case 5:
-            print("Thank you for using the library system :D");
-            print("Goodbye!");
+            printSuccess("Thank you for using the library system :D");
+            printSuccess("Goodbye!");
+            isExit = true;
             break;
           default:
-            print("Invalid option");
+            printWarning("Invalid option");
         }
       } catch (e) {
-        print("Error: $e");
+        printError("Error: $e");
         FormatException("Please enter a valid number");
       }
-    } while (userChoice != 5);
+    } while (!isExit);
   }
 
   // Can view all books.
   void viewBooks() {
-    print("View books");
+    printInfo("View books");
     for (var book in library.books) {
-      print("Title: ${book.title}");
-      print("Author: ${book.authors}");
-      print("Category: ${book.categories}");
-      print("Year: ${book.year}");
-      print("Quantity: ${book.quantity}");
-      print("Price: ${book.price}\n");
+      printGray("ID: ${book.id}");
+      printGray("Title: ${book.title}");
+      printGray("Author: ${book.authors}");
+      printGray("Category: ${book.categories}");
+      printGray("Year: ${book.year}");
+      printGray("Quantity: ${book.quantity}");
+      printGray("Price: ${book.price}\n");
     }
   }
 
   // Can purchase books.
   void purchaseBook() {
-    print("Purchase book");
-    print("Please enter the book id:");
+    printInfo("Purchase book");
+    printInfo("Please enter the book id:");
     String id = stdin.readLineSync()!;
     if (library.books.any((element) => element.id == id)) {
       var book = library.books.firstWhere((element) => element.id == id);
       if (book.quantity > 0) {
         book.quantity--;
         purchasedBooks.add(book);
-        print("Book purchased successfully");
+        printSuccess("Book purchased successfully");
       }
     } else {
-      print("Book not found");
+      printWarning("Book not found");
     }
     try {
       if (id == "") {
         throw Exception("Please enter the book id");
       }
     } catch (e) {
-      print(e);
+      printError(e);
       return purchaseBook();
     }
   }
 
   // Can view the receipt for their purchases.
   void viewReceipt() {
-    print("View receipt");
+    printInfo("View receipt");
     if (purchasedBooks.isEmpty) {
-      print("No purchases made yet.");
+      printWarning("No purchases made yet.");
     } else {
       for (var book in purchasedBooks) {
-        print("Title: ${book.title}");
-        print("Author: ${book.authors}");
-        print("Category: ${book.categories}");
-        print("Year: ${book.year}");
-        print("Price: ${book.price}\n");
+        printGray("Title: ${book.title}");
+        printGray("Author: ${book.authors}");
+        printGray("Category: ${book.categories}");
+        printGray("Year: ${book.year}");
+        printGray("Price: ${book.price}\n");
       }
     }
   }
