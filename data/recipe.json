@@ -1,0 +1,14 @@
+{
+  "12345678": {
+    "book_id": "1",
+    "title": "The Great Gatsby",
+    "price": 10.99,
+    "user_id": "123456"
+  },
+  "12345672": {
+    "book_id": "1",
+    "title": "The Great Gatsby",
+    "price": 10.99,
+    "user_id": "123456"
+  }
+}
