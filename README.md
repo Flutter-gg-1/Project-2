@@ -12,6 +12,7 @@ The project consists of:
 - **`models/library_data.dart`:** Defines the `LibraryData` class responsible for managing the list of books.
 - **`dataset.dart`:** Contains the initial library data loaded from a JSON file.
 - **`users_data.dart`:** Contains two lists representing customer data and receipts data.
+
 As well as other functions files to for Signing up, logging in, adding and removing books, buying a book, printing receipts and viewing all receipts.
 
 ## Features
@@ -45,9 +46,11 @@ The library data is stored in a JSON file (`library_data.json`). This file is lo
 2. **Navigate to the project directory:**
    ```bash
   cd project2
+
 3. ** Run the application:**
    ```bash
   dart run
+  
 4. ** Navigate through the application and complete tasks**
 
 ### Please note 
