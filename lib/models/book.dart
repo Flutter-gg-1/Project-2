@@ -18,8 +18,12 @@ class Book {
       required this.year});
 
   factory Book.fromJson(Map<String, dynamic> json) {
+    List<String> authorsList = [];
+    for(var author in json['authors']) {
+      authorsList.add(author);
+    }
     return Book(
-        authors: json['authors'],
+        authors: authorsList,
         categories: json['categories'],
         id: json['id'],
         price: json['price'],

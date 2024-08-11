@@ -28,9 +28,15 @@ void menu({required String mode, Customer? customer}) {
     print('-' * 32);
   }
   if(mode == 'admin') {
-    print('1 -> display library books');
-    print('2 -> add a book to library');
-    print('3 -> remove a book from library');
-    print('0 -> EXIT');
+    print("Hello Admin ..........");
+    print('-' * 36);
+    print('| 1 |     Display library books    |');
+    print('-' * 36);
+    print('| 2 |     add a book to library    |');
+    print('-' * 36);
+    print('| 3 |  remove a book from library  |');
+    print('-' * 36);
+    print('| 0 |           Sign Out           |');
+    print('-' * 36);
   }
 }

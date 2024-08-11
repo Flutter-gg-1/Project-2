@@ -5,6 +5,7 @@ import 'package:library_system/models/book.dart';     // book class
 import 'package:library_system/models/menu.dart';     // menu function
 import 'package:library_system/models/sign_in.dart';  // sign in function
 import 'package:library_system/models/sign_up.dart';  // sign up function
+import 'package:library_system/models/admin.dart';    // admin function
 
 void main(List<String> arguments) {
   // initialize two important lists
@@ -22,7 +23,7 @@ void main(List<String> arguments) {
     switch(stdin.readLineSync()!) {
       case '1' : signIn(library: library, customers:customers);
       case '2' : signUp(customers:customers);
-      case '3' : // admin();
+      case '3' : admin(customers: customers, library: library);
       case '0' : break while_loop;
       default : print("ERROR : Invalid Input ❌\n");
     }

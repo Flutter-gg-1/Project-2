@@ -1,6 +1,7 @@
 import 'dart:io';                                     // library used to interact with user
 import 'package:library_system/models/customer.dart'; // customer class
 import 'package:library_system/models/book.dart';     // book class
+import 'package:library_system/models/display_books.dart';
 import 'package:library_system/models/get_id.dart';   // function to validate id
 import 'package:library_system/models/menu.dart';     // menu function
 
@@ -19,23 +20,21 @@ void signIn({required List<Customer> customers, required List<Book> library}) {
     stdout.write("Choose an option : ");
     switch (stdin.readLineSync()) {
       case '1':
-        for (var book in library) {
-          Map<String, dynamic> map = book.toJson();
-          print('Book id : ${map['id']}');
-          print('Book title : ${map['title']}');
-          print('Book authors : ${map['authors']}');
-          print('Book categories : ${map['categories']}');
-          print('Book year : ${map['year']}');
-          print('Book Current quantity : ${map['quantity']}');
-          print("Book Price : ${map['price']} ");
-          print("*" * 40);
-        }
+        displayBooks(library: library);
       case '2':
         stdout.write("Enter book name : ");
         String bookName = stdin.readLineSync()!;
-        Book book = library.firstWhere((book) => book.title == bookName);
-        customer.buyBook(book);
+        try {
+          Book book = library.firstWhere((book) => book.title == bookName);
+          customer.buyBook(book);
+        }
+        catch (e) {
+          print("ERROR : We have no books with that name ❌\n");
+        }
       case '3':
+        for(var receipt in customer.receipts) {
+          customer.viewReceipt(receipt: receipt);
+        }
       case '0': break while_loop;
       default : print("ERROR : Invalid Input ❌\n");
     }
