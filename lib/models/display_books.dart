@@ -1,5 +1,6 @@
 import 'package:library_system/models/book.dart'; // book class
 
+// function to display all books in the library
 void displayBooks({required List<Book> library}) {
   if (library.isEmpty) {
     print("ERROR : No books added to the library yet ❌\n");
