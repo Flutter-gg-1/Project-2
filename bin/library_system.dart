@@ -5,6 +5,7 @@ import 'package:library_system/data/jsondata.dart';
 import 'package:library_system/operations/panel.dart';
 import 'package:library_system/operations/buy_book.dart';
 import 'package:library_system/operations/iscontain_inlibrary.dart';
+import 'package:library_system/operations/receipt.dart';
 
 void main() {
   StoreLibrary store = StoreLibrary.fromJson(jsonData);
@@ -62,17 +63,7 @@ void main() {
                 break;
               //display Resepit purchase
               case '2':
-                if (custmerUser.purchase.isNotEmpty) {
-                  print('\x1B[46;1mReceipt Purchase\x1B[0m');
-                  print('------------' * 5);
-                  for (var element in custmerUser.purchase) {
-                    print(
-                        'id: ${element['id']}\ntitle: ${element['title']}\nauthor: ${element['categories']}\nyear ${element['year']}\nquantity: ${element['quantity']}\nprice ${element['price']}');
-                    print('------------' * 5);
-                  }
-                } else {
-                  print('there is no purchase yet');
-                }
+                receiptInfo(custmerUser);
                 break;
               //display all books in libraries
               case '3':
@@ -109,11 +100,10 @@ void main() {
             switch (userInput) {
               //buy book
               case '0':
-                //purchase function
                 print('Enter ID of the book to buy it');
                 String bookId = stdin.readLineSync()!;
                 if (bookId != '') {
-                  //this function return
+                  //this function return information book to save it
                   custmerUser.purchase.add(buyBook(store, bookId));
                 } else {
                   print('enter a right id Book');
@@ -121,17 +111,7 @@ void main() {
                 break;
               //print recipt purchase
               case '1':
-                if (custmerUser.purchase.isNotEmpty) {
-                  print('\x1B[46;1mReceipt Purchase\x1B[0m');
-                  print('------------' * 5);
-                  for (var element in custmerUser.purchase) {
-                    print(
-                        'id: ${element['id']}\ntitle: ${element['title']}\nauthor: ${element['categories']}\nyear ${element['year']}\nquantity: ${element['quantity']}\nprice ${element['price']}');
-                    print('------------' * 5);
-                  }
-                } else {
-                  print('there is no purchase yet');
-                }
+                receiptInfo(custmerUser);
                 break;
               //display all book
               case '2':
