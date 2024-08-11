@@ -36,6 +36,8 @@ void menu({required String mode, Customer? customer}) {
     print('-' * 36);
     print('| 3 |  remove a book from library  |');
     print('-' * 36);
+    print('| 4 |  view all customers receipts |');
+    print('-' * 36);
     print('| 0 |           Sign Out           |');
     print('-' * 36);
   }

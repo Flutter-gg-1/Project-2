@@ -8,7 +8,6 @@ class Customer {
   final int customerId;
   final String name;
   double balance;
-  List<Book> cart = [];
   List<Receipt> receipts = [];
 
   Customer({required this.customerId, required this.name, required this.balance});
