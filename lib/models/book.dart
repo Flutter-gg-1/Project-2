@@ -8,13 +8,8 @@ class Book {
   int quantity;
   final double price;
 
-  Book(
-      {required this.authors,
-      required this.categories,
-      required this.id,
-      required this.price,
-      required this.quantity,
-      required this.title,
+  Book({required this.authors,required this.categories,required this.id,
+      required this.price,required this.quantity,required this.title,
       required this.year});
 
   factory Book.fromJson(Map<String, dynamic> json) {
