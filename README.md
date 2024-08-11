@@ -41,15 +41,15 @@ The library data is stored in a JSON file (`library_data.json`). This file is lo
 
 1. **Clone the repository:**
    ```bash
-   git clone <repository_url>
+   git clone <repository_url> ```
    
 2. **Navigate to the project directory:**
    ```bash
-  cd project2
+  cd project2 ```
 
 3. ** Run the application:**
    ```bash
-  dart run
+  dart run ```
   
 4. ** Navigate through the application and complete tasks**
 
