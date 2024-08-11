@@ -1,6 +1,7 @@
 import '../global_varbiels.dart';
 import '../models/book_model.dart';
 
+//function to delete book
 deleteBook(String id) {
   Book? value;
   for (var element in library.library) {

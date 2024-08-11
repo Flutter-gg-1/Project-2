@@ -1,12 +1,16 @@
 import 'dart:io';
+import '../user_functions/receipt.dart';
 import 'delete_book.dart';
 import '../global_varbiels.dart';
 import 'add_book.dart';
+import 'display_books.dart';
 
+//function admin
 admin() {
   bool isExit = false;
 
   do {
+    //display list of functions to the admin to choose from
     print("--------------- Hello Admin ----------------");
     print("Choose what you want to do:");
     print("1. Add book");
@@ -21,17 +25,17 @@ admin() {
         addBook();
         break;
       case "2":
-        print("enter id you want to delete");
+        print("Enter book id you want to delete");
         String bookId = stdin.readLineSync()!;
         deleteBook(bookId);
 
         break;
       case "3":
-        print(receipt);
+        displayReceipts();
         break;
 
       case "4":
-        library.listAllLibrary();
+        listAllLibrary();
         break;
 
       case "q" || "Q":
@@ -41,6 +45,7 @@ admin() {
 
         break;
       default:
+        print("not a viled input");
     }
   } while (!isExit);
 }

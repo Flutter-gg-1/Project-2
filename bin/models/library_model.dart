@@ -1,6 +1,6 @@
-import '../global_varbiels.dart';
 import 'book_model.dart';
 
+//model library
 class Library {
   final List<Book> library;
 
@@ -15,12 +15,5 @@ class Library {
 
   Map<String, dynamic> toJson() {
     return {"library": library.map((e) => e.toJson()).toList()};
-  }
-
-  listAllLibrary() {
-    for (var element in library) {
-      print("----------------------------------------");
-      print(element.toJson());
-    }
   }
 }

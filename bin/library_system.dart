@@ -6,7 +6,7 @@ import 'user_functions/user.dart';
 void main() {
   bool isExit = false;
   do {
-    print("---------- welcome to the library systme ------------");
+    print("\n ---------- welcome to the library systme ------------");
     print("\n ----Enter usrename:");
     print("or enter Q for Exit");
     String usreName = stdin.readLineSync()!;

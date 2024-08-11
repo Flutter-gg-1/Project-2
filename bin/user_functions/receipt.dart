@@ -1,6 +1,7 @@
 import '../global_varbiels.dart';
 import '../models/book_model.dart';
 
+//function to add a receipt
 receiptadd(Book book) {
   DateTime date = DateTime.now();
   Map bookReceipt = {"date": date, "bookTitle": book.title, "bookId": book.id};
@@ -8,6 +9,7 @@ receiptadd(Book book) {
   receipt.add(bookReceipt);
 }
 
+//function to display receipts
 displayReceipts() {
   for (Map element in receipt) {
     print("-------------------------------");

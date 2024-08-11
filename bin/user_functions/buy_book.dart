@@ -2,6 +2,7 @@ import '../global_varbiels.dart';
 import '../models/book_model.dart';
 import 'receipt.dart';
 
+//function to buy book
 buyBook(String title) {
   for (Book element in library.library) {
     if (element.title == title) {
@@ -12,6 +13,9 @@ buyBook(String title) {
       } else {
         print("Book is not available!");
       }
+    } else {
+      print("Book not found!");
+      break;
     }
   }
 }
