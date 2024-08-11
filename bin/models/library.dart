@@ -6,7 +6,7 @@ class Library {
    final List<String> authors;
    final List<String> categories;
    final int year;
-   late final int quantity;
+   final int quantity;
    final double price;
 
     Library({
@@ -32,7 +32,7 @@ class Library {
   }
 
  toJson() {
-   Map<String, dynamic>  data= {
+   Map<String, dynamic> data= {
     'id' : id,
     'title' : title,
     'authors' : authors,
@@ -43,4 +43,6 @@ class Library {
    };
     return data;
   }
+
+
 }

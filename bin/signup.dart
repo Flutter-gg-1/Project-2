@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'project2.dart';
+import 'start.dart';
 import 'users_data.dart';
 
 void customerSignup(){
@@ -32,7 +32,7 @@ void customerSignup(){
         customers.add(newUser);
         print("Account created successfully!");
         stdin.readLineSync(); 
-        main(); 
+        start(); 
       }
     }
   }

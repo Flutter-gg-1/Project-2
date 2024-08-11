@@ -1,7 +1,7 @@
 import 'signup.dart';
 import 'login.dart';
 import 'dart:io';
-import 'project2.dart';
+import 'start.dart';
 void customerSignIn(){
 
   print("\n\n\n\n");
@@ -9,7 +9,7 @@ void customerSignIn(){
   print("\n 1-Yes \n 2-No \n b-Back");
   String? choice = stdin.readLineSync();
 
-  while(choice!='1' && choice!='2' && choice!='2'){
+  while(choice!='1' && choice!='2' && choice!='b'){
   print("please enter a valid option.");
   choice = stdin.readLineSync();
   }
@@ -20,6 +20,6 @@ void customerSignIn(){
     customerSignup();
   }
   else{
-    main();
+    start();
   }
 }

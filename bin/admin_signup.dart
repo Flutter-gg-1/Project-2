@@ -1,4 +1,5 @@
 
+import 'start_admin.dart';
 import 'dart:io';
 
 void adminSignIn(){
@@ -17,5 +18,6 @@ void adminSignIn(){
   }
   passwordEntryCount--;
   password = stdin.readLineSync();
-  }  
+  }
+  startAdmin();
 }
